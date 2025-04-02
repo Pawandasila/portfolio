@@ -1,15 +1,18 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono } from "next/font/google";
+import { Inter, Calistoga } from "next/font/google";
+import { twMerge } from "tailwind-merge";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const inter = Inter({
   subsets: ["latin"],
+  variable: "--font-sans",
 });
 
-const geistMono = Geist_Mono({
-  variable: "--font-geist-mono",
+const calistoga = Calistoga({
   subsets: ["latin"],
+  variable: "--font-serif",
+  weight: "400",
+  display: "swap",
 });
 
 export const metadata: Metadata = {
@@ -23,9 +26,13 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en">
+    <html lang="en" suppressHydrationWarning>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
+        className={twMerge(
+          inter.variable,
+          calistoga.variable,
+          "bg-gray-900 text-white antialiased font-sans"
+        )}
       >
         {children}
       </body>
