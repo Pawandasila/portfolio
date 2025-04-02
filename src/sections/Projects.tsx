@@ -20,7 +20,7 @@ interface Project {
   image: StaticImageData;
 }
 
-type CardRefArray = Array<HTMLDivElement | null>;
+// type CardRefArray = Array<HTMLDivElement | null>;
 
 const portfolioProjects: Project[] = [
   {

@@ -8,6 +8,10 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProjectsSection } from "@/sections/Projects";
 import { Footer } from "@/sections/Footer";
 import { TapeSection } from "@/sections/Tape";
+import { TestimonialsSection } from "@/sections/Testimonials";
+import { AboutSection } from "@/sections/About";
+import Education from "@/sections/Education";
+import Experience from "@/sections/Experience";
 
 export default function Home() {
   const [showLoading, setShowLoading] = useState(true);
@@ -56,8 +60,12 @@ export default function Home() {
         <HeroSection key={`hero-${showLoading}`} />
         <div className="p-4">
         <ProjectsSection key={`projects-${showLoading}`} />
+        <Experience key={`experience-${showLoading}`}/>
 
         <TapeSection key={`tape-${showLoading}`} />
+        {/* <TestimonialsSection key={`testimonial-${showLoading}`} /> */}
+        {/* <AboutSection key={`about-${showLoading}`} /> */}
+        <Education key={`education-${showLoading}`} />
         </div>
           
       </motion.main>
