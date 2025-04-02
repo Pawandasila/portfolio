@@ -1,5 +1,5 @@
 import React, { useEffect, useRef } from "react";
-import Image from "next/image";
+import Image, { StaticImageData } from "next/image";
 import { motion, useInView, useAnimation, Variants } from "framer-motion";
 import { ArrowUp, CheckIcon } from "lucide-react";
 
@@ -17,15 +17,10 @@ interface Project {
   title: string;
   results: Result[];
   link: string;
-  image: any;
+  image: StaticImageData;
 }
 
 type CardRefArray = Array<HTMLDivElement | null>;
-
-interface InViewHookResult {
-  ref: React.RefObject<HTMLElement | null>;
-  inView: boolean;
-}
 
 const portfolioProjects: Project[] = [
   {
@@ -178,8 +173,6 @@ export const ProjectsSection: React.FC = () => {
       controls.start("visible");
     }
   }, [controls, isInView]);
-
-  const cardRefs = useRef<CardRefArray>([]);
 
   return (
     <section
