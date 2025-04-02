@@ -8,8 +8,8 @@ import { motion, AnimatePresence } from "framer-motion";
 import { ProjectsSection } from "@/sections/Projects";
 import { Footer } from "@/sections/Footer";
 import { TapeSection } from "@/sections/Tape";
-import { TestimonialsSection } from "@/sections/Testimonials";
-import { AboutSection } from "@/sections/About";
+import Contact from "@/sections/Contact";
+
 import Education from "@/sections/Education";
 import Experience from "@/sections/Experience";
 
@@ -66,6 +66,7 @@ export default function Home() {
         {/* <TestimonialsSection key={`testimonial-${showLoading}`} /> */}
         {/* <AboutSection key={`about-${showLoading}`} /> */}
         <Education key={`education-${showLoading}`} />
+        <Contact key={`contact-${showLoading}`} />
         </div>
           
       </motion.main>

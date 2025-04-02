@@ -1,7 +1,8 @@
 // components/Education.tsx
 import { FC, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { GraduationCap, BookOpen, Code, Award } from 'lucide-react';
+import { GraduationCap } from 'lucide-react';
+import Image from 'next/image';
 
 const Education: FC = () => {
   const containerRef = useRef(null);
@@ -19,7 +20,8 @@ const Education: FC = () => {
       period: 'Oct 2022 - Current',
       grade: '7.89 CGPA',
       description: 'I am currently pursuing a Bachelor\'s degree in Computer Science and Engineering at Graphic Era Hill University, Bhimtal, Uttarakhand. I have completed 4 semesters and have a CGPA of 7.89. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management.',
-      icon: <Code className="text-indigo-400" size={24} />
+      imageUrl: 'https://th.bing.com/th/id/OIP.Km7-jkujhZIr_KSHOlzXKAHaHa?rs=1&pid=ImgDetMain',
+      imageAlt: 'Graphic Era Hill University Logo'
     },
     {
       id: 2,
@@ -28,7 +30,8 @@ const Education: FC = () => {
       period: 'April 2012 - March 2022',
       grade: '76%',
       description: 'I completed my class 12 high school education at St.Lawerence School, Haldwani, where I studied Science with Computer Science.',
-      icon: <BookOpen className="text-indigo-400" size={24} />
+      imageUrl: 'https://th.bing.com/th/id/OIP.COwrh4ouPLy8eZJQe-2TjAHaHa?rs=1&pid=ImgDetMain',
+      imageAlt: 'St.Lawerence School Logo'
     },
     {
       id: 3,
@@ -37,12 +40,13 @@ const Education: FC = () => {
       period: 'April 2012 - March 2022',
       grade: '81%',
       description: 'I completed my class 10 high school education at St.Lawerence School, Haldwani, where I studied Science with Computer Science.',
-      icon: <Award className="text-indigo-400" size={24} />
+      imageUrl: 'https://th.bing.com/th/id/OIP.COwrh4ouPLy8eZJQe-2TjAHaHa?rs=1&pid=ImgDetMain',
+      imageAlt: 'St.Lawerence School Logo'
     },
   ];
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8">
+    <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8" id='education'>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -129,8 +133,14 @@ const Education: FC = () => {
 
                     <div className="flex flex-col md:flex-row items-start gap-4">
                       <div className="flex-shrink-0 bg-indigo-900/30 rounded-lg p-2">
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                          {item.icon}
+                        <div className="w-16 h-16 md:w-20 md:h-20 relative">
+                          <Image 
+                            src={item.imageUrl} 
+                            alt={item.imageAlt}
+                            layout="fill" 
+                            objectFit="contain"
+                            className="rounded-lg"
+                          />
                         </div>
                       </div>
                       

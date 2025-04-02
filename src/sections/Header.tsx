@@ -1,23 +1,37 @@
 "use client";
 
-import React, { useEffect, useRef } from "react";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, Variants, Transition } from "framer-motion";
 import gsap from "gsap";
-import { HeaderProps, NavItem } from "./types";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 
+// Define types
+export interface NavItem {
+  id: string;
+  name: string;
+}
 
+export interface HeaderProps {
+  className?: string;
+}
 
 export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
+  const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
+  const [activeItem, setActiveItem] = useState<string>("home");
 
+  // Updated nav items with IDs
   const navItems: NavItem[] = [
-    { name: "Home" },
-    { name: "Projects" },
-    { name: "About" },
-    { name: "Contact", isActive: true },
+    { id: "home", name: "Home" },
+    { id: "projects", name: "Projects" },
+    { id: "education", name: "Education" },
+    { id: "experience", name: "Experience" },
+    { id: "contact", name: "Contact" },
   ];
 
   useEffect(() => {
+    // Add floating animation
     if (navRef.current) {
       gsap.to(navRef.current, {
         y: 5,
@@ -27,6 +41,24 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
         ease: "sine.inOut",
       });
     }
+
+    // Set active item based on URL hash on page load
+    const handleHashChange = () => {
+      const hash = window.location.hash.replace("#", "");
+      if (hash && navItems.some(item => item.id === hash)) {
+        setActiveItem(hash);
+      }
+    };
+
+    // Initial check
+    handleHashChange();
+
+    // Listen for hash changes
+    window.addEventListener("hashchange", handleHashChange);
+    
+    return () => {
+      window.removeEventListener("hashchange", handleHashChange);
+    };
   }, []);
 
   const navItemVariants: Variants = {
@@ -55,6 +87,10 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
     },
   };
 
+  const handleNavClick = (itemId: string) => {
+    setActiveItem(itemId);
+  };
+
   return (
     <div
       className={`flex justify-center items-center fixed w-full top-3 z-50 ${className}`}
@@ -67,29 +103,28 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
         variants={navContainerVariants}
       >
         {navItems.map((item, i) => (
-          <motion.a
-            key={item.name}
-            href={`#${item.name.toLowerCase()}`}
-            custom={i}
-            variants={navItemVariants}
-            whileHover={{
-              scale: 1.1,
-              backgroundColor: item.isActive
-                ? "rgba(255, 255, 255, 0.7)"
-                : "rgba(255, 255, 255, 0.1)",
-              transition: { duration: 0.2 },
-            }}
-            whileTap={{ scale: 0.95 }}
-            className={`px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
-              item.isActive
-                ? "bg-white text-gray-900 hover:bg-white/70 hover:text-gray-900"
-                : "text-white hover:bg-white/10"
-            }`}
-          >
-            {item.name}
-          </motion.a>
+          <motion.div key={item.id} custom={i} variants={navItemVariants}>
+            <Link 
+              href={`#${item.id}`}
+              onClick={() => handleNavClick(item.id)}
+              className={`inline-block px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
+                activeItem === item.id
+                  ? "bg-white text-gray-900 hover:bg-white/90"
+                  : "text-white hover:bg-white/10"
+              }`}
+            >
+              <motion.span
+                whileHover={{ scale: 1.05 }}
+                whileTap={{ scale: 0.95 }}
+              >
+                {item.name}
+              </motion.span>
+            </Link>
+          </motion.div>
         ))}
       </motion.nav>
     </div>
   );
 };
+
+export default Header;

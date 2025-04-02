@@ -1,7 +1,8 @@
 // components/Experience.tsx
 import { FC, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
-import { Briefcase, Code, Globe, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import { Briefcase, ArrowRight, Calendar, MapPin } from 'lucide-react';
+import Image from 'next/image';
 
 const Experience: FC = () => {
   const containerRef = useRef(null);
@@ -22,7 +23,7 @@ const Experience: FC = () => {
         'Implemented RESTful APIs for efficient data management and client-server communication'
       ],
       technologies: ['MongoDB', 'Express.js', 'React.js', 'Node.js', 'REST API'],
-      icon: <Code className="text-emerald-400" size={24} />,
+      logoUrl: 'https://bp-wp-website-prod.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/09/bharatpe_logo.png',
       color: 'emerald'
     },
     {
@@ -36,13 +37,13 @@ const Experience: FC = () => {
         'Enhanced UI/UX design implementation for improved user engagement'
       ],
       technologies: ['HTML', 'CSS', 'JavaScript', 'UI/UX', 'Frontend Frameworks'],
-      icon: <Globe className="text-blue-400" size={24} />,
+      logoUrl: 'https://media.licdn.com/dms/image/v2/D560BAQGSMb9vlfmJmg/company-logo_200_200/company-logo_200_200/0/1714945728194?e=2147483647&v=beta&t=VD-p5QUZ0NpIx5ZZHrhGdQ-gVoOxXz5xDdfHJQns0S8',
       color: 'blue'
     }
   ];
 
   return (
-    <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8">
+    <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8" id='experience'>
       <div className="container mx-auto max-w-5xl">
         <motion.div
           initial={{ opacity: 0, y: -20 }}
@@ -145,9 +146,24 @@ const Experience: FC = () => {
                     />
 
                     <div className="flex flex-col md:flex-row items-start gap-4">
-                      <div className={`flex-shrink-0 ${colors.bg} rounded-lg p-2`}>
-                        <div className="w-10 h-10 md:w-12 md:h-12 flex items-center justify-center">
-                          {item.icon}
+                      <div className={`flex-shrink-0 ${colors.bg} rounded-lg p-2 flex items-center justify-center`}>
+                        <div className="w-12 h-12 md:w-16 md:h-16 relative flex items-center justify-center">
+                          {/* Option 1: Next.js Image with proper configuration */}
+                          <Image 
+                            src={item.logoUrl}
+                            alt={`${item.company} logo`}
+                            width={64}
+                            height={64}
+                            className="object-contain"
+                            unoptimized // Add this prop to bypass optimization if needed
+                          />
+                          
+                          {/* Option 2: Regular img tag as fallback */}
+                          {/* <img 
+                            src={item.logoUrl}
+                            alt={`${item.company} logo`} 
+                            className="w-full h-full object-contain"
+                          /> */}
                         </div>
                       </div>
                       

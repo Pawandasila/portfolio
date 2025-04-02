@@ -2,7 +2,16 @@ import type { NextConfig } from "next";
 
 const nextConfig: NextConfig = {
   eslint: {
-    ignoreDuringBuilds: true, // Disable ESLint during production builds
+    ignoreDuringBuilds: true,
+  },
+  reactStrictMode: true,
+  images: {
+    domains: [
+      'bp-wp-website-prod.s3.ap-south-1.amazonaws.com',
+      'media.licdn.com',
+      'th.bing.com'
+    ],
+    unoptimized: false,
   },
 };
 
