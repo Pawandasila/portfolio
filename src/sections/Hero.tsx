@@ -8,7 +8,7 @@ import memojiImage from "@/assets/images/memoji-computer.png";
 import { FaCode, FaRocket } from "react-icons/fa";
 import { PiStarFourFill } from "react-icons/pi";
 import grainImage from "@/assets/images/grain.jpg";
-import { StarIcon } from "lucide-react";
+import Link from "next/link";
 
 export const HeroSection = () => {
   const containerRef = useRef(null);
@@ -30,87 +30,52 @@ export const HeroSection = () => {
 
     const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
 
+    // Simplified animation timeline with fewer animations
     tl.fromTo(
       memojiRef.current,
-      { y: -50, opacity: 0 },
-      { y: 0, opacity: 1, duration: 1.2 }
+      { y: -20, opacity: 0 },
+      { y: 0, opacity: 1, duration: 0.8 }
     )
       .fromTo(
         ".status-badge",
-        { scale: 0.8, opacity: 0 },
-        { scale: 1, opacity: 1, duration: 0.7 },
-        "-=0.5"
-      )
-      .fromTo(
-        ".heading-word",
-        { y: 30, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 0.7 },
-        "-=0.5"
-      )
-      .fromTo(
-        textRef.current,
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, duration: 0.7 },
-        "-=0.4"
-      )
-      .fromTo(
-        buttonsRef.current?.children || [],
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.15, duration: 0.6 },
-        "-=0.5"
-      )
-      .fromTo(
-        ".social-icon",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 0.5 },
+        { opacity: 0 },
+        { opacity: 1, duration: 0.5 },
         "-=0.3"
       )
       .fromTo(
-        ".scroll-indicator",
+        ".heading-word",
+        { y: 20, opacity: 0 },
+        { y: 0, opacity: 1, stagger: 0.1, duration: 0.5 },
+        "-=0.2"
+      )
+      .fromTo(
+        textRef.current,
         { opacity: 0 },
-        { opacity: 0.7, duration: 0.5 },
+        { opacity: 1, duration: 0.5 },
+        "-=0.2"
+      )
+      .fromTo(
+        buttonsRef.current?.children || [],
+        { opacity: 0 },
+        { opacity: 1, stagger: 0.1, duration: 0.4 },
+        "-=0.2"
+      )
+      .fromTo(
+        ".social-icon",
+        { opacity: 0 },
+        { opacity: 1, stagger: 0.1, duration: 0.4 },
         "-=0.2"
       );
 
+    // Simplified scroll animations
     gsap.to(".parallax-bg", {
-      y: "30%",
+      y: "15%", // Reduced parallax effect
       scrollTrigger: {
         trigger: containerRef.current,
         start: "top top",
         end: "bottom top",
-        scrub: true,
+        scrub: 1, // Increased scrub value for smoother effect
       },
-    });
-
-    const sections = document.querySelectorAll(".scroll-section");
-    sections.forEach((section) => {
-      if (
-        section === textRef.current ||
-        section === headingRef.current ||
-        section.closest('[ref="buttonsRef"]')
-      ) {
-        return;
-      }
-
-      gsap.fromTo(
-        section,
-        {
-          y: 100,
-          opacity: 0,
-        },
-        {
-          y: 0,
-          opacity: 1,
-          duration: 1,
-          scrollTrigger: {
-            trigger: section,
-            start: "top bottom-=100",
-            end: "bottom center",
-            toggleActions: "play none none reverse",
-            scrub: 0.5,
-          },
-        }
-      );
     });
 
     return () => {
@@ -119,39 +84,18 @@ export const HeroSection = () => {
     };
   }, [isClient]);
 
+  // Reduced number of floating shapes
   const floatingShapes = [
     {
       component: (
         <div className="h-8 w-8 rounded bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
       ),
-      delay: 0,
-    },
-    {
-      component: (
-        <div className="h-12 w-12 rotate-45 bg-gradient-to-br from-blue-500/20 to-cyan-500/20" />
-      ),
-      delay: 1.2,
     },
     {
       component: <PiStarFourFill className="text-yellow-500/20 text-2xl" />,
-      delay: 0.5,
     },
-    {
-      component: (
-        <div className="h-10 w-10 rounded-full bg-gradient-to-br from-indigo-500/20 to-violet-500/20" />
-      ),
-      delay: 2,
-    },
-    { component: <FaCode className="text-teal-500/20 text-3xl" />, delay: 1 },
-    {
-      component: (
-        <div className="h-6 w-6 rotate-12 rounded-sm bg-gradient-to-br from-orange-500/20 to-red-500/20" />
-      ),
-      delay: 1.5,
-    },
-    {
-      component: <FaRocket className="text-amber-500/20 text-3xl" />,
-      delay: 0.8,
+    { 
+      component: <FaCode className="text-teal-500/20 text-3xl" />, 
     },
   ];
 
@@ -162,61 +106,41 @@ export const HeroSection = () => {
       className="relative overflow-hidden py-16 sm:py-28 lg:py-36 min-h-screen flex items-center z-0"
     >
       <div
-        className="absolute inset-0 -z-30 opacity-5 "
+        className="absolute inset-0 -z-30 opacity-5"
         style={{ backgroundImage: `url(${grainImage.src})` }}
       ></div>
-      <div className=" hero-ring size-620"></div>
-      <div className=" hero-ring size-820"></div>
-      <div className=" hero-ring size-1020"></div>
-      <div className=" hero-ring size-1220"></div>
+      <div className="hero-ring size-820"></div>
+      <div className="hero-ring size-1220"></div>
+      
       {/* Background elements */}
       <div className="parallax-bg absolute inset-0 bg-gradient-to-b from-gray-950 via-blue-950/30 to-gray-950 z-0"></div>
 
       {/* Glow effect */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-blue-500/10 blur-[100px] rounded-full"></div>
-      <div className="absolute top-1/3 left-1/4 w-1/2 h-1/3 bg-purple-500/10 blur-[80px] rounded-full"></div>
-
-      {/* Grid lines */}
+      
+      {/* Grid lines - reduced */}
       {isClient && (
         <div className="absolute inset-0 z-0 opacity-20">
           <div className="absolute w-full h-full">
-            {[...Array(15)].map((_, i) => (
-              <motion.div
+            {[...Array(5)].map((_, i) => (
+              <div
                 key={i}
                 className="absolute h-px bg-blue-400/30"
                 style={{
-                  top: `${(i * 7) % 100}%`,
+                  top: `${(i * 20) % 100}%`,
                   left: 0,
                   right: 0,
                 }}
-                animate={{
-                  opacity: [0.1, 0.5, 0.1],
-                  scaleX: [0.7, 1, 0.7],
-                }}
-                transition={{
-                  duration: 5 + (i % 4),
-                  repeat: Infinity,
-                  delay: i * 0.3,
-                }}
               />
             ))}
-            {[...Array(15)].map((_, i) => (
-              <motion.div
+            {[...Array(5)].map((_, i) => (
+              <div
                 key={i + 100}
                 className="absolute w-px bg-blue-400/30"
                 style={{
-                  left: `${(i * 7) % 100}%`,
+                  left: `${(i * 20) % 100}%`,
                   top: 0,
                   bottom: 0,
-                }}
-                animate={{
-                  opacity: [0.1, 0.5, 0.1],
-                  scaleY: [0.7, 1, 0.7],
-                }}
-                transition={{
-                  duration: 5 + (i % 4),
-                  repeat: Infinity,
-                  delay: i * 0.2,
                 }}
               />
             ))}
@@ -224,32 +148,20 @@ export const HeroSection = () => {
         </div>
       )}
 
-      {/* Floating shapes */}
+      {/* Floating shapes - reduced and simplified animations */}
       {isClient && (
         <div className="absolute inset-0 overflow-hidden z-0">
           {floatingShapes.map((shape, i) => (
-            <motion.div
+            <div
               key={i}
               className="absolute"
               style={{
-                left: `${((i * 15) % 90) + 5}%`,
-                top: `${((i * 17) % 80) + 10}%`,
-              }}
-              animate={{
-                y: [0, -20, 0],
-                x: [0, i % 2 === 0 ? 10 : -10, 0],
-                rotate: [0, 360],
-                opacity: [0.3, 0.7, 0.3],
-              }}
-              transition={{
-                duration: 10 + i,
-                repeat: Infinity,
-                delay: shape.delay,
-                ease: "easeInOut",
+                left: `${((i * 30) % 90) + 5}%`,
+                top: `${((i * 30) % 80) + 10}%`,
               }}
             >
               {shape.component}
-            </motion.div>
+            </div>
           ))}
         </div>
       )}
@@ -257,11 +169,7 @@ export const HeroSection = () => {
       <div className="container mx-auto px-4 z-10 relative">
         <div className="flex flex-col items-center text-center mb-8 scroll-section">
           <div ref={memojiRef} className="relative mb-6">
-            <motion.div
-              animate={{ y: [0, -8, 0] }}
-              transition={{ duration: 4, repeat: Infinity, ease: "easeInOut" }}
-              className="relative"
-            >
+            <div className="relative">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-[30px]"></div>
 
               <div className="relative z-10">
@@ -271,63 +179,27 @@ export const HeroSection = () => {
                   width={200}
                   height={200}
                   className="drop-shadow-[0_0_15px_rgba(59,130,246,0.3)]"
+                  loading="lazy"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iMjAwIiBoZWlnaHQ9IjIwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWxsPSIjMjAyNDM5Ii8+PC9zdmc+"
                 />
               </div>
-            </motion.div>
-
-            {/* Orbital effect */}
-            {isClient && (
-              <div className="absolute inset-0 z-0">
-                <motion.div
-                  className="absolute w-full h-full"
-                  animate={{ rotate: 360 }}
-                  transition={{
-                    duration: 20,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <div
-                    className="absolute w-6 h-6 rounded-full bg-blue-500/50 blur-sm"
-                    style={{
-                      top: "0%",
-                      left: "50%",
-                      transform: "translate(-50%, -50%)",
-                    }}
-                  ></div>
-                </motion.div>
-                <motion.div
-                  className="absolute w-full h-full"
-                  animate={{ rotate: -360 }}
-                  transition={{
-                    duration: 25,
-                    repeat: Infinity,
-                    ease: "linear",
-                  }}
-                >
-                  <div
-                    className="absolute w-4 h-4 rounded-full bg-purple-500/50 blur-sm"
-                    style={{ bottom: "10%", right: "10%" }}
-                  ></div>
-                </motion.div>
-              </div>
-            )}
+            </div>
           </div>
 
           {/* Available badge */}
-          <motion.div
+          <div
             className="status-badge py-1.5 px-5 bg-gradient-to-r from-emerald-500/20 to-teal-500/10 backdrop-blur-sm border border-emerald-500/30 rounded-full flex items-center gap-2 mb-8 shadow-[0_0_15px_rgba(16,185,129,0.2)]"
-            whileHover={{ scale: 1.05 }}
           >
-            <div className="h-2.5 w-2.5 rounded-full bg-emerald-400 animate-pulse"></div>
+            <div className="h-2.5 w-2.5 rounded-full bg-emerald-400"></div>
             <span className="text-sm font-medium text-emerald-200">
               Available for new projects
             </span>
-          </motion.div>
+          </div>
         </div>
 
-        {/* Main heading with improved typewriter effect */}
-        <div ref={headingRef} className="text-center mb-8 scroll-section ">
+        {/* Main heading with simplified effect */}
+        <div ref={headingRef} className="text-center mb-8 scroll-section">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
             <span className="heading-word inline-block mx-2 my-1">
               Building
@@ -357,45 +229,31 @@ export const HeroSection = () => {
           </p>
         </div>
 
-        {/* Call to action buttons with enhanced styling */}
+        {/* Call to action buttons with simplified styling */}
         <div
           ref={buttonsRef}
           className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-7 scroll-section"
         >
-          <motion.a
+          <Link
             href="#projects"
             className="group flex items-center gap-3 px-8 py-4 bg-gradient-to-r from-blue-600 to-blue-500 hover:from-blue-500 hover:to-purple-600 rounded-full font-medium transition-all duration-300 shadow-lg shadow-blue-700/30 hover:shadow-blue-600/50"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
           >
             <span>Explore My Work</span>
-            <motion.div
-              animate={{ y: [0, 4, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity }}
-              className="group-hover:translate-y-1 transition-transform"
-            >
+            <div>
               <FiArrowDown />
-            </motion.div>
-          </motion.a>
+            </div>
+          </Link>
 
-          <motion.a
+          <Link
             href="#contact"
             className="group flex items-center gap-3 px-8 py-4 bg-gray-800/50 hover:bg-gray-700/60 border border-gray-700/60 hover:border-blue-500/30 rounded-full font-medium transition-all duration-300 backdrop-blur-sm"
-            whileHover={{ scale: 1.05 }}
-            whileTap={{ scale: 0.98 }}
           >
-            <motion.span
-              animate={{ rotate: [0, 15, -15, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, repeatDelay: 2 }}
-              className="text-xl"
-            >
-              👋
-            </motion.span>
+            <span className="text-xl">👋</span>
             <span>Let's Connect</span>
-          </motion.a>
+          </Link>
         </div>
 
-        {/* Enhanced social links */}
+        {/* Social links */}
         <div className="flex justify-center mt-12 gap-5 scroll-section">
           {[
             {
@@ -415,33 +273,28 @@ export const HeroSection = () => {
               url: "#",
               label: "Twitter",
               color: "from-sky-500 to-sky-600",
-            },
+            }
           ].map((social, i) => (
-            <motion.a
+            <a
               key={i}
               href={social.url}
               aria-label={social.label}
               className={`social-icon w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-b ${social.color} hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl`}
-              whileHover={{ y: -3 }}
             >
               {social.icon}
-            </motion.a>
+            </a>
           ))}
         </div>
 
-        {/* Enhanced scroll indicator */}
+        {/* Simplified scroll indicator */}
         <div className="flex justify-center mt-20">
-          <motion.div
+          <div
             className="scroll-indicator w-7 h-12 border-2 border-white/40 rounded-full flex justify-center p-1"
-            animate={{ y: [0, 5, 0] }}
-            transition={{ duration: 1.5, repeat: Infinity }}
           >
-            <motion.div
+            <div
               className="w-2 h-3 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full"
-              animate={{ y: [0, 8, 0] }}
-              transition={{ duration: 1.5, repeat: Infinity, delay: 0.2 }}
             />
-          </motion.div>
+          </div>
         </div>
       </div>
     </section>

@@ -1,10 +1,10 @@
 "use client";
-
 import React, { useEffect, useRef, useState } from "react";
 import { motion, Variants, Transition } from "framer-motion";
 import gsap from "gsap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
+import { Menu } from "lucide-react";
 
 // Define types
 export interface NavItem {
@@ -20,6 +20,7 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState<string>("home");
+  const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
   // Updated nav items with IDs
   const navItems: NavItem[] = [
@@ -31,8 +32,10 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   ];
 
   useEffect(() => {
-    // Add floating animation
-    if (navRef.current) {
+    // Add floating animation - but only on desktop
+    const isMobile = window.innerWidth < 768;
+    
+    if (navRef.current && !isMobile) {
       gsap.to(navRef.current, {
         y: 5,
         duration: 2,
@@ -87,24 +90,44 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
     },
   };
 
+  const mobileMenuVariants: Variants = {
+    closed: { 
+      opacity: 0,
+      y: -20,
+      pointerEvents: "none" as "none",
+    },
+    open: { 
+      opacity: 1,
+      y: 0,
+      pointerEvents: "auto" as "auto",
+      transition: {
+        duration: 0.3,
+        staggerChildren: 0.1,
+        delayChildren: 0.1,
+      }
+    }
+  };
+
   const handleNavClick = (itemId: string) => {
     setActiveItem(itemId);
+    setIsMobileMenuOpen(false);
   };
 
   return (
     <div
-      className={`flex justify-center items-center fixed w-full top-3 z-50 ${className}`}
+      className={`flex justify-center items-center fixed w-full top-3 px-4 z-50 ${className}`}
     >
+      {/* Desktop Navigation - Hidden on mobile */}
       <motion.nav
         ref={navRef}
-        className="flex gap-1 p-0.5 border border-white/15 rounded-full bg-black/10 backdrop-blur-lg shadow-lg"
+        className="hidden md:flex gap-1 p-0.5 border border-white/15 rounded-full bg-black/10 backdrop-blur-lg shadow-lg"
         initial="hidden"
         animate="visible"
         variants={navContainerVariants}
       >
         {navItems.map((item, i) => (
           <motion.div key={item.id} custom={i} variants={navItemVariants}>
-            <Link 
+            <Link
               href={`#${item.id}`}
               onClick={() => handleNavClick(item.id)}
               className={`inline-block px-4 py-2 rounded-full text-sm font-medium transition-colors duration-200 ${
@@ -123,6 +146,54 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
           </motion.div>
         ))}
       </motion.nav>
+
+      {/* Mobile Navigation Button */}
+      <motion.div 
+        className="md:hidden flex justify-between w-full max-w-xs"
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+      >
+        <div className="px-2 py-1 text-sm font-semibold text-white">
+          {navItems.find(item => item.id === activeItem)?.name || "Menu"}
+        </div>
+
+        <motion.button
+          className="p-1.5 rounded-full border border-white/15 bg-black/10 backdrop-blur-lg shadow-lg"
+          onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
+          whileTap={{ scale: 0.95 }}
+        >
+          <Menu size={18} className="text-white" />
+        </motion.button>
+      </motion.div>
+
+      {/* Mobile Menu Dropdown */}
+      <motion.div
+        className="absolute top-12 right-4 md:hidden w-40 bg-gray-800/95 backdrop-blur-md rounded-lg overflow-hidden border border-white/10 shadow-xl"
+        initial="closed"
+        animate={isMobileMenuOpen ? "open" : "closed"}
+        variants={mobileMenuVariants}
+      >
+        {navItems.map((item, i) => (
+          <motion.div 
+            key={item.id}
+            variants={navItemVariants}
+            custom={i}
+            className="w-full"
+          >
+            <Link
+              href={`#${item.id}`}
+              onClick={() => handleNavClick(item.id)}
+              className={`block w-full px-4 py-2.5 text-sm transition-colors ${
+                activeItem === item.id
+                  ? "bg-white/10 text-white font-medium"
+                  : "text-white/80 hover:bg-white/5"
+              }`}
+            >
+              {item.name}
+            </Link>
+          </motion.div>
+        ))}
+      </motion.div>
     </div>
   );
 };

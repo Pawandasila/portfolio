@@ -12,6 +12,7 @@ import Contact from "@/sections/Contact";
 
 import Education from "@/sections/Education";
 import Experience from "@/sections/Experience";
+import { SkillsSection } from "@/sections/Skills";
 
 export default function Home() {
   const [showLoading, setShowLoading] = useState(true);
@@ -60,6 +61,7 @@ export default function Home() {
         <HeroSection key={`hero-${showLoading}`} />
         <div className="p-4">
         <ProjectsSection key={`projects-${showLoading}`} />
+        <SkillsSection key={`skills-${showLoading}`} />
         <Experience key={`experience-${showLoading}`}/>
 
         <TapeSection key={`tape-${showLoading}`} />
