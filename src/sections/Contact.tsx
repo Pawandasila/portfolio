@@ -294,7 +294,7 @@ const Contact: FC = () => {
                   </div>
                   <div>
                     <p className="text-sm text-gray-400">Email</p>
-                    <a href="mailto:pawandasila06@gmail.com" className="text-white hover:text-indigo-300 transition-colors">pawandasila06@gmail.com</a>
+                    <a href="mailto:dasilapawan.dev@gmail.com" className="text-white hover:text-indigo-300 transition-colors">dasilapawan.dev@gmail.com</a>
                   </div>
                 </div>
                 
