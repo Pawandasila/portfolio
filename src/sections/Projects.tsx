@@ -6,6 +6,7 @@ import { ArrowUp, CheckIcon } from "lucide-react";
 import ai from "@/assets/images/ai.png";
 import job from "@/assets/images/job.png";
 import yoga from "@/assets/images/Yoga.png";
+import aiInterviewImage from "@/assets/images/ai_interview.png"
 
 interface Result {
   title: string;
@@ -45,6 +46,18 @@ const portfolioProjects: Project[] = [
     link: "https://yoga-frontend-wheat.vercel.app/",
     image: yoga,
   },
+  {
+    company: "Personal Project",
+    year: "2025",
+    title: "AI Interview Platform - Liart",
+    results: [
+      { title: "An AI-powered platform to simulate real interview experiences." },
+      { title: "Features include mock interviews, real-time feedback, and performance analysis." },
+      { title: "Focuses on helping users practice and improve their interview skills." },
+    ],
+    link: "https://ai-interview-liart-five.vercel.app",
+    image: aiInterviewImage, 
+  },  
   {
     company: "Personal Project",
     year: "2025-current",
