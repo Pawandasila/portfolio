@@ -7,6 +7,7 @@ import ai from "@/assets/images/ai.png";
 import job from "@/assets/images/job.png";
 import yoga from "@/assets/images/Yoga.png";
 import aiInterviewImage from "@/assets/images/ai_interview.png"
+import CustomCode from "@/assets/images/Custom_code.png"
 
 interface Result {
   title: string;
@@ -69,6 +70,18 @@ const portfolioProjects: Project[] = [
     ],
     link: "https://job-portal-snowy-six.vercel.app",
     image: job,
+  },
+  {
+    company: "Personal Project",
+    year: "2025",
+    title: "Custom Compiler",
+    results: [
+      { title: "A Platform for Custom Code Execution" },
+      { title: "Features include code optimization and debugging tools" },
+      { title: "Focuses on improving developer productivity." },
+    ],
+    link: "#",
+    image: CustomCode,
   },
 ];
 
