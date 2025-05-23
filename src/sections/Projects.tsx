@@ -71,18 +71,18 @@ const portfolioProjects: Project[] = [
     link: "https://job-portal-snowy-six.vercel.app",
     image: job,
   },
-  {
-    company: "Personal Project",
-    year: "2025",
-    title: "Custom Compiler",
-    results: [
-      { title: "A Platform for Custom Code Execution" },
-      { title: "Features include code optimization and debugging tools" },
-      { title: "Focuses on improving developer productivity." },
-    ],
-    link: "#",
-    image: CustomCode,
-  },
+  // {
+  //   company: "Personal Project",
+  //   year: "2025",
+  //   title: "Custom Compiler",
+  //   results: [
+  //     { title: "A Platform for Custom Code Execution" },
+  //     { title: "Features include code optimization and debugging tools" },
+  //     { title: "Focuses on improving developer productivity." },
+  //   ],
+  //   link: "#",
+  //   image: CustomCode,
+  // },
 ];
 
 // Optimized animations with staggered children
