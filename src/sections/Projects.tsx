@@ -7,7 +7,7 @@ import ai from "@/assets/images/ai.png";
 import job from "@/assets/images/job.png";
 import yoga from "@/assets/images/Yoga.png";
 import aiInterviewImage from "@/assets/images/ai_interview.png"
-import CustomCode from "@/assets/images/Custom_code.png"
+import aiLearning from "@/assets/images/ai_learning.png";
 
 interface Result {
   title: string;
@@ -71,18 +71,18 @@ const portfolioProjects: Project[] = [
     link: "https://job-portal-snowy-six.vercel.app",
     image: job,
   },
-  // {
-  //   company: "Personal Project",
-  //   year: "2025",
-  //   title: "Custom Compiler",
-  //   results: [
-  //     { title: "A Platform for Custom Code Execution" },
-  //     { title: "Features include code optimization and debugging tools" },
-  //     { title: "Focuses on improving developer productivity." },
-  //   ],
-  //   link: "#",
-  //   image: CustomCode,
-  // },
+  {
+    company: "Personal Project",
+    year: "2025",
+    title: "Skill Sprint",
+    results: [
+      { title: "Developed an AI-powered online learning platform that helps users create, complete, and manage personalized courses." },
+      { title: "Integrated automated course generation and progress tracking using AI for a tailored learning experience." },
+      { title: "Implemented dynamic certificate generation with Cloudinary and SVG to recognize user achievements." },
+    ],
+    link: "#",
+    image: aiLearning,
+  },
 ];
 
 // Optimized animations with staggered children
