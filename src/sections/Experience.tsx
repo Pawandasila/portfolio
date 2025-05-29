@@ -44,18 +44,20 @@ const Experience: FC = () => {
 
   return (
     <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8" id='experience'>
-      <div className="container mx-auto max-w-5xl">
-        <motion.div
+      <div className="container mx-auto max-w-5xl">        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-emerald-300 to-blue-300">
-            Experience
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center mb-4">
+            Professional Journey
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
+            Work Experience
           </h1>
           
           <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12 md:mb-16 px-4">
-            My professional journey has equipped me with valuable skills and insights.
+            Building innovative solutions and gaining valuable industry experience through hands-on development roles at leading technology companies.
           </p>
         </motion.div>
 

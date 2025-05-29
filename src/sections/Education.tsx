@@ -11,7 +11,6 @@ const Education: FC = () => {
     target: containerRef,
     offset: ["start end", "end end"]
   });
-
   const educationData = [
     {
       id: 1,
@@ -19,46 +18,48 @@ const Education: FC = () => {
       degree: 'Bachelor of Technology - BTech, Computer Science and Engineering',
       period: 'Oct 2022 - Current',
       grade: '7.89 CGPA',
-      description: 'I am currently pursuing a Bachelor\'s degree in Computer Science and Engineering at Graphic Era Hill University, Bhimtal, Uttarakhand. I have completed 4 semesters and have a CGPA of 7.89. I have taken courses in Data Structures, Algorithms, Object-Oriented Programming, Database Management.',
+      description: 'Currently pursuing Computer Science and Engineering with specialization in Software Development, Data Structures, Algorithms, Object-Oriented Programming, and Database Management. Maintaining strong academic performance while developing practical skills in modern web technologies.',
       imageUrl: 'https://th.bing.com/th/id/OIP.Km7-jkujhZIr_KSHOlzXKAHaHa?rs=1&pid=ImgDetMain',
       imageAlt: 'Graphic Era Hill University Logo'
     },
     {
       id: 2,
-      institution: 'St.Lawerence School, Haldwani',
-      degree: 'CBSE(XII), Science with Computer',
+      institution: 'St. Lawrence School, Haldwani',
+      degree: 'CBSE(XII), Science with Computer Science',
       period: 'April 2012 - March 2022',
       grade: '76%',
-      description: 'I completed my class 12 high school education at St.Lawerence School, Haldwani, where I studied Science with Computer Science.',
+      description: 'Completed higher secondary education with focus on Science and Computer Science. Built foundational knowledge in Mathematics, Physics, Chemistry, and Computer Programming that supported transition to engineering studies.',
       imageUrl: 'https://th.bing.com/th/id/OIP.COwrh4ouPLy8eZJQe-2TjAHaHa?rs=1&pid=ImgDetMain',
-      imageAlt: 'St.Lawerence School Logo'
+      imageAlt: 'St. Lawrence School Logo'
     },
     {
       id: 3,
-      institution: 'St.Lawerence School, Haldwani',
+      institution: 'St. Lawrence School, Haldwani',
       degree: 'CBSE(X)',
-      period: 'April 2012 - March 2022',
+      period: 'April 2012 - March 2020',
       grade: '81%',
-      description: 'I completed my class 10 high school education at St.Lawerence School, Haldwani, where I studied Science with Computer Science.',
+      description: 'Completed secondary education with strong performance across all subjects. Developed fundamental analytical and problem-solving skills that laid the groundwork for future technical pursuits.',
       imageUrl: 'https://th.bing.com/th/id/OIP.COwrh4ouPLy8eZJQe-2TjAHaHa?rs=1&pid=ImgDetMain',
-      imageAlt: 'St.Lawerence School Logo'
+      imageAlt: 'St. Lawrence School Logo'
     },
   ];
 
   return (
     <div className="bg-gray-900 min-h-screen text-white py-12 px-4 md:py-16 md:px-8" id='education'>
-      <div className="container mx-auto max-w-5xl">
-        <motion.div
+      <div className="container mx-auto max-w-5xl">        <motion.div
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300">
-            Education
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center mb-4">
+            Academic Background
+          </p>
+          <h1 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
+            Education & Qualifications
           </h1>
           
           <p className="text-gray-300 text-center max-w-2xl mx-auto mb-12 md:mb-16 px-4">
-            My education has been a journey of self-discovery and growth. My educational details are as follows.
+            Strong academic foundation in Computer Science and Engineering with focus on modern software development practices and emerging technologies.
           </p>
         </motion.div>
 

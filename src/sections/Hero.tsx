@@ -193,7 +193,7 @@ export const HeroSection = () => {
           >
             <div className="h-2.5 w-2.5 rounded-full bg-emerald-400"></div>
             <span className="text-sm font-medium text-emerald-200">
-              Available for new projects
+              Open to opportunities
             </span>
           </div>
         </div>
@@ -202,16 +202,16 @@ export const HeroSection = () => {
         <div ref={headingRef} className="text-center mb-8 scroll-section">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
             <span className="heading-word inline-block mx-2 my-1">
-              Building
+              Full-Stack
             </span>{" "}
             <span className="heading-word inline-block mx-1 my-1">
-              Exceptional
+              Developer
             </span>
-            <span className="heading-word inline-block mx-2 my-1">User</span>{" "}
+            <span className="heading-word inline-block mx-2 my-1">&</span>{" "}
             <br />
             <span className="heading-word inline-block mx-2 my-1">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500">
-                Experiences
+                AI Innovator
               </span>
             </span>
           </h1>
@@ -223,9 +223,8 @@ export const HeroSection = () => {
           className="max-w-3xl mx-auto text-center mb-12 scroll-section"
         >
           <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
-            Full-stack developer specializing in crafting modern, responsive,
-            and high-performance web applications with clean code and
-            captivating user interfaces that leave a lasting impression.
+            Passionate software engineer with expertise in modern web technologies, AI/ML integration, and scalable application development. 
+            Proven track record of delivering high-impact solutions that drive business growth and user engagement.
           </p>
         </div>
 

@@ -118,13 +118,21 @@ const Contact: FC = () => {
           transition={{ duration: 0.8, ease: "easeOut" }}
           className="text-center"
         >
+          <motion.p 
+            className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text mb-4"
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            transition={{ duration: 1 }}
+          >
+            Get In Touch
+          </motion.p>
           <motion.h1 
-            className="text-4xl md:text-5xl font-bold mb-4 bg-clip-text text-transparent bg-gradient-to-r from-indigo-300 to-purple-300"
+            className="text-4xl md:text-5xl font-bold mb-4 text-white"
             initial={{ opacity: 0, y: -20 }}
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.8, delay: 0.1 }}
           >
-            Let's Create Something Extraordinary
+            Let's Build Something Amazing Together
           </motion.h1>
           
           <motion.p 
@@ -133,7 +141,7 @@ const Contact: FC = () => {
             animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: -20 }}
             transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Ready to bring your vision to life? I'm passionate about crafting digital experiences that leave a lasting impression. Let's turn your ideas into reality.
+            Open to new opportunities and exciting projects. Let's discuss how my technical expertise can contribute to your team's success.
           </motion.p>
         </motion.div>
 

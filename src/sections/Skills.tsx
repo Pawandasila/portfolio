@@ -138,7 +138,6 @@ export const SkillsSection: React.FC = () => {
       </div>
     </motion.div>
   );
-
   return (
     <section id="skills" className="py-20 overflow-hidden" ref={sectionRef}>
       <div className="container mx-auto px-4">
@@ -148,10 +147,14 @@ export const SkillsSection: React.FC = () => {
           transition={{ duration: 0.7 }}
           className="mb-16"
         >
-          <h2 className="text-4xl font-bold text-center mb-4">Skills</h2>
-          <p className="text-center text-gray-400 max-w-2xl mx-auto">
-            Here are some of my skills on which I have been working on for the
-            past 2 years.
+          <p className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text text-center mb-4">
+            Technical Expertise
+          </p>
+          <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
+            Skills & Technologies
+          </h2>
+          <p className="text-gray-300 text-center max-w-2xl mx-auto">
+            Comprehensive technical skillset spanning full-stack development, modern frameworks, databases, and system design principles.
           </p>
         </motion.div>
 

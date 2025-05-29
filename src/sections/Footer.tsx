@@ -151,7 +151,7 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
           <motion.p 
             className="text-lg mb-3"
           >
-            Open for freelance opportunities and collaborations
+            Available for full-time opportunities and exciting projects
           </motion.p>
           <motion.a 
             href="mailto:pawandasila06@gmail.com" 
