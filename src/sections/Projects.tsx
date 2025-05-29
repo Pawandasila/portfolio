@@ -7,7 +7,7 @@ import ai from "@/assets/images/ai.png";
 import job from "@/assets/images/job.png";
 import yoga from "@/assets/images/Yoga.png";
 import aiInterviewImage from "@/assets/images/ai_interview.png"
-import aiLearning from "@/assets/images/ai_learning.png";
+import aiLearning from "@/assets/images/ai-learning.png";
 
 interface Result {
   title: string;
