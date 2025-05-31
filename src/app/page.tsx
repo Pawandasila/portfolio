@@ -9,10 +9,11 @@ import { ProjectsSection } from "@/sections/Projects";
 import { Footer } from "@/sections/Footer";
 import { TapeSection } from "@/sections/Tape";
 import Contact from "@/sections/Contact";
-
+import { AboutSection } from "@/sections/About";
 import Education from "@/sections/Education";
 import Experience from "@/sections/Experience";
 import { SkillsSection } from "@/sections/Skills";
+import { TestimonialsSection } from "@/sections/Testimonials";
 
 export default function Home() {
   const [showLoading, setShowLoading] = useState(true);
@@ -60,14 +61,13 @@ export default function Home() {
         <Header key={`header-${showLoading}`} />
         <HeroSection key={`hero-${showLoading}`} />
         <div className="p-4">
+        <AboutSection key={`about-${showLoading}`} />
         <ProjectsSection key={`projects-${showLoading}`} />
         <SkillsSection key={`skills-${showLoading}`} />
         <Experience key={`experience-${showLoading}`}/>
-
-        <TapeSection key={`tape-${showLoading}`} />
-        {/* <TestimonialsSection key={`testimonial-${showLoading}`} /> */}
-        {/* <AboutSection key={`about-${showLoading}`} /> */}
         <Education key={`education-${showLoading}`} />
+        {/* <TestimonialsSection key={`testimonials-${showLoading}`} /> */}
+        <TapeSection key={`tape-${showLoading}`} />
         <Contact key={`contact-${showLoading}`} />
         </div>
           

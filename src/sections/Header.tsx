@@ -25,9 +25,12 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   // Updated nav items with IDs
   const navItems: NavItem[] = [
     { id: "home", name: "Home" },
+    { id: "about", name: "About" },
     { id: "projects", name: "Projects" },
-    { id: "education", name: "Education" },
+    { id: "skills", name: "Skills" },
     { id: "experience", name: "Experience" },
+    { id: "education", name: "Education" },
+    // { id: "testimonials", name: "Testimonials" },
     { id: "contact", name: "Contact" },
   ];
 
