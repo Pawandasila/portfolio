@@ -154,12 +154,6 @@ export const SkillsSection: React.FC = () => {
         years: "2+ years",
       },
       {
-        name: "AWS",
-        icon: system,
-        proficiency: "Beginner",
-        years: "6 months",
-      },
-      {
         name: "Vercel",
         icon: system,
         proficiency: "Intermediate",
@@ -306,8 +300,7 @@ export const SkillsSection: React.FC = () => {
           {renderSkillCategory("Databases & Storage", skills.databases)}
           {renderSkillCategory("DevOps & Cloud", skills.devOpsTools)}
           {renderSkillCategory("AI/ML Technologies", skills.aiMlTech)}
-        </motion.div>
-        {/* Professional Skills & Achievements Section */}
+        </motion.div>        {/* Professional Skills & Achievements Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
@@ -315,52 +308,45 @@ export const SkillsSection: React.FC = () => {
           className="grid lg:grid-cols-2 gap-8 mb-12"
         >
           {/* Professional Skills */}
-          <div className="border border-emerald-700/30 rounded-xl p-8 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5 hover:from-emerald-900/20 hover:to-emerald-800/10 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-300 to-green-400 text-transparent bg-clip-text">
-              Professional Skills
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border border-emerald-700/30 rounded-xl p-8 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5 hover:from-emerald-900/20 hover:to-emerald-800/10 transition-all duration-300 hover:scale-[1.02]">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-emerald-500 to-green-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl">💡</span>
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-emerald-300 to-green-400 text-transparent bg-clip-text">
+                Professional Skills
+              </h3>
+              <p className="text-gray-400 text-sm mt-2">Core competencies & soft skills</p>
+            </div>            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
               {[
-                {
-                  title: "Problem Solving",
-                  description: "Analytical thinking & debugging",
-                },
-                {
-                  title: "Team Collaboration",
-                  description: "Communication & teamwork",
-                },
-                {
-                  title: "Project Management",
-                  description: "Planning & time management",
-                },
-                {
-                  title: "Code Quality",
-                  description: "Attention to detail & best practices",
-                },
-                {
-                  title: "Continuous Learning",
-                  description: "Adaptability & growth mindset",
-                },
-                {
-                  title: "Client Communication",
-                  description: "Requirements gathering & feedback",
-                },
-              ].map((skill, index) => (
+                { skill: "Problem Solving", icon: "🧩", description: "Analytical thinking & debugging complex issues" },
+                { skill: "Team Collaboration", icon: "🤝", description: "Effective communication & cross-functional teamwork" },
+                { skill: "Project Management", icon: "📋", description: "Agile methodologies & deadline management" },
+                { skill: "Code Quality", icon: "✨", description: "Best practices, testing & clean architecture" },
+                { skill: "Continuous Learning", icon: "📚", description: "Staying updated with latest technologies" },
+                { skill: "Client Relations", icon: "💬", description: "Requirements gathering & stakeholder communication" },
+                { skill: "Leadership", icon: "👑", description: "Mentoring peers & leading project initiatives" },
+                { skill: "Technical Writing", icon: "📝", description: "Documentation & knowledge sharing" },
+                { skill: "Critical Thinking", icon: "🎯", description: "Data-driven decision making & analysis" },
+                { skill: "Adaptability", icon: "🔄", description: "Quick learning & flexible problem-solving approaches" },
+              ].map((item, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
+                  initial={{ opacity: 0, scale: 0.9 }}
+                  animate={{ opacity: 1, scale: 1 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="p-4 rounded-lg bg-emerald-900/20 hover:bg-emerald-900/30 transition-all duration-200 border border-emerald-700/20 hover:border-emerald-500/40 group"
+                  className="p-4 rounded-xl bg-gradient-to-br from-emerald-900/30 to-emerald-800/20 hover:from-emerald-900/50 hover:to-emerald-800/30 border border-emerald-700/30 hover:border-emerald-500/50 transition-all duration-300 group cursor-pointer hover:scale-105"
                 >
                   <div className="flex items-start gap-3">
-                    <div className="w-3 h-3 bg-emerald-400 rounded-full mt-1 group-hover:animate-pulse"></div>
-                    <div>
-                      <h4 className="text-white font-medium text-sm mb-1 group-hover:text-emerald-300 transition-colors">
-                        {skill.title}
+                    <div className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                      {item.icon}
+                    </div>
+                    <div className="flex-1">
+                      <h4 className="text-emerald-300 font-semibold text-sm mb-1 group-hover:text-emerald-200 transition-colors">
+                        {item.skill}
                       </h4>
                       <p className="text-gray-400 text-xs leading-relaxed">
-                        {skill.description}
+                        {item.description}
                       </p>
                     </div>
                   </div>
@@ -370,52 +356,121 @@ export const SkillsSection: React.FC = () => {
           </div>
 
           {/* Academic & Project Achievements */}
-          <div className="border border-blue-700/30 rounded-xl p-8 bg-gradient-to-br from-blue-900/10 to-blue-800/5 hover:from-blue-900/20 hover:to-blue-800/10 transition-all duration-300">
-            <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-300 to-sky-400 text-transparent bg-clip-text">
-              Academic & Project Achievements
-            </h3>
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
+          <div className="border border-blue-700/30 rounded-xl p-8 bg-gradient-to-br from-blue-900/10 to-blue-800/5 hover:from-blue-900/20 hover:to-blue-800/10 transition-all duration-300 hover:scale-[1.02]">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-blue-500 to-sky-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🏆</span>
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-blue-300 to-sky-400 text-transparent bg-clip-text">
+                Achievements & Projects
+              </h3>
+              <p className="text-gray-400 text-sm mt-2">Academic excellence & practical experience</p>
+            </div>
+            <div className="space-y-4">
               {[
                 {
-                  title: "Full-Stack Projects",
-                  description: "5+ projects with modern tech stack",
+                  category: "Development Projects",
+                  achievements: [
+                    { title: "Full-Stack Applications", description: "5+ projects with modern tech stack" },
+                    { title: "AI Job Portal Platform", description: "AI-powered recruitment system" }
+                  ]
                 },
                 {
-                  title: "BharatPe Internship",
-                  description: "Leading fintech company experience",
+                  category: "Professional Experience",
+                  achievements: [
+                    { title: "BharatPe Internship", description: "Leading fintech company experience" },
+                    { title: "Cloud Deployments", description: "Production apps on Vercel/AWS" }
+                  ]
                 },
                 {
-                  title: "AI Job Portal",
-                  description: "AI-powered platform development",
+                  category: "Community & Leadership",
+                  achievements: [
+                    { title: "Open Source Contributions", description: "Active in developer communities" },
+                    { title: "Academic Excellence", description: "Strong CS performance & leadership" }
+                  ]
+                }
+              ].map((category, categoryIndex) => (
+                <motion.div
+                  key={categoryIndex}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ delay: 0.4 + categoryIndex * 0.2 }}
+                  className="bg-blue-900/20 rounded-lg p-4 border border-blue-700/30 hover:border-blue-500/50 transition-all duration-300 group"
+                >
+                  <h4 className="text-blue-300 font-semibold mb-3 group-hover:text-blue-200 transition-colors">
+                    {category.category}
+                  </h4>
+                  <div className="space-y-2">
+                    {category.achievements.map((achievement, achievementIndex) => (
+                      <div key={achievementIndex} className="p-3 rounded bg-blue-900/30 hover:bg-blue-900/50 transition-colors duration-200 border border-blue-700/20 hover:border-blue-500/40">
+                        <div className="flex items-start gap-3">
+                          <div className="w-2 h-2 bg-blue-400 rounded-full mt-2 flex-shrink-0"></div>
+                          <div>
+                            <h5 className="text-white font-medium text-sm mb-1">{achievement.title}</h5>
+                            <p className="text-gray-400 text-xs leading-relaxed">{achievement.description}</p>
+                          </div>
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                </motion.div>
+              ))}
+            </div>
+          </div>
+        </motion.div>{/* Additional Information Section */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
+          transition={{ duration: 0.7, delay: 0.5 }}
+          className="grid md:grid-cols-3 gap-8"
+        >
+          {/* Languages */}
+          <div className="border border-purple-700/30 rounded-xl p-8 bg-gradient-to-br from-purple-900/10 to-purple-800/5 hover:from-purple-900/20 hover:to-purple-800/10 transition-all duration-300">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-purple-500 to-pink-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🌍</span>
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-purple-300 to-pink-300 text-transparent bg-clip-text">
+                Languages
+              </h3>
+            </div>
+            <div className="space-y-4">
+              {[
+                { 
+                  language: "English", 
+                  level: "Professional",
+                  proficiency: "Business & Technical Communication",
+                  icon: "🇺🇸"
                 },
-                {
-                  title: "Cloud Deployments",
-                  description: "Production apps on Vercel/AWS",
+                { 
+                  language: "Hindi", 
+                  level: "Native",
+                  proficiency: "Mother Tongue",
+                  icon: "🇮🇳"
                 },
-                {
-                  title: "Open Source",
-                  description: "Community contributions & involvement",
-                },
-                {
-                  title: "Academic Excellence",
-                  description: "Strong CS performance & leadership",
-                },
-              ].map((achievement, index) => (
+              ].map((lang, index) => (
                 <motion.div
                   key={index}
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
-                  transition={{ delay: 0.4 + index * 0.1 }}
-                  className="p-4 rounded-lg bg-blue-900/20 hover:bg-blue-900/30 transition-all duration-200 border border-blue-700/20 hover:border-blue-500/40 group"
+                  transition={{ delay: 0.6 + index * 0.2 }}
+                  className="p-4 rounded-lg bg-purple-900/20 hover:bg-purple-900/30 transition-all duration-200 border border-purple-700/20 hover:border-purple-500/40 group"
                 >
-                  <div className="flex items-start gap-3">
-                    <div className="w-3 h-3 bg-blue-400 rounded-full mt-1 group-hover:animate-pulse"></div>
-                    <div>
-                      <h4 className="text-white font-medium text-sm mb-1 group-hover:text-blue-300 transition-colors">
-                        {achievement.title}
-                      </h4>
-                      <p className="text-gray-400 text-xs leading-relaxed">
-                        {achievement.description}
+                  <div className="flex items-start gap-4">
+                    <div className="text-2xl group-hover:scale-110 transition-transform duration-200">
+                      {lang.icon}
+                    </div>
+                    <div className="flex-1">
+                      <div className="flex justify-between items-center mb-2">
+                        <span className="text-white font-semibold group-hover:text-purple-300 transition-colors">
+                          {lang.language}
+                        </span>
+                        <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
+                          {lang.level}
+                        </span>
+                      </div>
+                      <p className="text-gray-400 text-sm">
+                        {lang.proficiency}
                       </p>
                     </div>
                   </div>
@@ -423,92 +478,131 @@ export const SkillsSection: React.FC = () => {
               ))}
             </div>
           </div>
-        </motion.div>
 
-        {/* Additional Information Section */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
-          transition={{ duration: 0.7, delay: 0.5 }}
-          className="grid md:grid-cols-3 gap-6"
-        >
-          {/* Languages */}
-          <div className="border border-purple-700/30 rounded-xl p-6 bg-gradient-to-br from-purple-900/10 to-purple-800/5 hover:from-purple-900/20 hover:to-purple-800/10 transition-all duration-300">
-            <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-purple-300 to-pink-300 text-transparent bg-clip-text">
-              Languages
-            </h3>
-            <div className="space-y-4">
-              {[
-                { language: "English", level: "Professional" },
-                { language: "Hindi", level: "Native" },
-              ].map((lang, index) => (
-                <div
-                  key={index}
-                  className="flex justify-between items-center p-3 rounded-lg bg-purple-900/20 hover:bg-purple-900/30 transition-colors duration-200"
-                >
-                  <span className="text-gray-300 font-medium">{lang.language}</span>
-                  <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
-                    {lang.level}
-                  </span>
-                </div>
-              ))}
-            </div>
-          </div>
           {/* Industry Focus */}
-          <div className="border border-orange-700/30 rounded-xl p-6 bg-gradient-to-br from-orange-900/10 to-orange-800/5 hover:from-orange-900/20 hover:to-orange-800/10 transition-all duration-300">
-            <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-orange-300 to-yellow-300 text-transparent bg-clip-text">
-              Industry Focus
-            </h3>
-            <div className="space-y-3">
+          <div className="border border-orange-700/30 rounded-xl p-8 bg-gradient-to-br from-orange-900/10 to-orange-800/5 hover:from-orange-900/20 hover:to-orange-800/10 transition-all duration-300">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-orange-500 to-yellow-500 rounded-full flex items-center justify-center">
+                <span className="text-2xl">🎯</span>
+              </div>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-orange-300 to-yellow-300 text-transparent bg-clip-text">
+                Industry Focus
+              </h3>
+            </div>
+            <div className="space-y-4">
               {[
-                "FinTech Solutions",
-                "E-commerce Platforms",
-                "AI/ML Applications",
-                "SaaS Products",
-                "Enterprise Systems",
-              ].map((industry, index) => (
-                <div
+                { industry: "FinTech Solutions", icon: "💳", description: "Payment & Banking" },
+                { industry: "E-commerce", icon: "🛒", description: "Online Retail Platforms" },
+                { industry: "AI/ML Applications", icon: "🤖", description: "Intelligent Systems" },
+                { industry: "SaaS Products", icon: "☁️", description: "Cloud-based Solutions" },
+                { industry: "Enterprise Systems", icon: "🏢", description: "Large-scale Applications" },
+              ].map((item, index) => (
+                <motion.div
                   key={index}
-                  className="flex items-center gap-3 p-2 rounded-lg bg-orange-900/20"
+                  initial={{ opacity: 0, x: -20 }}
+                  animate={{ opacity: 1, x: 0 }}
+                  transition={{ delay: 0.6 + index * 0.1 }}
+                  className="p-3 rounded-lg bg-orange-900/20 hover:bg-orange-900/30 transition-all duration-200 border border-orange-700/20 hover:border-orange-500/40 group"
                 >
-                  <div className="w-2 h-2 bg-orange-400 rounded-full"></div>
-                  <span className="text-gray-300 text-sm">{industry}</span>
-                </div>
+                  <div className="flex items-center gap-3">
+                    <div className="text-xl group-hover:scale-110 transition-transform duration-200">
+                      {item.icon}
+                    </div>
+                    <div>
+                      <h4 className="text-white font-medium text-sm group-hover:text-orange-300 transition-colors">
+                        {item.industry}
+                      </h4>
+                      <p className="text-gray-400 text-xs">
+                        {item.description}
+                      </p>
+                    </div>
+                  </div>
+                </motion.div>
               ))}
             </div>
           </div>
+
           {/* Availability */}
-          <div className="border border-green-700/30 rounded-xl p-6 bg-gradient-to-br from-green-900/10 to-green-800/5 hover:from-green-900/20 hover:to-green-800/10 transition-all duration-300">
-            <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-green-300 to-emerald-300 text-transparent bg-clip-text">
-              Availability
-            </h3>
-            <div className="space-y-4">
-              <div className="text-center">
-                <div className="w-4 h-4 bg-green-400 rounded-full mx-auto mb-2 animate-pulse"></div>
-                <span className="text-green-300 font-medium">
-                  Open to Opportunities
-                </span>
+          <div className="border border-green-700/30 rounded-xl p-8 bg-gradient-to-br from-green-900/10 to-green-800/5 hover:from-green-900/20 hover:to-green-800/10 transition-all duration-300">
+            <div className="text-center mb-8">
+              <div className="w-16 h-16 mx-auto mb-4 bg-gradient-to-br from-green-500 to-emerald-500 rounded-full flex items-center justify-center relative">
+                <span className="text-2xl">🚀</span>
+                <div className="absolute -top-1 -right-1 w-5 h-5 bg-green-400 rounded-full animate-pulse"></div>
               </div>
-              <div className="space-y-2 text-sm text-gray-300">
-                <div className="flex justify-between">
-                  <span>Internships</span>
-                  <span className="text-green-400">✓</span>
+              <h3 className="text-2xl font-bold bg-gradient-to-r from-green-300 to-emerald-300 text-transparent bg-clip-text">
+                Availability
+              </h3>
+              <p className="text-green-300 font-medium mt-2">
+                Ready to Start Immediately
+              </p>
+            </div>
+            
+            <div className="space-y-4">
+              <div className="bg-green-900/30 rounded-lg p-4 border border-green-600/30">
+                <h4 className="text-green-300 font-semibold mb-3 text-center">Opportunity Types</h4>
+                <div className="space-y-3">
+                  {[
+                    { type: "Internships", status: "Actively Seeking", icon: "🎓" },
+                    { type: "Entry-level Positions", status: "Open to Offers", icon: "💼" },
+                    { type: "Freelance Projects", status: "Available", icon: "🔥" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, y: 10 }}
+                      animate={{ opacity: 1, y: 0 }}
+                      transition={{ delay: 0.6 + index * 0.1 }}
+                      className="flex items-center justify-between p-2 rounded bg-green-900/20 hover:bg-green-900/40 transition-colors duration-200 group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm group-hover:scale-110 transition-transform duration-200">
+                          {item.icon}
+                        </span>
+                        <span className="text-gray-300 text-sm font-medium">
+                          {item.type}
+                        </span>
+                      </div>
+                      <span className="text-xs text-green-400 bg-green-500/20 px-2 py-1 rounded-full">
+                        {item.status}
+                      </span>
+                    </motion.div>
+                  ))}
                 </div>
-                <div className="flex justify-between">
-                  <span>Entry-level positions</span>
-                  <span className="text-green-400">✓</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Freelance projects</span>
-                  <span className="text-green-400">✓</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Remote work</span>
-                  <span className="text-green-400">✓</span>
-                </div>
-                <div className="flex justify-between">
-                  <span>Relocation</span>
-                  <span className="text-yellow-400">Open to discuss</span>
+              </div>
+
+              <div className="bg-blue-900/30 rounded-lg p-4 border border-blue-600/30">
+                <h4 className="text-blue-300 font-semibold mb-3 text-center">Work Preferences</h4>
+                <div className="space-y-2">
+                  {[
+                    { preference: "Remote Work", status: "Preferred", icon: "🏠" },
+                    { preference: "Hybrid Mode", status: "Flexible", icon: "🔄" },
+                    { preference: "On-site", status: "Open", icon: "🏢" },
+                    { preference: "Relocation", status: "Negotiable", icon: "✈️" },
+                  ].map((item, index) => (
+                    <motion.div
+                      key={index}
+                      initial={{ opacity: 0, x: -10 }}
+                      animate={{ opacity: 1, x: 0 }}
+                      transition={{ delay: 0.7 + index * 0.1 }}
+                      className="flex items-center justify-between p-2 rounded bg-blue-900/20 hover:bg-blue-900/40 transition-colors duration-200 group"
+                    >
+                      <div className="flex items-center gap-2">
+                        <span className="text-sm group-hover:scale-110 transition-transform duration-200">
+                          {item.icon}
+                        </span>
+                        <span className="text-gray-300 text-sm">
+                          {item.preference}
+                        </span>
+                      </div>
+                      <span className={`text-xs px-2 py-1 rounded-full ${
+                        item.status === 'Preferred' ? 'text-green-400 bg-green-500/20' :
+                        item.status === 'Flexible' ? 'text-blue-400 bg-blue-500/20' :
+                        item.status === 'Open' ? 'text-yellow-400 bg-yellow-500/20' :
+                        'text-orange-400 bg-orange-500/20'
+                      }`}>
+                        {item.status}
+                      </span>
+                    </motion.div>
+                  ))}
                 </div>
               </div>
             </div>
