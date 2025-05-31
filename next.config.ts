@@ -6,12 +6,32 @@ const nextConfig: NextConfig = {
   },
   reactStrictMode: true,
   images: {
-    domains: [
-      'bp-wp-website-prod.s3.ap-south-1.amazonaws.com',
-      'media.licdn.com',
-      'th.bing.com'
+    remotePatterns: [
+      {
+        protocol: 'https',
+        hostname: 'bp-wp-website-prod.s3.ap-south-1.amazonaws.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'media.licdn.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'th.bing.com',
+      },
     ],
     unoptimized: false,
+    formats: ['image/webp', 'image/avif'],
+    minimumCacheTTL: 31536000,
+  },
+  
+  experimental: {
+    optimizeCss: true,
+    optimizePackageImports: ['framer-motion'],
+  },
+  
+  compiler: {
+    removeConsole: process.env.NODE_ENV === 'production',
   },
 };
 

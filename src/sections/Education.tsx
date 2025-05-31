@@ -3,6 +3,8 @@ import { FC, useRef } from 'react';
 import { motion, useInView, useScroll, useTransform } from 'framer-motion';
 import { GraduationCap } from 'lucide-react';
 import Image from 'next/image';
+import universityLogo from '../assets/icons/university-logo.svg';
+import schoolLogo from '../assets/icons/school-logo.svg';
 
 const Education: FC = () => {
   const containerRef = useRef(null);
@@ -10,8 +12,7 @@ const Education: FC = () => {
   const { scrollYProgress } = useScroll({
     target: containerRef,
     offset: ["start end", "end end"]
-  });
-  const educationData = [
+  });  const educationData = [
     {
       id: 1,
       institution: 'Graphic Era Hill University, Bhimtal, Uttarakhand',
@@ -133,13 +134,12 @@ const Education: FC = () => {
                     />
 
                     <div className="flex flex-col md:flex-row items-start gap-4">
-                      <div className="flex-shrink-0 bg-indigo-900/30 rounded-lg p-2">
-                        <div className="w-16 h-16 md:w-20 md:h-20 relative">
+                      <div className="flex-shrink-0 bg-indigo-900/30 rounded-lg p-2">                        <div className="w-16 h-16 md:w-20 md:h-20 relative">
                           <Image 
                             src={item.imageUrl} 
                             alt={item.imageAlt}
-                            layout="fill" 
-                            objectFit="contain"
+                            fill
+                            style={{ objectFit: 'contain' }}
                             className="rounded-lg"
                           />
                         </div>

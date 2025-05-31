@@ -6,17 +6,16 @@ import { motion, AnimatePresence } from "framer-motion";
 const Loading = () => {
   const [isLoading, setIsLoading] = useState(true);
   const [isExiting, setIsExiting] = useState(false);
-
   useEffect(() => {
-    // Allow time for users to read the content
+    // Reduced loading time for better performance
     const timer = setTimeout(() => {
       setIsExiting(true);
       
-      // Delay to allow exit animation to complete
+      // Shorter exit animation
       setTimeout(() => {
         setIsLoading(false);
-      }, 1000);
-    }, 3000);
+      }, 500);
+    }, 1000); // Reduced from 3000ms to 1000ms
 
     return () => clearTimeout(timer);
   }, []);
@@ -151,12 +150,11 @@ const Loading = () => {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ delay: 1 }}
-          >
-            <motion.div
+          >            <motion.div
               className="h-full bg-gradient-to-r from-blue-500 to-purple-600"
               initial={{ width: 0 }}
               animate={{ width: "100%" }}
-              transition={{ duration: 2.8, ease: "easeInOut" }}
+              transition={{ duration: 0.8, ease: "easeInOut" }} // Reduced from 2.8s
             />
           </motion.div>
         </motion.div>
