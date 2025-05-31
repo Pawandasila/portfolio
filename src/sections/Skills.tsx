@@ -287,12 +287,14 @@ export const SkillsSection: React.FC = () => {
           </p>
           <h2 className="text-4xl md:text-5xl font-bold text-center mb-4 text-white">
             Skills & Technologies
-          </h2>{" "}          <p className="text-gray-300 text-center max-w-3xl mx-auto">
-            Technical skills developed through coursework, personal projects, and internship experience. 
-            As a 3rd-year student, I'm focused on building strong foundations in full-stack development 
+          </h2>{" "}
+          <p className="text-gray-300 text-center max-w-3xl mx-auto">
+            Technical skills developed through coursework, personal projects, and internship experience.
+            As a 3rd-year student, I'm focused on building strong foundations in full-stack development
             and modern web technologies.
           </p>
-        </motion.div>{" "}        <motion.div
+        </motion.div>{" "}
+        <motion.div
           variants={containerVariants}
           initial="hidden"
           animate={isInView ? "visible" : "hidden"}
@@ -304,62 +306,119 @@ export const SkillsSection: React.FC = () => {
           {renderSkillCategory("Databases & Storage", skills.databases)}
           {renderSkillCategory("DevOps & Cloud", skills.devOpsTools)}
           {renderSkillCategory("AI/ML Technologies", skills.aiMlTech)}
-        </motion.div>        {/* Professional Skills & Achievements Section */}
+        </motion.div>
+        {/* Professional Skills & Achievements Section */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.3 }}
-          className="grid md:grid-cols-2 gap-8 mb-12"
+          className="grid lg:grid-cols-2 gap-8 mb-12"
         >
           {/* Professional Skills */}
-          <div className="border border-emerald-700/30 rounded-xl p-6 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5 hover:from-emerald-900/20 hover:to-emerald-800/10 transition-all duration-300">
-            <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-emerald-300 to-green-400 text-transparent bg-clip-text">
+          <div className="border border-emerald-700/30 rounded-xl p-8 bg-gradient-to-br from-emerald-900/10 to-emerald-800/5 hover:from-emerald-900/20 hover:to-emerald-800/10 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-emerald-300 to-green-400 text-transparent bg-clip-text">
               Professional Skills
-            </h3>            <div className="space-y-3">
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                "Problem Solving & Analytical Thinking",
-                "Team Collaboration & Communication",
-                "Project Planning & Time Management",
-                "Attention to Detail & Code Quality",
-                "Continuous Learning & Adaptability",
-                "Client Communication & Requirements Gathering",
+                {
+                  title: "Problem Solving",
+                  description: "Analytical thinking & debugging",
+                },
+                {
+                  title: "Team Collaboration",
+                  description: "Communication & teamwork",
+                },
+                {
+                  title: "Project Management",
+                  description: "Planning & time management",
+                },
+                {
+                  title: "Code Quality",
+                  description: "Attention to detail & best practices",
+                },
+                {
+                  title: "Continuous Learning",
+                  description: "Adaptability & growth mindset",
+                },
+                {
+                  title: "Client Communication",
+                  description: "Requirements gathering & feedback",
+                },
               ].map((skill, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: -20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-emerald-900/20 hover:bg-emerald-900/30 transition-colors duration-200"
+                  className="p-4 rounded-lg bg-emerald-900/20 hover:bg-emerald-900/30 transition-all duration-200 border border-emerald-700/20 hover:border-emerald-500/40 group"
                 >
-                  <div className="w-2 h-2 bg-emerald-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300 text-sm">{skill}</span>
+                  <div className="flex items-start gap-3">
+                    <div className="w-3 h-3 bg-emerald-400 rounded-full mt-1 group-hover:animate-pulse"></div>
+                    <div>
+                      <h4 className="text-white font-medium text-sm mb-1 group-hover:text-emerald-300 transition-colors">
+                        {skill.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed">
+                        {skill.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
           </div>
 
           {/* Academic & Project Achievements */}
-          <div className="border border-blue-700/30 rounded-xl p-6 bg-gradient-to-br from-blue-900/10 to-blue-800/5 hover:from-blue-900/20 hover:to-blue-800/10 transition-all duration-300">
-            <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-blue-300 to-sky-400 text-transparent bg-clip-text">
+          <div className="border border-blue-700/30 rounded-xl p-8 bg-gradient-to-br from-blue-900/10 to-blue-800/5 hover:from-blue-900/20 hover:to-blue-800/10 transition-all duration-300">
+            <h3 className="text-2xl font-bold text-center mb-8 bg-gradient-to-r from-blue-300 to-sky-400 text-transparent bg-clip-text">
               Academic & Project Achievements
-            </h3>            <div className="space-y-3">
+            </h3>
+            <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {[
-                "Built 5+ Full-Stack Projects with Modern Tech Stack",
-                "Completed Internship at BharatPe (Leading Fintech)",
-                "Developed AI-Powered Job Portal Platform",
-                "Successfully Deployed Applications on Cloud Platforms",
-                "Active in Open Source & Developer Communities",
-                "Strong Academic Performance in Computer Science",
+                {
+                  title: "Full-Stack Projects",
+                  description: "5+ projects with modern tech stack",
+                },
+                {
+                  title: "BharatPe Internship",
+                  description: "Leading fintech company experience",
+                },
+                {
+                  title: "AI Job Portal",
+                  description: "AI-powered platform development",
+                },
+                {
+                  title: "Cloud Deployments",
+                  description: "Production apps on Vercel/AWS",
+                },
+                {
+                  title: "Open Source",
+                  description: "Community contributions & involvement",
+                },
+                {
+                  title: "Academic Excellence",
+                  description: "Strong CS performance & leadership",
+                },
               ].map((achievement, index) => (
                 <motion.div
                   key={index}
-                  initial={{ opacity: 0, x: 20 }}
-                  animate={{ opacity: 1, x: 0 }}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
                   transition={{ delay: 0.4 + index * 0.1 }}
-                  className="flex items-center gap-3 p-3 rounded-lg bg-blue-900/20 hover:bg-blue-900/30 transition-colors duration-200"
+                  className="p-4 rounded-lg bg-blue-900/20 hover:bg-blue-900/30 transition-all duration-200 border border-blue-700/20 hover:border-blue-500/40 group"
                 >
-                  <div className="w-2 h-2 bg-blue-400 rounded-full animate-pulse"></div>
-                  <span className="text-gray-300 text-sm">{achievement}</span>
+                  <div className="flex items-start gap-3">
+                    <div className="w-3 h-3 bg-blue-400 rounded-full mt-1 group-hover:animate-pulse"></div>
+                    <div>
+                      <h4 className="text-white font-medium text-sm mb-1 group-hover:text-blue-300 transition-colors">
+                        {achievement.title}
+                      </h4>
+                      <p className="text-gray-400 text-xs leading-relaxed">
+                        {achievement.description}
+                      </p>
+                    </div>
+                  </div>
                 </motion.div>
               ))}
             </div>
@@ -372,29 +431,30 @@ export const SkillsSection: React.FC = () => {
           animate={isInView ? { opacity: 1, y: 0 } : { opacity: 0, y: 20 }}
           transition={{ duration: 0.7, delay: 0.5 }}
           className="grid md:grid-cols-3 gap-6"
-        >          {/* Languages */}
+        >
+          {/* Languages */}
           <div className="border border-purple-700/30 rounded-xl p-6 bg-gradient-to-br from-purple-900/10 to-purple-800/5 hover:from-purple-900/20 hover:to-purple-800/10 transition-all duration-300">
             <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-purple-300 to-pink-300 text-transparent bg-clip-text">
               Languages
             </h3>
-            <div className="space-y-3">
+            <div className="space-y-4">
               {[
                 { language: "English", level: "Professional" },
                 { language: "Hindi", level: "Native" },
-                { language: "Punjabi", level: "Conversational" },
               ].map((lang, index) => (
                 <div
                   key={index}
-                  className="flex justify-between items-center p-2 rounded-lg bg-purple-900/20"
+                  className="flex justify-between items-center p-3 rounded-lg bg-purple-900/20 hover:bg-purple-900/30 transition-colors duration-200"
                 >
-                  <span className="text-gray-300">{lang.language}</span>
-                  <span className="text-xs px-2 py-1 bg-purple-500/20 text-purple-300 rounded-full">
+                  <span className="text-gray-300 font-medium">{lang.language}</span>
+                  <span className="text-xs px-3 py-1 bg-purple-500/20 text-purple-300 rounded-full border border-purple-500/30">
                     {lang.level}
                   </span>
                 </div>
               ))}
             </div>
-          </div>          {/* Industry Focus */}
+          </div>
+          {/* Industry Focus */}
           <div className="border border-orange-700/30 rounded-xl p-6 bg-gradient-to-br from-orange-900/10 to-orange-800/5 hover:from-orange-900/20 hover:to-orange-800/10 transition-all duration-300">
             <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-orange-300 to-yellow-300 text-transparent bg-clip-text">
               Industry Focus
@@ -416,11 +476,13 @@ export const SkillsSection: React.FC = () => {
                 </div>
               ))}
             </div>
-          </div>          {/* Availability */}
+          </div>
+          {/* Availability */}
           <div className="border border-green-700/30 rounded-xl p-6 bg-gradient-to-br from-green-900/10 to-green-800/5 hover:from-green-900/20 hover:to-green-800/10 transition-all duration-300">
             <h3 className="text-xl font-bold text-center mb-6 bg-gradient-to-r from-green-300 to-emerald-300 text-transparent bg-clip-text">
               Availability
-            </h3>            <div className="space-y-4">
+            </h3>
+            <div className="space-y-4">
               <div className="text-center">
                 <div className="w-4 h-4 bg-green-400 rounded-full mx-auto mb-2 animate-pulse"></div>
                 <span className="text-green-300 font-medium">
