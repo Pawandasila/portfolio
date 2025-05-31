@@ -14,8 +14,8 @@ const Loading = () => {
       // Shorter exit animation
       setTimeout(() => {
         setIsLoading(false);
-      }, 500);
-    }, 1000); // Reduced from 3000ms to 1000ms
+      }, 1000);
+    }, 3000); // Reduced from 3000ms to 1000ms
 
     return () => clearTimeout(timer);
   }, []);

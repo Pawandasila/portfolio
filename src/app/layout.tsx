@@ -2,6 +2,8 @@ import type { Metadata } from "next";
 import { Inter, Calistoga } from "next/font/google";
 import { twMerge } from "tailwind-merge";
 import "./globals.css";
+import ChatbotWrapper from "@/components/ChatbotWrapper";
+import { LoadingProvider } from "@/contexts/LoadingContext";
 
 const inter = Inter({
   subsets: ["latin"],
@@ -70,7 +72,10 @@ export default function RootLayout({
           "bg-gray-900 text-white antialiased font-sans"
         )}
       >
-        {children}
+        <LoadingProvider>
+          {children}
+          <ChatbotWrapper />
+        </LoadingProvider>
       </body>
     </html>
   );

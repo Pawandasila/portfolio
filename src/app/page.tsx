@@ -14,9 +14,11 @@ import Education from "@/sections/Education";
 import Experience from "@/sections/Experience";
 import { SkillsSection } from "@/sections/Skills";
 import { TestimonialsSection } from "@/sections/Testimonials";
+import { useLoading } from "@/contexts/LoadingContext";
 
 export default function Home() {
   const [showLoading, setShowLoading] = useState(true);
+  const { setIsLoading } = useLoading();
   const mainContentRef = useRef(null);
 
   useEffect(() => {
@@ -24,6 +26,7 @@ export default function Home() {
 
     const timer = setTimeout(() => {
       setShowLoading(false);
+      setIsLoading(false); // Tell the context that loading is complete
 
       window.scrollTo(0, 0);
 
@@ -46,18 +49,15 @@ export default function Home() {
         {showLoading && <Loading />}
       </AnimatePresence>
 
-      <motion.main
-        ref={mainContentRef}
-        className="min-h-screen bg-gray-900 text-white"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showLoading ? 0 : 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{
-          pointerEvents: showLoading ? "none" : "auto",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
+      {!showLoading && (
+        <main
+          ref={mainContentRef}
+          className="min-h-screen bg-gray-900 text-white"
+          style={{
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
         <Header key={`header-${showLoading}`} />
         <HeroSection key={`hero-${showLoading}`} />
         <div className="p-4">
@@ -71,21 +71,20 @@ export default function Home() {
         <Contact key={`contact-${showLoading}`} />
         </div>
           
-      </motion.main>
+        </main>
+      )}
 
-      <motion.footer
-        className="bg-gray-900 text-white py-4 text-center"
-        initial={{ opacity: 0 }}
-        animate={{ opacity: showLoading ? 0 : 1 }}
-        transition={{ duration: 0.8, ease: "easeOut" }}
-        style={{
-          pointerEvents: showLoading ? "none" : "auto",
-          position: "relative",
-          zIndex: 1,
-        }}
-      >
-        <Footer/>
-      </motion.footer>
+      {!showLoading && (
+        <footer
+          className="bg-gray-900 text-white py-4 text-center"
+          style={{
+            position: "relative",
+            zIndex: 1,
+          }}
+        >
+          <Footer/>
+        </footer>
+      )}
     </>
   );
 }

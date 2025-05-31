@@ -70,4 +70,5 @@ body {
     @apply w-[1220px] h-[1220px] z-[-23] border-indigo-800/40 shadow-[0_0_40px_rgba(99,162,241,0.1)];
     animation-delay: 3s;
   }
+
 }
