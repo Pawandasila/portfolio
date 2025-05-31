@@ -293,8 +293,8 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
               <X size={16} />
             </motion.button>
           </div>
-        </div>{" "}
-        {/* Chat Content */}
+        </div>
+
         <AnimatePresence>
           {!isMinimized && (
             <motion.div
@@ -470,6 +470,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
             </motion.div>
           )}
         </AnimatePresence>
+        
       </motion.div>
     </AnimatePresence>
   );
