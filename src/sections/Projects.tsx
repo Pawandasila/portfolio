@@ -80,7 +80,7 @@ const portfolioProjects: Project[] = [
       { title: "Integrated machine learning algorithms for adaptive content recommendation" },
       { title: "Developed automated certification system with blockchain verification" },
     ],
-    link: "#",
+    link: "https://skill-sprint-blond.vercel.app/",
     image: aiLearning,
   },
 ];
