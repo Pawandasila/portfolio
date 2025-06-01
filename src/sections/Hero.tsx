@@ -257,19 +257,19 @@ export const HeroSection = () => {
           {[
             {
               icon: <FiGithub size={20} />,
-              url: "#",
+              url: "https://github.com/Pawandasila",
               label: "GitHub",
               color: "from-gray-600 to-gray-700",
             },
             {
               icon: <FiLinkedin size={20} />,
-              url: "#",
+              url: "https://www.linkedin.com/in/pawan-dasila-92483b251",
               label: "LinkedIn",
               color: "from-blue-600 to-blue-700",
             },
             {
               icon: <FiTwitter size={20} />,
-              url: "#",
+              url: "https://x.com/dasila0612",
               label: "Twitter",
               color: "from-sky-500 to-sky-600",
             }
