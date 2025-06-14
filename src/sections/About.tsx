@@ -103,13 +103,13 @@ export const AboutSection = () => {
                 <div className="text-2xl font-bold text-emerald-400">3+</div>
                 <div className="text-sm text-gray-300">Years Coding</div>
               </motion.div>
-              <motion.div 
+              {/* <motion.div 
                 className="bg-gray-800/60 backdrop-blur-sm border border-gray-700/50 rounded-xl p-4 text-center hover:border-sky-500/30 transition-all duration-300"
                 whileHover={{ scale: 1.05 }}
               >
-                <div className="text-2xl font-bold text-sky-400">50+</div>
+                <div className="text-2xl font-bold text-sky-400">5</div>
                 <div className="text-sm text-gray-300">Projects Built</div>
-              </motion.div>
+              </motion.div> */}
             </div>
           </motion.div>
 
