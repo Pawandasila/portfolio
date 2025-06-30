@@ -5,6 +5,7 @@ import gsap from "gsap";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { Menu } from "lucide-react";
+import { ScrollSmoother } from "gsap/all";
 
 // Define types
 export interface NavItem {
@@ -17,6 +18,9 @@ export interface HeaderProps {
 }
 
 export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
+
+  gsap.registerPlugin(ScrollSmoother);
+
   const pathname = usePathname();
   const navRef = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState<string>("home");
