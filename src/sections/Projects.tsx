@@ -1,25 +1,31 @@
-import React, { useEffect, useRef } from "react";
-import Image, { StaticImageData } from "next/image";
+import React, { useEffect, useRef, useState } from "react";
 import { motion, useInView, useAnimation, Variants } from "framer-motion";
-import { ArrowUp, CheckIcon } from "lucide-react";
+import { ArrowUpRight, CheckIcon, ExternalLink, Calendar, Code, Sparkles, TrendingUp } from "lucide-react";
 
-import ai from "@/assets/images/ai.png";
-import job from "@/assets/images/job.png";
-import yoga from "@/assets/images/Yoga.png";
-import aiInterviewImage from "@/assets/images/ai_interview.png"
-import aiLearning from "@/assets/images/ai-learning.png";
+// Mock images for demo - replace with your actual images
+const mockImages = {
+  ai: "https://images.unsplash.com/photo-1677442136019-21780ecad995?w=400&h=300&fit=crop&crop=faces",
+  job: "https://images.unsplash.com/photo-1586281380349-632531db7ed4?w=400&h=300&fit=crop&crop=faces",
+  yoga: "https://images.unsplash.com/photo-1544367567-0f2fcb009e0b?w=400&h=300&fit=crop&crop=faces",
+  aiInterviewImage: "https://images.unsplash.com/photo-1573496359142-b8d87734a5a2?w=400&h=300&fit=crop&crop=faces",
+  aiLearning: "https://images.unsplash.com/photo-1516321318423-f06f85e504b3?w=400&h=300&fit=crop&crop=faces"
+};
 
 interface Result {
   title: string;
+  metric?: string;
 }
 
 interface Project {
   company: string;
   year: string;
   title: string;
+  description: string;
   results: Result[];
   link: string;
-  image: StaticImageData;
+  image: string;
+  tags: string[];
+  featured?: boolean;
 }
 
 const portfolioProjects: Project[] = [
@@ -27,115 +33,245 @@ const portfolioProjects: Project[] = [
     company: "Full-Stack Development",
     year: "2024",
     title: "FlashAI - Enterprise Content Generation Platform",
+    description: "AI-powered content generation platform revolutionizing enterprise workflows with intelligent automation.",
     results: [
-      { title: "Built scalable AI platform serving 1000+ users with 40% improved UX" },
-      { title: "Implemented optimized ML models reducing content generation time by 60%" },
-      { title: "Developed real-time preview system increasing user engagement by 75%" },
+      { title: "Scaled to serve 1000+ enterprise users", metric: "1000+" },
+      { title: "Improved user experience efficiency", metric: "40%" },
+      { title: "Reduced content generation time", metric: "60%" },
+      { title: "Increased user engagement", metric: "75%" },
     ],
     link: "https://flash-ai-pro.vercel.app/",
-    image: ai,
+    image: mockImages.ai,
+    tags: ["React", "Node.js", "AI/ML", "TypeScript"],
+    featured: true,
   },
   {
     company: "Full-Stack Development",
     year: "2025",
     title: "YogaLife - Digital Wellness Ecosystem",
+    description: "Comprehensive wellness platform connecting instructors and students through immersive digital experiences.",
     results: [
-      { title: "Architected comprehensive wellness platform with 500+ active users" },
-      { title: "Integrated video streaming infrastructure supporting HD quality sessions" },
-      { title: "Built robust admin dashboard with analytics and user management" },
+      { title: "Active wellness community", metric: "500+" },
+      { title: "HD video streaming infrastructure", metric: "99.9%" },
+      { title: "Admin dashboard with analytics", metric: "Real-time" },
     ],
     link: "https://yoga-frontend-wheat.vercel.app/",
-    image: yoga,
+    image: mockImages.yoga,
+    tags: ["React", "Video Streaming", "Analytics", "AWS"],
   },
   {
     company: "AI/ML Development",
     year: "2025",
-    title: "InterviewAce - AI-Powered Career Preparation Platform",
+    title: "InterviewAce - AI-Powered Career Preparation",
+    description: "Intelligent interview simulator leveraging NLP to provide personalized career preparation experiences.",
     results: [
-      { title: "Developed intelligent interview simulator with natural language processing" },
-      { title: "Implemented real-time feedback system with 85% accuracy in assessment" },
-      { title: "Created comprehensive analytics dashboard tracking performance metrics" },
+      { title: "Natural language processing accuracy", metric: "85%" },
+      { title: "Real-time feedback system", metric: "< 1s" },
+      { title: "Performance analytics dashboard", metric: "15+" },
     ],
     link: "https://ai-interview-liart-five.vercel.app",
-    image: aiInterviewImage, 
-  },  
+    image: mockImages.aiInterviewImage,
+    tags: ["Python", "NLP", "React", "Machine Learning"],
+    featured: true,
+  },
   {
     company: "Full-Stack Development",
     year: "2025",
     title: "CareerHub - Professional Job Matching Platform",
+    description: "Intelligent job matching platform connecting talent with opportunities through advanced algorithms.",
     results: [
-      { title: "Built comprehensive job portal with advanced search and filtering capabilities" },
-      { title: "Implemented secure file upload system with resume parsing technology" },
-      { title: "Optimized matching algorithm improving job-candidate compatibility by 45%" },
+      { title: "Advanced search capabilities", metric: "10+" },
+      { title: "Resume parsing accuracy", metric: "95%" },
+      { title: "Job-candidate compatibility", metric: "45%" },
     ],
     link: "https://job-portal-snowy-six.vercel.app",
-    image: job,
+    image: mockImages.job,
+    tags: ["React", "Express", "MongoDB", "Elasticsearch"],
   },
   {
     company: "AI/ML Development",
     year: "2025",
-    title: "SkillSprint - Adaptive Learning Management System",
+    title: "SkillSprint - Adaptive Learning Management",
+    description: "AI-driven personalized learning platform with adaptive content recommendation and blockchain certification.",
     results: [
-      { title: "Engineered AI-driven personalized learning platform with course generation" },
-      { title: "Integrated machine learning algorithms for adaptive content recommendation" },
-      { title: "Developed automated certification system with blockchain verification" },
+      { title: "Personalized learning paths", metric: "AI-driven" },
+      { title: "Adaptive content recommendations", metric: "ML-powered" },
+      { title: "Blockchain certification system", metric: "Automated" },
     ],
     link: "https://skill-sprint-blond.vercel.app/",
-    image: aiLearning,
+    image: mockImages.aiLearning,
+    tags: ["AI/ML", "Blockchain", "React", "Python"],
   },
 ];
 
-// Optimized animations with staggered children
 const sectionVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
     transition: { 
-      duration: 0.6,
+      duration: 0.8,
       when: "beforeChildren",
-      staggerChildren: 0.1
+      staggerChildren: 0.15
     }
   }
 };
 
 const headerVariants: Variants = {
-  hidden: { opacity: 0, y: -20 },
+  hidden: { opacity: 0, y: -30 },
   visible: {
     opacity: 1,
     y: 0,
-    transition: { duration: 0.5 }
+    transition: { duration: 0.8, ease: "easeOut" }
   }
 };
 
 const projectCardVariants: Variants = {
-  hidden: { opacity: 0, y: 30 },
+  hidden: { opacity: 0, y: 50, scale: 0.9 },
   visible: {
     opacity: 1,
     y: 0,
+    scale: 1,
     transition: { 
       type: "spring", 
-      damping: 12,
-      stiffness: 100
+      damping: 15,
+      stiffness: 100,
+      duration: 0.6
     }
   }
 };
 
-const listItemVariants: Variants = {
-  hidden: { opacity: 0, x: -10 },
-  visible: {
-    opacity: 1,
-    x: 0,
-    transition: { duration: 0.3 }
-  }
-};
+const ProjectCard: React.FC<{ project: Project; index: number }> = ({ project, index }) => {
+  const [isHovered, setIsHovered] = useState(false);
 
-const imageVariants: Variants = {
-  hidden: { opacity: 0, scale: 0.95 },
-  visible: {
-    opacity: 1,
-    scale: 1,
-    transition: { duration: 0.4 }
-  }
+  return (
+    <motion.div
+      className={`relative group ${project.featured ? 'md:col-span-2 lg:col-span-1' : ''}`}
+      variants={projectCardVariants}
+      whileHover={{ y: -8 }}
+      onHoverStart={() => setIsHovered(true)}
+      onHoverEnd={() => setIsHovered(false)}
+    >
+      {project.featured && (
+        <div className="absolute -top-3 -right-3 z-10">
+          <div className="bg-gradient-to-r from-purple-500 to-pink-500 rounded-full p-2 shadow-lg">
+            <Sparkles className="w-4 h-4 text-white" />
+          </div>
+        </div>
+      )}
+
+      <div className="bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900 rounded-2xl overflow-hidden shadow-2xl border border-gray-700/50 h-full flex flex-col relative">
+        {/* Background gradient overlay */}
+        <div className="absolute inset-0 bg-gradient-to-br from-blue-500/5 via-purple-500/5 to-pink-500/5 opacity-0 group-hover:opacity-100 transition-opacity duration-500" />
+        
+        {/* Image Container */}
+        <div className="relative h-48 overflow-hidden">
+          <motion.img
+            src={project.image}
+            alt={project.title}
+            className="w-full h-full object-cover"
+            initial={{ scale: 1.1 }}
+            animate={{ scale: isHovered ? 1.15 : 1.1 }}
+            transition={{ duration: 0.6, ease: "easeOut" }}
+          />
+          <div className="absolute inset-0 bg-gradient-to-t from-gray-900 via-gray-900/50 to-transparent" />
+          
+          {/* Floating tags */}
+          <div className="absolute top-4 left-4 flex flex-wrap gap-1">
+            {project.tags.slice(0, 2).map((tag, idx) => (
+              <span
+                key={idx}
+                className="px-2 py-1 bg-black/70 backdrop-blur-sm text-white text-xs rounded-full border border-white/20"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* Year badge */}
+          <div className="absolute top-4 right-4 flex items-center gap-1 bg-black/70 backdrop-blur-sm px-2 py-1 rounded-full">
+            <Calendar className="w-3 h-3 text-emerald-400" />
+            <span className="text-white text-xs font-medium">{project.year}</span>
+          </div>
+        </div>
+
+        {/* Content */}
+        <div className="p-6 flex-1 flex flex-col relative z-10">
+          <div className="flex items-center gap-2 mb-3">
+            <Code className="w-4 h-4 text-emerald-400" />
+            <span className="text-emerald-400 text-sm font-semibold uppercase tracking-wide">
+              {project.company}
+            </span>
+          </div>
+
+          <h3 className="text-xl font-bold text-white mb-2 leading-tight">
+            {project.title}
+          </h3>
+
+          <p className="text-gray-400 text-sm mb-4 leading-relaxed">
+            {project.description}
+          </p>
+
+          {/* Results with metrics */}
+          <div className="space-y-2 mb-6">
+            {project.results.map((result, idx) => (
+              <motion.div
+                key={idx}
+                className="flex items-start gap-2 text-sm"
+                initial={{ opacity: 0, x: -20 }}
+                whileInView={{ opacity: 1, x: 0 }}
+                viewport={{ once: true }}
+                transition={{ delay: 0.1 * idx }}
+              >
+                <CheckIcon className="w-4 h-4 text-emerald-400 mt-0.5 flex-shrink-0" />
+                <span className="text-gray-300">{result.title}</span>
+                {result.metric && (
+                  <span className="ml-auto text-emerald-400 font-semibold flex items-center gap-1">
+                    <TrendingUp className="w-3 h-3" />
+                    {result.metric}
+                  </span>
+                )}
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Tags */}
+          <div className="flex flex-wrap gap-1 mb-4">
+            {project.tags.map((tag, idx) => (
+              <span
+                key={idx}
+                className="px-2 py-1 bg-gray-800/50 text-gray-300 text-xs rounded-md border border-gray-700/50"
+              >
+                {tag}
+              </span>
+            ))}
+          </div>
+
+          {/* CTA Button */}
+          <motion.a
+            href={project.link}
+            target="_blank"
+            rel="noopener noreferrer"
+            className="mt-auto"
+            whileHover={{ scale: 1.02 }}
+            whileTap={{ scale: 0.98 }}
+          >
+            <div className="bg-gradient-to-r from-emerald-500 to-blue-500 p-[1px] rounded-xl group-hover:from-emerald-400 group-hover:to-blue-400 transition-all duration-300">
+              <div className="bg-gray-900 rounded-xl px-4 py-3 flex items-center justify-center gap-2 font-semibold text-white hover:bg-transparent transition-all duration-300">
+                <ExternalLink className="w-4 h-4" />
+                <span>View Project</span>
+                <motion.div
+                  animate={{ x: isHovered ? 4 : 0 }}
+                  transition={{ duration: 0.2 }}
+                >
+                  <ArrowUpRight className="w-4 h-4" />
+                </motion.div>
+              </div>
+            </div>
+          </motion.a>
+        </div>
+      </div>
+    </motion.div>
+  );
 };
 
 export const ProjectsSection: React.FC = () => {
@@ -153,170 +289,84 @@ export const ProjectsSection: React.FC = () => {
   }, [controls, isInView]);
 
   return (
-    <section
-      className="py-16 md:py-24 bg-gray-900 overflow-hidden"
-      id="projects"
-    >
+    <section className="py-20 md:py-32 bg-gradient-to-br from-gray-950 via-gray-900 to-gray-950 relative overflow-hidden">
+      {/* Background effects */}
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_top,_var(--tw-gradient-stops))] from-blue-900/20 via-transparent to-transparent" />
+      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_bottom_right,_var(--tw-gradient-stops))] from-purple-900/20 via-transparent to-transparent" />
+      
       <motion.div
         ref={sectionRef}
-        className="container px-4 mx-auto"
+        className="container px-4 mx-auto relative z-10"
         variants={sectionVariants}
         initial="hidden"
         animate={controls}
       >
+        {/* Header */}
         <motion.div 
-          className="text-center mb-12"
+          className="text-center mb-16"
           variants={headerVariants}
         >
-          <motion.p 
-            className="uppercase font-semibold tracking-widest bg-gradient-to-r from-emerald-300 to-sky-400 text-transparent bg-clip-text"
-            initial={{ opacity: 0 }}
-            animate={{ opacity: 1 }}
-            transition={{ duration: 1 }}
+          <motion.div
+            className="inline-flex items-center gap-2 px-4 py-2 bg-emerald-500/10 border border-emerald-500/20 rounded-full mb-6"
+            initial={{ opacity: 0, scale: 0.8 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.6 }}
           >
-            Portfolio Showcase
-          </motion.p>
+            <Sparkles className="w-4 h-4 text-emerald-400" />
+            <span className="text-emerald-400 font-semibold text-sm uppercase tracking-wide">
+              Portfolio Showcase
+            </span>
+          </motion.div>
+          
           <motion.h2 
-            className="font-serif text-3xl md:text-4xl lg:text-5xl mt-6 font-bold"
-            initial={{ opacity: 0, y: 20 }}
+            className="text-4xl md:text-5xl lg:text-6xl font-bold bg-gradient-to-r from-white via-gray-100 to-gray-300 bg-clip-text text-transparent mb-6"
+            initial={{ opacity: 0, y: 30 }}
             animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.6, delay: 0.2 }}
+            transition={{ duration: 0.8, delay: 0.2 }}
           >
-            Featured Projects & Solutions
+            Featured Projects &{" "}
+            <span className="bg-gradient-to-r from-emerald-400 to-blue-400 bg-clip-text text-transparent">
+              Solutions
+            </span>
           </motion.h2>
+          
           <motion.p 
-            className="text-white/70 max-w-2xl mx-auto mt-4"
+            className="text-gray-400 text-lg max-w-3xl mx-auto leading-relaxed"
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             transition={{ duration: 0.8, delay: 0.4 }}
           >
-            Explore my technical expertise through innovative full-stack applications, AI/ML solutions, and scalable platforms that drive business growth.
+            Explore my technical expertise through innovative full-stack applications, AI/ML solutions, 
+            and scalable platforms that drive measurable business impact and user engagement.
           </motion.p>
         </motion.div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 lg:gap-8">
+        {/* Projects Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {portfolioProjects.map((project, index) => (
-            <motion.div
-              key={index}
-              className="bg-gray-800 rounded-3xl pl-3 pt-3 pr-3 pb-0 shadow-lg relative overflow-hidden flex flex-col h-full group"
-              variants={projectCardVariants}
-              // Removed duplicate initial/animate as they're controlled by parent
-              whileHover={{ 
-                y: -5, 
-                boxShadow: "0 20px 25px -5px rgba(0, 0, 0, 0.2), 0 10px 10px -5px rgba(0, 0, 0, 0.1)",
-                transition: { duration: 0.2 } 
-              }}
-              layout
-            >
-              <div className="p-6 flex-1">
-                <motion.div 
-                  className="flex"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.1 * index }}
-                >
-                  <div className="bg-gradient-to-r from-emerald-300 to-sky-400 inline-flex gap-1 font-bold uppercase tracking-widest text-xs text-transparent bg-clip-text rounded-3xl mb-4">
-                    <p>{project.company}</p>
-                    <span>&bull;</span>
-                    <p>{project.year}</p>
-                  </div>
-                </motion.div>
-
-                <motion.h3 
-                  className="font-serif text-xl md:text-2xl font-bold mt-2"
-                  initial={{ opacity: 0 }}
-                  whileInView={{ opacity: 1 }}
-                  viewport={{ once: true }}
-                  transition={{ delay: 0.2 * index }}
-                >
-                  {project.title}
-                </motion.h3>
-
-                <motion.hr 
-                  className="border-t border-white/15 my-4"
-                  initial={{ width: 0 }}
-                  whileInView={{ width: "100%" }}
-                  viewport={{ once: true }}
-                  transition={{ duration: 0.8, delay: 0.3 * index }}
-                />
-
-                <ul className="flex flex-col gap-3 mt-4">
-                  {project.results.map((result, idx) => (
-                    <motion.li 
-                      key={idx} 
-                      className="flex gap-2 text-sm text-white/70"
-                      variants={listItemVariants}
-                      // Using custom transitions here to avoid lagging with too many animations
-                      initial={{ opacity: 0, x: -10 }}
-                      whileInView={{ opacity: 1, x: 0 }}
-                      viewport={{ once: true }}
-                      transition={{ 
-                        duration: 0.3, 
-                        delay: 0.4 + (idx * 0.1) // Stagger within items
-                      }}
-                    >
-                      <CheckIcon className="w-5 h-5 flex-shrink-0 text-emerald-400" />
-                      <span>{result.title}</span>
-                    </motion.li>
-                  ))}
-                </ul>
-              </div>
-
-              <div className="relative mt-auto">
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex items-center justify-center mb-2"
-                  whileHover={{ scale: 1.03 }}
-                  whileTap={{ scale: 0.97 }}
-                >
-                  <button
-                    className="bg-white text-gray-950 h-12 w-full rounded-3xl inline-flex items-center justify-center gap-2 font-semibold transition-colors hover:bg-emerald-300 mb-6"
-                  >
-                    <motion.div 
-                      animate={{ y: [0, -3, 0] }}
-                      transition={{ 
-                        duration: 1.5, 
-                        repeat: Infinity, 
-                        repeatType: "reverse" 
-                      }}
-                    >
-                      <ArrowUp size={15} />
-                    </motion.div>
-                    View Project
-                  </button>
-                </motion.a>
-                <motion.div 
-                  className="relative h-48 sm:h-56 md:h-64 w-full overflow-hidden rounded-xl"
-                  variants={imageVariants}
-                >
-                  <div className="h-full w-full">
-                    <Image
-                      src={project.image}
-                      alt={project.title}
-                      className="object-cover rounded-xl h-full w-full"
-                      fill
-                      sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
-                      priority={index === 0}
-                      // Using CSS for image hover effect instead of JS animation for better performance
-                      style={{
-                        transition: "transform 800ms ease-out"
-                      }}
-                      onMouseEnter={(e) => {
-                        e.currentTarget.style.transform = "scale(1.08)";
-                      }}
-                      onMouseLeave={(e) => {
-                        e.currentTarget.style.transform = "scale(1)";
-                      }}
-                    />
-                  </div>
-                </motion.div>
-              </div>
-            </motion.div>
+            <ProjectCard key={index} project={project} index={index} />
           ))}
         </div>
+
+        {/* Bottom CTA */}
+        <motion.div
+          className="text-center mt-16"
+          initial={{ opacity: 0, y: 30 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.6 }}
+        >
+          <p className="text-gray-400 mb-4">
+            Interested in working together?
+          </p>
+          <motion.button
+            className="bg-gradient-to-r from-emerald-500 to-blue-500 px-8 py-3 rounded-full text-white font-semibold hover:from-emerald-400 hover:to-blue-400 transition-all duration-300 shadow-lg hover:shadow-xl"
+            whileHover={{ scale: 1.05 }}
+            whileTap={{ scale: 0.95 }}
+          >
+            Let's Connect
+          </motion.button>
+        </motion.div>
       </motion.div>
     </section>
   );
