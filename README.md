@@ -313,15 +313,15 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ## 📬 Contact & Support
 
-- **Portfolio**: [https://your-portfolio-url.com](https://your-portfolio-url.com)
+- **Portfolio**: [https://portfolio-sandy-seven-32.vercel.app/](Portfolio URL)
 - **GitHub**: [@Pawandasila](https://github.com/Pawandasila)
-- **Email**: your-email@example.com
-- **LinkedIn**: [Your LinkedIn Profile](https://linkedin.com/in/yourprofile)
+- **Email**: pawandasila06@gmail.com
+- **LinkedIn**: [Your LinkedIn Profile](https://www.linkedin.com/in/pawan-dasila-92483b251/)
 
 ### Get Help
-- 🐛 **Bug Reports**: [Create an issue](https://github.com/Pawandasila/portfolio-nextjs/issues)
-- 💡 **Feature Requests**: [Start a discussion](https://github.com/Pawandasila/portfolio-nextjs/discussions)
-- 📖 **Documentation**: [Visit the Wiki](https://github.com/Pawandasila/portfolio-nextjs/wiki)
+- 🐛 **Bug Reports**: [Create an issue](https://github.com/Pawandasila/portfolio/issues)
+- 💡 **Feature Requests**: [Start a discussion](https://github.com/Pawandasila/portfolio/discussions)
+- 📖 **Documentation**: [Visit the Wiki](https://github.com/Pawandasila/portfolio/wiki)
 
 ---
 
