@@ -77,10 +77,10 @@
 ## 📸 Screenshots
 
 ### Desktop View
-![Desktop Portfolio](./public/screenshots/Desktop_view.png)
+![Desktop Portfolio](public/Desktop_view.png)
 
 ### Mobile Responsive
-![Mobile Portfolio](./public/screenshots/Phone_view.png)
+![Mobile Portfolio](public/Phone_view.png)
 
 
 ## 🚀 Quick Start
