@@ -77,16 +77,11 @@
 ## 📸 Screenshots
 
 ### Desktop View
-![Desktop Portfolio](./public/screenshots/desktop-view.png)
+![Desktop Portfolio](./public/screenshots/Desktop_view.png)
 
 ### Mobile Responsive
-![Mobile Portfolio](./public/screenshots/mobile-view.png)
+![Mobile Portfolio](./public/screenshots/Phone_view.png)
 
-### Dark Mode
-![Dark Mode](./public/screenshots/dark-mode.png)
-
-### Project Modal
-![Project Modal](./public/screenshots/project-modal.png)
 
 ## 🚀 Quick Start
 
