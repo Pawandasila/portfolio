@@ -74,14 +74,6 @@
 - **Husky** - Git hooks
 - **PostCSS** - CSS processing
 
-## 📸 Screenshots
-
-### Desktop View
-![Desktop Portfolio](public/Desktop_view.png)
-
-### Mobile Responsive
-![Mobile Portfolio](public/Phone_view.png)
-
 
 ## 🚀 Quick Start
 
