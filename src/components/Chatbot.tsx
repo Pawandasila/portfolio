@@ -21,7 +21,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
-      text: "Hey there! 👋✨ I'm Pawan's AI buddy and his biggest fan! 🤖💜 I know everything about him - his incredible projects, amazing skills, his love for cricket (especially Dhoni! 🏏), his favorite singer Arijit Singh 🎵, and why he's such an awesome developer! 🚀\n\nWhat would you like to discover about Pawan today? I'm super excited to share his story! 😊🌟",
+      text: "Hey there! 👋✨ I'm Pawan's AI buddy and his biggest fan! 🤖💜 I know everything about him - his incredible projects, amazing skills,  and why he's such an awesome developer! 🚀\n\nWhat would you like to discover about Pawan today? I'm super excited to share his story! 😊🌟",
       isBot: true,
       timestamp: new Date(),
     },

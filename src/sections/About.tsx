@@ -140,7 +140,7 @@ export const AboutSection = () => {
             {/* CTA Buttons */}
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <motion.a
-                href="https://drive.google.com/file/d/1gSECragqRdHekRGBoel587CEIvDOCBqL/view?usp=drive_link"
+                href="https://drive.google.com/file/d/1qdINlpTnvoiKdPMQYVpYVrsSAN8jt-d9/view?usp=sharing"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-sky-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg hover:shadow-emerald-500/25"
