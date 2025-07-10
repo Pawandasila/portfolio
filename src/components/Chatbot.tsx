@@ -241,54 +241,74 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
             mass: 0.5,
           },
         }}
-        className="fixed bottom-0 right-0 w-96 md:w-96 sm:w-full sm:right-0 sm:left-0 sm:bottom-0 sm:m-0 bg-gradient-to-br from-purple-900 via-blue-900 to-indigo-900 rounded-2xl sm:rounded-none shadow-2xl z-50 border border-purple-500/30 backdrop-blur-sm overflow-hidden"
+        className="fixed bottom-4 right-4 w-96 md:w-96 sm:w-[calc(100vw-2rem)] sm:right-4 sm:left-4 bg-gradient-to-br from-slate-900/95 via-slate-800/95 to-slate-900/95 rounded-2xl shadow-2xl z-50 border border-emerald-500/20 backdrop-blur-lg overflow-hidden"
         style={{
           maxHeight: isMinimized ? "70px" : "calc(100vh - 80px)",
         }}
       >
-        {/* Fixed Header */}
-        <div className="bg-gradient-to-r from-purple-600 to-blue-600 p-4 flex justify-between items-center rounded-t-2xl sm:rounded-t-none relative z-10">
-          <div className="flex items-center space-x-3">
-            <div className="w-8 h-8 bg-green-400 rounded-full flex items-center justify-center shadow-lg">
-              <span className="text-sm">🤖</span>
-            </div>
+        {/* Enhanced Header with Glassmorphism */}
+        <div className="bg-gradient-to-r from-emerald-500/90 to-blue-500/90 backdrop-blur-sm p-4 flex justify-between items-center rounded-t-2xl relative">
+          {/* Animated background pattern */}
+          <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-blue-400/20 opacity-50">
+            <motion.div
+              className="absolute inset-0 bg-[linear-gradient(45deg,transparent_25%,rgba(255,255,255,0.1)_50%,transparent_75%)]"
+              animate={{ x: [-100, 400] }}
+              transition={{ duration: 3, repeat: Infinity, ease: "linear" }}
+            />
+          </div>
+          
+          <div className="flex items-center space-x-3 relative z-10">
+            <motion.div 
+              className="w-10 h-10 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full flex items-center justify-center shadow-lg border-2 border-white/20"
+              animate={{ 
+                rotate: [0, 10, -10, 0],
+                scale: [1, 1.05, 1]
+              }}
+              transition={{ 
+                duration: 3, 
+                repeat: Infinity,
+                ease: "easeInOut"
+              }}
+            >
+              <span className="text-lg">🤖</span>
+            </motion.div>
             <div>
-              <h3 className="text-white font-semibold text-sm">
-                Pawan's AI Buddy
+              <h3 className="text-white font-bold text-sm drop-shadow-sm">
+                Pawan's AI Assistant
               </h3>
               <div className="flex items-center space-x-1">
-                <div className="w-2 h-2 bg-green-400 rounded-full animate-pulse"></div>
-                <p className="text-purple-200 text-xs">Online & Ready!</p>
+                <motion.div 
+                  className="w-2 h-2 bg-green-400 rounded-full shadow-sm"
+                  animate={{ 
+                    scale: [1, 1.3, 1],
+                    opacity: [1, 0.7, 1]
+                  }}
+                  transition={{ 
+                    duration: 2, 
+                    repeat: Infinity 
+                  }}
+                />
+                <p className="text-emerald-100 text-xs font-medium">Online & Ready!</p>
               </div>
             </div>
-          </div>{" "}
-          <div className="flex space-x-2">
+          </div>
+          
+          <div className="flex space-x-2 relative z-10">
             <motion.button
               onClick={() => setIsMinimized(!isMinimized)}
-              className="text-white hover:text-purple-200 transition-colors p-1 rounded-full hover:bg-purple-500/20"
+              className="text-white hover:text-emerald-200 transition-colors p-2 rounded-full hover:bg-white/10 backdrop-blur-sm"
               whileHover={{ scale: 1.1 }}
-              whileTap={{
-                scale: 0.9,
-                rotate: isMinimized ? 180 : -180,
-              }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 10,
-              }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
             </motion.button>
             <motion.button
               onClick={onClose}
-              className="text-white hover:text-red-300 transition-colors p-1 rounded-full hover:bg-red-500/20"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9, rotate: 90 }}
-              transition={{
-                type: "spring",
-                stiffness: 400,
-                damping: 10,
-              }}
+              className="text-white hover:text-red-300 transition-colors p-2 rounded-full hover:bg-red-500/10 backdrop-blur-sm"
+              whileHover={{ scale: 1.1, rotate: 90 }}
+              whileTap={{ scale: 0.9 }}
+              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <X size={16} />
             </motion.button>
@@ -329,143 +349,190 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
                   },
                 },
               }}
-              className="flex flex-col overflow-hidden sm:h-[calc(100vh-150px)]"
+              className="flex flex-col overflow-hidden"
             >
-              {/* Scrollable Messages Area - No heavy animations */}
-              <div className="flex-1 overflow-y-auto px-4 py-3 space-y-3 bg-gray-800/50 scrollbar-thin scrollbar-thumb-purple-600 scrollbar-track-gray-700">
-                {" "}
-                {messages.map((message) => (
+              {/* Enhanced Messages Area */}
+              <div className="flex-1 overflow-y-auto px-4 py-4 space-y-4 bg-gradient-to-b from-slate-800/30 to-slate-900/50 backdrop-blur-sm custom-scrollbar">
+                {messages.map((message, index) => (
                   <motion.div
                     key={message.id}
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     transition={{
                       type: "spring",
                       stiffness: 300,
                       damping: 20,
-                      delay: 0.1,
+                      delay: index * 0.05,
                     }}
                     className={`flex ${
                       message.isBot ? "justify-start" : "justify-end"
                     }`}
                   >
-                    {" "}
-                    <div
-                      className={`max-w-[85%] sm:max-w-[90%] rounded-2xl p-3 ${
+                    <motion.div
+                      className={`max-w-[85%] rounded-2xl p-4 relative ${
                         message.isBot
-                          ? "bg-gray-700 text-white"
-                          : "bg-gradient-to-r from-purple-500 to-blue-500 text-white"
+                          ? "bg-gradient-to-br from-slate-700/90 to-slate-800/90 text-white border border-emerald-500/20"
+                          : "bg-gradient-to-br from-emerald-500 to-blue-500 text-white shadow-lg"
                       }`}
+                      whileHover={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     >
+                      {/* Message bubble tail */}
+                      <div className={`absolute top-3 ${
+                        message.isBot 
+                          ? "-left-2 border-r-8 border-r-slate-700 border-t-8 border-t-transparent border-b-8 border-b-transparent" 
+                          : "-right-2 border-l-8 border-l-emerald-500 border-t-8 border-t-transparent border-b-8 border-b-transparent"
+                      }`} />
+                      
+                      {/* Bot avatar for bot messages */}
+                      {message.isBot && (
+                        <motion.div 
+                          className="absolute -left-8 top-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center text-xs"
+                          animate={{ rotate: [0, 10, -10, 0] }}
+                          transition={{ duration: 3, repeat: Infinity }}
+                        >
+                          🤖
+                        </motion.div>
+                      )}
+                      
                       <div className="text-sm leading-relaxed">
                         {message.isBot
                           ? renderMessageContent(message.text)
                           : message.text}
                       </div>
-                      <div
-                        className={`text-xs mt-1 opacity-70 ${
-                          message.isBot ? "text-gray-300" : "text-purple-100"
-                        }`}
-                      >
+                      <div className={`text-xs mt-2 opacity-70 ${
+                        message.isBot ? "text-emerald-300" : "text-blue-100"
+                      }`}>
                         {message.timestamp.toLocaleTimeString([], {
                           hour: "2-digit",
                           minute: "2-digit",
                         })}
                       </div>
-                    </div>
+                    </motion.div>
                   </motion.div>
-                ))}{" "}
+                ))}
+                
+                {/* Enhanced Loading Animation */}
                 {isLoading && (
                   <motion.div
-                    initial={{ opacity: 0, y: 20, scale: 0.8 }}
+                    initial={{ opacity: 0, y: 20, scale: 0.95 }}
                     animate={{ opacity: 1, y: 0, scale: 1 }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 15,
-                    }}
+                    exit={{ opacity: 0, y: -20, scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                     className="flex justify-start"
                   >
-                    <div className="bg-gray-700 rounded-2xl p-4 border border-purple-500/30">
-                      <div className="flex items-center space-x-2">
+                    <div className="bg-gradient-to-br from-slate-700/90 to-slate-800/90 rounded-2xl p-4 border border-emerald-500/20 relative">
+                      {/* Bot avatar for loading */}
+                      <motion.div 
+                        className="absolute -left-8 top-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center text-xs"
+                        animate={{ 
+                          rotate: [0, 360],
+                          scale: [1, 1.1, 1]
+                        }}
+                        transition={{ 
+                          rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+                          scale: { duration: 1, repeat: Infinity }
+                        }}
+                      >
+                        🤖
+                      </motion.div>
+                      
+                      <div className="flex items-center space-x-3">
                         <div className="flex space-x-1">
-                          <motion.div
-                            className="w-2 h-2 bg-purple-400 rounded-full"
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.5, 1, 0.5],
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              delay: 0,
-                            }}
-                          />
-                          <motion.div
-                            className="w-2 h-2 bg-blue-400 rounded-full"
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.5, 1, 0.5],
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              delay: 0.2,
-                            }}
-                          />
-                          <motion.div
-                            className="w-2 h-2 bg-purple-400 rounded-full"
-                            animate={{
-                              scale: [1, 1.5, 1],
-                              opacity: [0.5, 1, 0.5],
-                            }}
-                            transition={{
-                              duration: 1,
-                              repeat: Infinity,
-                              delay: 0.4,
-                            }}
-                          />
+                          {[0, 1, 2].map((i) => (
+                            <motion.div
+                              key={i}
+                              className="w-2 h-2 bg-emerald-400 rounded-full"
+                              animate={{
+                                scale: [1, 1.5, 1],
+                                opacity: [0.5, 1, 0.5],
+                              }}
+                              transition={{
+                                duration: 1.2,
+                                repeat: Infinity,
+                                delay: i * 0.2,
+                              }}
+                            />
+                          ))}
                         </div>
-                        <span className="text-purple-300 text-xs animate-pulse">
-                          Pawan's AI is thinking...
-                        </span>{" "}
+                        <span className="text-emerald-300 text-sm font-medium">
+                          Thinking...
+                        </span>
                       </div>
                     </div>
                   </motion.div>
                 )}
                 <div ref={messagesEndRef} />
-              </div>{" "}
-              {/* Fixed Input Area */}{" "}
-              <div className="p-4 sm:p-4 border-t border-gray-600 bg-gray-800 rounded-b-2xl sm:rounded-none">
-                <div className="flex space-x-3 sm:space-x-3">
-                  <input
-                    ref={inputRef}
-                    type="text"
-                    value={inputValue}
-                    onChange={(e) => setInputValue(e.target.value)}
-                    onKeyPress={handleKeyPress}
-                    placeholder="Ask me about Pawan! 😊"
-                    className="flex-1 bg-gray-700 text-white rounded-xl px-4 py-3 sm:px-4 sm:py-3 text-sm placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 transition-all border border-gray-600"
-                    disabled={isLoading}
-                  />{" "}
+              </div>
+              {/* Enhanced Input Area */}
+              <div className="p-4 border-t border-slate-700/50 bg-gradient-to-r from-slate-800/90 to-slate-900/90 backdrop-blur-sm rounded-b-2xl">
+                <div className="flex space-x-3 items-end">
+                  <div className="flex-1 relative">
+                    <motion.input
+                      ref={inputRef}
+                      type="text"
+                      value={inputValue}
+                      onChange={(e) => setInputValue(e.target.value)}
+                      onKeyPress={handleKeyPress}
+                      placeholder="Ask me about Pawan! 😊"
+                      className="w-full bg-slate-700/50 text-white rounded-xl px-4 py-3 text-sm placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-emerald-500/50 transition-all border border-slate-600/50 backdrop-blur-sm"
+                      disabled={isLoading}
+                      whileFocus={{ scale: 1.02 }}
+                      transition={{ type: "spring", stiffness: 300, damping: 20 }}
+                    />
+                    {/* Input glow effect */}
+                    <motion.div
+                      className="absolute inset-0 rounded-xl bg-gradient-to-r from-emerald-500/20 to-blue-500/20 pointer-events-none"
+                      initial={{ opacity: 0 }}
+                      animate={{ opacity: inputValue ? 0.3 : 0 }}
+                      transition={{ duration: 0.3 }}
+                    />
+                  </div>
+                  
                   <motion.button
                     onClick={handleSendMessage}
                     disabled={isLoading || !inputValue.trim()}
-                    className="bg-gradient-to-r from-purple-500 to-blue-500 text-white rounded-xl px-4 py-3 sm:px-4 sm:py-3 hover:from-purple-600 hover:to-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed min-w-[44px] flex items-center justify-center"
+                    className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-xl px-4 py-3 hover:from-emerald-600 hover:to-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed min-w-[48px] flex items-center justify-center shadow-lg disabled:shadow-none relative overflow-hidden"
                     whileHover={{ scale: 1.05 }}
-                    whileTap={{
-                      scale: 0.95,
-                      rotate: [0, -10, 10, 0],
-                    }}
-                    transition={{
-                      type: "spring",
-                      stiffness: 400,
-                      damping: 10,
-                    }}
+                    whileTap={{ scale: 0.95 }}
+                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    <Send size={16} />{" "}
+                    {/* Button shine effect */}
+                    <motion.div
+                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
+                      animate={{ x: [-100, 100] }}
+                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
+                    />
+                    <motion.div
+                      animate={isLoading ? { rotate: 360 } : { rotate: 0 }}
+                      transition={{ duration: 1, repeat: isLoading ? Infinity : 0, ease: "linear" }}
+                    >
+                      <Send size={16} />
+                    </motion.div>
                   </motion.button>
                 </div>
+                
+                {/* Quick suggestion pills */}
+                {messages.length === 1 && !isLoading && (
+                  <motion.div
+                    initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ delay: 0.5, duration: 0.5 }}
+                    className="flex flex-wrap gap-2 mt-3"
+                  >
+                    {["Projects", "Skills", "Experience"].map((suggestion) => (
+                      <motion.button
+                        key={suggestion}
+                        onClick={() => setInputValue(`Tell me about Pawan's ${suggestion.toLowerCase()}`)}
+                        className="px-3 py-1.5 bg-slate-700/50 text-slate-300 text-xs rounded-full border border-slate-600/50 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
+                        whileHover={{ scale: 1.05 }}
+                        whileTap={{ scale: 0.95 }}
+                      >
+                        {suggestion}
+                      </motion.button>
+                    ))}
+                  </motion.div>
+                )}
               </div>
             </motion.div>
           )}

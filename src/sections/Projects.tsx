@@ -636,7 +636,7 @@ const EnhancedProjectCard = ({ project, index }: EnhancedProjectCardProps) => {
 
 export const ProjectsSection = () => {
   return (
-    <section className="py-24 bg-gradient-to-b from-gray-950 via-slate-900 to-gray-950 relative overflow-hidden">
+    <section className="py-24 relative overflow-hidden">
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-slate-800/20 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent" />

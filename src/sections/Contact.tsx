@@ -146,7 +146,6 @@ const Contact: FC = () => {
         </motion.div>
 
         <div className="md:flex gap-8 items-start">
-          {/* Left side - Card */}
           <motion.div
             className="md:w-1/2 mb-8 md:mb-0"
             style={{ opacity, y: translateY }}
@@ -222,19 +221,18 @@ const Contact: FC = () => {
             </motion.div>
           </motion.div>
 
-          {/* Right side - Links */}
           <motion.div 
             className="md:w-1/2 space-y-4"
             style={{ opacity, y: translateY }}
           >
-            <motion.h3 
+            {/* <motion.h3 
               className="text-xl font-semibold mb-4 text-indigo-200"
               initial={{ opacity: 0, x: 20 }}
               animate={isInView ? { opacity: 1, x: 0 } : { opacity: 0, x: 20 }}
               transition={{ duration: 0.6, delay: 0.3 }}
             >
               Connect With Me
-            </motion.h3>
+            </motion.h3> */}
 
             <div className="space-y-3">
               {contactLinks.map((link, index) => (

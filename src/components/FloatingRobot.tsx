@@ -445,13 +445,15 @@ const FloatingRobot: React.FC<FloatingRobotProps> = ({ onClick, isActive }) => {
   );
   return (
     <motion.div
-      className="fixed z-40 select-none"      style={{
+      className="fixed z-40 select-none"
+      style={{
         left: isMobile ? 20 : 100,
         top: isMobile ? 100 : 100,
       }}
       drag
       dragMomentum={false}
-      dragElastic={0.1}      dragConstraints={{
+      dragElastic={0.1}
+      dragConstraints={{
         left: 0,
         right: typeof window !== 'undefined' ? window.innerWidth - (isMobile ? 80 : 120) : 1000,
         top: 0,
@@ -464,7 +466,8 @@ const FloatingRobot: React.FC<FloatingRobotProps> = ({ onClick, isActive }) => {
       whileTap={{ scale: 0.95 }}
       whileDrag={{ scale: 1.1, rotate: 5 }}
       animate={{
-        y: [0, -10, 0], // Enhanced floating animation
+        y: [0, -10, 0],
+        rotate: isActive ? [0, 5, -5, 0] : [0, 2, -2, 0],
       }}
       transition={{
         y: {
@@ -472,15 +475,52 @@ const FloatingRobot: React.FC<FloatingRobotProps> = ({ onClick, isActive }) => {
           repeat: Infinity,
           ease: "easeInOut",
         },
+        rotate: {
+          duration: isActive ? 1.5 : 4,
+          repeat: Infinity,
+          ease: "easeInOut",
+        },
         scale: { duration: 0.2 },
-        rotate: { duration: 0.2 },
       }}
     >
+      {/* Enhanced Glow Effect */}
+      <motion.div
+        className="absolute inset-0 rounded-full bg-gradient-to-r from-emerald-400/30 to-blue-400/30 blur-xl scale-150"
+        animate={{
+          scale: [1.2, 1.6, 1.2],
+          opacity: [0.3, 0.6, 0.3]
+        }}
+        transition={{
+          duration: 3,
+          repeat: Infinity,
+          ease: "easeInOut"
+        }}
+      />
+      
       <RobotSVG />
+      
+      {/* Notification Badge */}
+      {!isActive && (
+        <motion.div
+          className="absolute -top-2 -right-2 w-5 h-5 bg-gradient-to-r from-red-500 to-pink-500 rounded-full flex items-center justify-center shadow-lg border-2 border-white"
+          animate={{
+            scale: [1, 1.3, 1],
+            rotate: [0, 15, -15, 0]
+          }}
+          transition={{
+            duration: 2,
+            repeat: Infinity
+          }}
+          initial={{ scale: 0 }}
+          whileInView={{ scale: 1 }}
+        >
+          <span className="text-xs text-white font-bold">💬</span>
+        </motion.div>
+      )}
         {/* Enhanced interaction hint */}
       {!isActive && !isDragging && (
         <motion.div
-          className="absolute -top-12 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-purple-600 to-blue-600 text-white text-xs sm:text-xs px-2 sm:px-3 py-1 sm:py-2 rounded-full whitespace-nowrap shadow-lg border border-purple-400 max-w-[200px] sm:max-w-none text-center"
+          className="absolute -top-14 left-1/2 transform -translate-x-1/2 bg-gradient-to-r from-emerald-600 to-blue-600 text-white text-xs px-3 py-2 rounded-full whitespace-nowrap shadow-xl border border-emerald-400/50 backdrop-blur-sm"
           animate={{
             opacity: [0, 1, 1, 0],
             y: [0, -8, -8, 0],
@@ -489,10 +529,10 @@ const FloatingRobot: React.FC<FloatingRobotProps> = ({ onClick, isActive }) => {
           transition={{
             duration: 4,
             repeat: Infinity,
-            delay: 6,
+            delay: 3,
           }}
         >
-          <span className="flex items-center gap-1 justify-center text-[10px] sm:text-xs">
+          <span className="flex items-center gap-1 justify-center font-medium">
             <span className="hidden sm:inline">🎮 Drag me around or</span>
             <span className="sm:hidden">Tap to</span> click to chat! ✨
           </span>
