@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { motion, AnimatePresence } from "framer-motion";
-import { StaticImageData } from "next/image";
 import {
   ExternalLink,
   Calendar,
@@ -26,6 +25,8 @@ import aiLearning from "@/assets/images/ai-learning.png";
 import jobImage from "@/assets/images/job.png";
 import yogaImage from "@/assets/images/Yoga.png";
 import ai from "@/assets/images/ai.png";
+import photobooth from "@/assets/images/photobooth.png";
+
 import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
 
 
@@ -215,6 +216,40 @@ const portfolioProjects: Project[] = [
       "Real-time AI content generation",
       "Enterprise-grade security",
       "Scalable cloud architecture",
+    ],
+  },
+  {
+    company: "Full-Stack Development",
+    year: "2025",
+    title: "Photobooth - Recall your memories",
+    shortDescription:
+      "A platform for capturing and sharing memories through photos",
+    description:
+      "A platform for capturing and sharing memories through photos and videos. Features include real-time collaboration, cloud storage, and advanced editing tools.",
+    results: [
+      { title: "Active user base", metric: "7 users", icon: "users" },
+      {
+        title: "Filters and effects",
+        metric: "5 sessions",
+        icon: "play",
+      },
+      {
+        title: "Downloadable memories",
+        metric: "10 visits",
+        icon: "activity",
+      },
+    ],
+    link: "https://photobooth-one-tau.vercel.app/",
+    github: "https://github.com/Pawandasila/photobooth",
+    image: photobooth ,
+    tags: ["React",  "Nextjs"],
+    status: "Live",
+    teamSize: 1,
+    duration: "10 days",
+    highlights: [
+      "Filters and effects",
+      "Customizable designs",
+      "Advanced editing tools",
     ],
   },
 ];
