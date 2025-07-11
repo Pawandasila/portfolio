@@ -127,7 +127,7 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
       message.includes("full name") ||
       message.includes("called")
     ) {
-      return "His name is Pawan Dasila! 😊 That's his full name - simple, memorable, and perfect for a future tech star! He's currently a 3rd-year Computer Science student who's already making waves in the tech world! 🌟";
+      return "His name is Pawan Dasila! 😊 That's his full name - simple, memorable, and perfect for a future tech star! He's currently a 4th-year Computer Science student who's already making waves in the tech world! 🌟";
     }
 
     if (message.includes("project") || message.includes("work")) {
@@ -365,11 +365,29 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
                       delay: index * 0.05,
                     }}
                     className={`flex ${
-                      message.isBot ? "justify-start" : "justify-end"
+                      message.isBot ? "justify-start items-start" : "justify-end"
                     }`}
                   >
+                    {/* Bot avatar for bot messages - positioned before message */}
+                    {message.isBot && (
+                      <motion.div 
+                        className="w-8 h-8 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full flex items-center justify-center text-sm mr-3 mt-1 shadow-lg border-2 border-emerald-300/30 flex-shrink-0"
+                        animate={{ 
+                          rotate: [0, 10, -10, 0],
+                          scale: [1, 1.05, 1]
+                        }}
+                        transition={{ 
+                          duration: 3, 
+                          repeat: Infinity,
+                          ease: "easeInOut"
+                        }}
+                      >
+                        🤖
+                      </motion.div>
+                    )}
+                    
                     <motion.div
-                      className={`max-w-[85%] rounded-2xl p-4 relative ${
+                      className={`max-w-[80%] rounded-2xl p-4 relative ${
                         message.isBot
                           ? "bg-gradient-to-br from-slate-700/90 to-slate-800/90 text-white border border-emerald-500/20"
                           : "bg-gradient-to-br from-emerald-500 to-blue-500 text-white shadow-lg"
@@ -383,17 +401,6 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
                           ? "-left-2 border-r-8 border-r-slate-700 border-t-8 border-t-transparent border-b-8 border-b-transparent" 
                           : "-right-2 border-l-8 border-l-emerald-500 border-t-8 border-t-transparent border-b-8 border-b-transparent"
                       }`} />
-                      
-                      {/* Bot avatar for bot messages */}
-                      {message.isBot && (
-                        <motion.div 
-                          className="absolute -left-8 top-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center text-xs"
-                          animate={{ rotate: [0, 10, -10, 0] }}
-                          transition={{ duration: 3, repeat: Infinity }}
-                        >
-                          🤖
-                        </motion.div>
-                      )}
                       
                       <div className="text-sm leading-relaxed">
                         {message.isBot
@@ -419,23 +426,26 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
                     animate={{ opacity: 1, y: 0, scale: 1 }}
                     exit={{ opacity: 0, y: -20, scale: 0.95 }}
                     transition={{ type: "spring", stiffness: 300, damping: 20 }}
-                    className="flex justify-start"
+                    className="flex justify-start items-start"
                   >
+                    {/* Bot avatar for loading */}
+                    <motion.div 
+                      className="w-8 h-8 bg-gradient-to-r from-emerald-400 to-green-400 rounded-full flex items-center justify-center text-sm mr-3 mt-1 shadow-lg border-2 border-emerald-300/30 flex-shrink-0"
+                      animate={{ 
+                        rotate: [0, 360],
+                        scale: [1, 1.1, 1]
+                      }}
+                      transition={{ 
+                        rotate: { duration: 2, repeat: Infinity, ease: "linear" },
+                        scale: { duration: 1, repeat: Infinity }
+                      }}
+                    >
+                      🤖
+                    </motion.div>
+                    
                     <div className="bg-gradient-to-br from-slate-700/90 to-slate-800/90 rounded-2xl p-4 border border-emerald-500/20 relative">
-                      {/* Bot avatar for loading */}
-                      <motion.div 
-                        className="absolute -left-8 top-2 w-6 h-6 bg-emerald-400 rounded-full flex items-center justify-center text-xs"
-                        animate={{ 
-                          rotate: [0, 360],
-                          scale: [1, 1.1, 1]
-                        }}
-                        transition={{ 
-                          rotate: { duration: 2, repeat: Infinity, ease: "linear" },
-                          scale: { duration: 1, repeat: Infinity }
-                        }}
-                      >
-                        🤖
-                      </motion.div>
+                      {/* Message bubble tail */}
+                      <div className="absolute top-3 -left-2 border-r-8 border-r-slate-700 border-t-8 border-t-transparent border-b-8 border-b-transparent" />
                       
                       <div className="flex items-center space-x-3">
                         <div className="flex space-x-1">

@@ -284,7 +284,7 @@ export const SkillsSection: React.FC = () => {
           </h2>{" "}
           <p className="text-gray-300 text-center max-w-3xl mx-auto">
             Technical skills developed through coursework, personal projects, and internship experience.
-            As a 3rd-year student, I'm focused on building strong foundations in full-stack development
+            As a 4th-year student, I'm focused on building strong foundations in full-stack development
             and modern web technologies.
           </p>
         </motion.div>{" "}

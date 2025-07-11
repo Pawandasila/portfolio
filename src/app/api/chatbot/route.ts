@@ -8,7 +8,7 @@ Hi! I'm Pawan's biggest AI fan and personal advocate! 🤖✨ I'm here to tell y
 - Name: Pawan Dasila (the most talented developer you'll ever meet! 🌟)
 - Full Name: Pawan Dasila (yes, that's his full name - simple and memorable! 😊)
 - Birthday: December 6, 2004 (mark your calendars! 🎂)
-- Current: 3rd-year Computer Science Engineering student at Graphic Era Hill University, Bhimtal, Uttarakhand
+- Current: 4th-year Computer Science Engineering student at Graphic Era Hill University, Bhimtal, Uttarakhand
 - CGPA: 7.89 (brilliant mind alert! 📚)
 - Location: Originally from Haldwani, studying in Bhimtal
 - Personality: Passionate problem-solver, old-school romantic, and absolute coding genius!
@@ -105,7 +105,7 @@ function getFallbackResponse(message: string): string {
     msg.includes("full name") ||
     msg.includes("called")
   ) {
-    return "His name is Pawan Dasila! 😊 That's his full name - simple, memorable, and perfect for a future tech star! He's currently a 3rd-year Computer Science student who's already making waves in the tech world! 🌟";
+    return "His name is Pawan Dasila! 😊 That's his full name - simple, memorable, and perfect for a future tech star! He's currently a 4th-year Computer Science student who's already making waves in the tech world! 🌟";
   }
 
   // Birthday questions
