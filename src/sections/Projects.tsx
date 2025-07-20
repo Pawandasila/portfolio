@@ -26,7 +26,7 @@ import jobImage from "@/assets/images/job.png";
 import yogaImage from "@/assets/images/Yoga.png";
 import ai from "@/assets/images/ai.png";
 import photobooth from "@/assets/images/photobooth.png";
-
+import ThumbnailGenerator from '@/assets/images/Thumbnail-generator.png';
 import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
 
 
@@ -252,6 +252,50 @@ const portfolioProjects: Project[] = [
       "Advanced editing tools",
     ],
   },
+  {
+  company: "Full-Stack Development",
+  year: "2025", 
+  title: "TrendTide - YouTube Analytics & AI Content Creation",
+  shortDescription:
+    "AI-powered YouTube content creation and analytics platform for creators",
+  description:
+    "A comprehensive platform that empowers YouTube creators with AI-driven tools for thumbnail generation, content creation, competitor analysis, and performance insights. Features include advanced analytics, thumbnail search, outlier analysis, and automated content generation with seamless integrations.",
+  results: [
+    { title: "AI Thumbnails Generated", metric: "500K+", icon: "image" },
+    { title: "Active Creators", metric: "15K+", icon: "users" },
+    { title: "Content Pieces Created", metric: "248K+", icon: "edit" },
+    { title: "Performance Growth", metric: "98%", icon: "trending-up" },
+  ],
+  link: "",
+  github: "https://github.com/Pawandasila/youtube-analytics",
+  image:  ThumbnailGenerator, 
+  tags: [
+    "Next.js", 
+    "TypeScript", 
+    "Clerk Auth", 
+    "Neon DB", 
+    "Drizzle ORM",
+    "Inngest",
+    "Framer Motion",
+    "Tailwind CSS",
+    "AI/ML APIs",
+    "ImageKit"
+  ],
+  status: "Live",
+  teamSize: 1,
+  duration: "30 days",
+  highlights: [
+    "AI Thumbnail Generator with multiple style variations",
+    "Thumbnail Search & Competitor Analysis",
+    "AI Content Generator for titles, descriptions, and scripts", 
+    "Outlier Analysis for viral content insights",
+    "Advanced YouTube Analytics Dashboard",
+    "Multi-tier subscription plans (Free, Pro, Business)",
+    "Real-time processing with Inngest workflows",
+    "Responsive design with dark/light theme support"
+  ],
+}
+
 ];
 
 
@@ -453,25 +497,27 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
               </div>
 
               <div className="flex gap-4 pt-6">
-                <motion.a
-                  href={project.link}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  className="flex-1"
-                  whileHover={{ scale: 1.02 }}
-                  whileTap={{ scale: 0.98 }}
-                >
-                  <button className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 px-6 py-4 rounded-xl text-white font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
-                    <Eye className="w-5 h-5" />
-                    Live Demo
-                    <ExternalLink className="w-4 h-4" />
-                  </button>
-                </motion.a>
+                {project.link && project.link.trim() !== "" && (
+                  <motion.a
+                    href={project.link}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="flex-1"
+                    whileHover={{ scale: 1.02 }}
+                    whileTap={{ scale: 0.98 }}
+                  >
+                    <button className="w-full bg-gradient-to-r from-emerald-500 to-blue-500 hover:from-emerald-400 hover:to-blue-400 px-6 py-4 rounded-xl text-white font-semibold transition-all duration-300 flex items-center justify-center gap-2 shadow-lg">
+                      <Eye className="w-5 h-5" />
+                      Live Demo
+                      <ExternalLink className="w-4 h-4" />
+                    </button>
+                  </motion.a>
+                )}
                 <motion.a
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className="flex-1"
+                  className={project.link && project.link.trim() !== "" ? "flex-1" : "w-full"}
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >

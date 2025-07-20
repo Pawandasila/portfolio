@@ -70,8 +70,7 @@ export const AboutSection = () => {
 
   const stats = [
     { icon: Award, number: "3+", label: "Years Coding", color: "emerald" },
-    { icon: Briefcase, number: "2", label: "Internships", color: "blue" },
-    { icon: Code2, number: "5+", label: "Projects", color: "purple" },
+    { icon: Code2, number: "7+", label: "Projects", color: "purple" },
     { icon: Users, number: "500+", label: "Users Served", color: "yellow" },
   ];
   return (
