@@ -26,6 +26,7 @@ import jobImage from "@/assets/images/job.png";
 import yogaImage from "@/assets/images/Yoga.png";
 import ai from "@/assets/images/ai.png";
 import photobooth from "@/assets/images/photobooth.png";
+import financeDashboard from "@/assets/images/dashboard_.png";
 import ThumbnailGenerator from '@/assets/images/Thumbnail-generator.png';
 import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
 
@@ -294,8 +295,60 @@ const portfolioProjects: Project[] = [
     "Real-time processing with Inngest workflows",
     "Responsive design with dark/light theme support"
   ],
+},
+{
+  company: "Full-Stack Development",
+  year: "2025", 
+  title: "Finora - AI Finance Dashboard",
+  shortDescription:
+    "AI-powered personal finance management platform with automated transaction tracking and intelligent insights",
+  description:
+    "A comprehensive financial management platform that empowers users with AI-driven receipt scanning, automated recurring transactions, real-time analytics, and intelligent spending insights. Features include advanced financial reporting, transaction categorization, budget tracking, and automated email reports with seamless cloud integrations.",
+  results: [
+    { title: "Transactions Processed", metric: "10K+", icon: "credit-card" },
+    { title: "AI Receipts Scanned", metric: "2.5K+", icon: "scan" },
+    { title: "Monthly Reports Generated", metric: "500+", icon: "file-text" },
+    { title: "User Savings Tracked", metric: "₹2.5M+", icon: "trending-up" },
+  ],
+  link: "https://finance-dashboard-frontend-beta.vercel.app",
+  github: "https://github.com/Pawandasila/finance-dashboard-frontend",
+  image: financeDashboard,
+  tags: [
+    "Node.js",
+    "TypeScript", 
+    "Express.js",
+    "MongoDB",
+    "React",
+    "Redux Toolkit",
+    "JWT Auth",
+    "Passport.js",
+    "Google Gemini AI",
+    "Cloudinary",
+    "Resend Email",
+    "Recharts",
+    "Tailwind CSS",
+    "Zod Validation",
+    "Node Cron",
+    "Vercel"
+  ],
+  status: "Live",
+  teamSize: 1,
+  duration: "45 days",
+  highlights: [
+    "AI-powered receipt scanning with Google Gemini for automatic transaction extraction",
+    "Automated recurring transaction processing with smart scheduling",
+    "Real-time financial analytics dashboard with interactive charts",
+    "Intelligent expense categorization and budget tracking",
+    "Monthly financial report generation with email automation",
+    "Multi-currency support with precise decimal handling (paisa/cents)",
+    "Secure JWT authentication with Passport.js integration",
+    "RESTful API design with comprehensive error handling",
+    "Responsive design with dark/light theme support",
+    "Cloud file storage for receipt management",
+    "Background job processing for automated tasks",
+    "Comprehensive input validation and type safety"
+  ],
 }
-
 ];
 
 
