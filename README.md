@@ -315,7 +315,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 - **Portfolio**: [View Portfolio](https://portfolio-sandy-seven-32.vercel.app/)
 - **GitHub**: [@Pawandasila](https://github.com/Pawandasila)
-- **Email**: pawandasila06@gmail.com
+- **Email**: dasilapawan.dev@gmai.com
 - **LinkedIn**: [Pawan Dasila](https://www.linkedin.com/in/pawan-dasila-92483b251/)
 
 ### Get Help

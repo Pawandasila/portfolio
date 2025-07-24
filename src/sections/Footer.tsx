@@ -154,7 +154,7 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
             Available for full-time opportunities and exciting projects
           </motion.p>
           <motion.a 
-            href="mailto:pawandasila06@gmail.com" 
+            href="mailto:dasilapawan.dev@gmai.com" 
             className="text-blue-400 hover:text-blue-300 font-medium inline-flex items-center"
             whileHover={{ y: -3, color: "#93c5fd" }}
           >
@@ -162,7 +162,7 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
               <path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"></path>
               <polyline points="22,6 12,13 2,6"></polyline>
             </svg>
-            pawandasila06@gmail.com
+            dasilapawan.dev@gmai.com
           </motion.a>
         </motion.div>
       </div>
