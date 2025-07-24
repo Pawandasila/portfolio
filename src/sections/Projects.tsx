@@ -547,6 +547,7 @@ const EnhancedProjectCard = ({ project, index }: EnhancedProjectCardProps) => {
         whileInView={{ opacity: 1, y: 0 }}
         viewport={{ once: true }}
         transition={{ delay: index * 0.1, duration: 0.5 }}
+        id="projects"
       >
         <div className="relative h-48 overflow-hidden flex-shrink-0">
           <motion.img
