@@ -12,29 +12,29 @@ const Experience: FC = () => {
   });
 
   const experienceData = [
-    // {
-    //   id: 1,
-    //   company: "BharatPe",
-    //   position: "Full Stack Web Developer Intern",
-    //   location: "Delhi",
-    //   period: "Dec 2023 - Jan 2024",
-    //   description: [
-    //     "Developed responsive web applications using MongoDB, Express.js, React.js, and Node.js",
-    //     "Implemented RESTful APIs for efficient data management and client-server communication",
-    //   ],
-    //   technologies: [
-    //     "MongoDB",
-    //     "Express.js",
-    //     "React.js",
-    //     "Node.js",
-    //     "REST API",
-    //   ],
-    //   logoUrl:
-    //     "https://bp-wp-website-prod.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/09/bharatpe_logo.png",
-    //   color: "emerald",
-    // },
     {
       id: 1,
+      company: "BharatPe",
+      position: "Full Stack Web Developer Intern",
+      location: "Delhi",
+      period: "Dec 2023 - Jan 2024",
+      description: [
+        "Developed responsive web applications using MongoDB, Express.js, React.js, and Node.js",
+        "Implemented RESTful APIs for efficient data management and client-server communication",
+      ],
+      technologies: [
+        "MongoDB",
+        "Express.js",
+        "React.js",
+        "Node.js",
+        "REST API",
+      ],
+      logoUrl:
+        "https://bp-wp-website-prod.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/09/bharatpe_logo.png",
+      color: "emerald",
+    },
+    {
+      id: 2,
       company: "Greenfuel Energy Solutions",
       position: "Software Engineering Intern",
       location: "Remote",
