@@ -351,8 +351,6 @@ const portfolioProjects: Project[] = [
 }
 ];
 
-
-
 const getResultIcon = (iconName: string) => {
   const icons = {
     users: Users,
