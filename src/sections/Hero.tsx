@@ -274,14 +274,15 @@ export const HeroSection = () => {
               color: "from-sky-500 to-sky-600",
             }
           ].map((social, i) => (
-            <a
+            <Link
               key={i}
               href={social.url}
               aria-label={social.label}
+              target="_blank"
               className={`social-icon w-12 h-12 flex items-center justify-center rounded-full bg-gradient-to-b ${social.color} hover:scale-110 transition-all duration-300 shadow-lg hover:shadow-xl`}
             >
               {social.icon}
-            </a>
+            </Link>
           ))}
         </div>
 
