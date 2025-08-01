@@ -4,6 +4,7 @@ import React, { useState, useRef, useEffect } from "react";
 import { motion, AnimatePresence } from "framer-motion";
 import { X, Send, Minimize2, Maximize2 } from "lucide-react";
 import { toast } from "react-hot-toast";
+import ReactMarkdown from "react-markdown";
 
 interface Message {
   id: string;
@@ -46,46 +47,40 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
     }
   }, [isOpen, isMinimized]);
 
-  // Function to render message content with image support
+  // Function to render message content with markdown support
   const renderMessageContent = (text: string) => {
-    // Check for markdown image syntax: ![alt](url)
-    const imageRegex = /!\[([^\]]*)\]\(([^)]+)\)/g;
-    const parts = [];
-    let lastIndex = 0;
-    let match;
-
-    while ((match = imageRegex.exec(text)) !== null) {
-      // Add text before the image
-      if (match.index > lastIndex) {
-        parts.push(
-          <span key={`text-${lastIndex}`}>
-            {text.slice(lastIndex, match.index)}
-          </span>
-        );
-      }
-
-      // Add the image
-      parts.push(
-        <img
-          key={`img-${match.index}`}
-          src={match[2]}
-          alt={match[1]}
-          className="mt-2 rounded-lg max-w-full h-auto"
-          style={{ maxHeight: "200px" }}
-        />
-      );
-
-      lastIndex = imageRegex.lastIndex;
-    }
-
-    // Add remaining text after the last image
-    if (lastIndex < text.length) {
-      parts.push(
-        <span key={`text-${lastIndex}`}>{text.slice(lastIndex)}</span>
-      );
-    }
-
-    return parts.length > 0 ? parts : text;
+    return (
+      <div className="markdown-content">
+        <ReactMarkdown
+          components={{
+            // Custom styling for markdown elements
+            p: ({ children }) => <p className="mb-2 last:mb-0 text-white">{children}</p>,
+            strong: ({ children }) => <strong className="font-bold text-emerald-300">{children}</strong>,
+            em: ({ children }) => <em className="italic text-blue-300">{children}</em>,
+            img: ({ src, alt }) => (
+              <img
+                src={src}
+                alt={alt}
+                className="mt-2 rounded-lg max-w-full h-auto"
+                style={{ maxHeight: "200px" }}
+              />
+            ),
+            a: ({ href, children }) => (
+              <a
+                href={href}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="text-emerald-400 hover:text-emerald-300 underline"
+              >
+                {children}
+              </a>
+            ),
+          }}
+        >
+          {text}
+        </ReactMarkdown>
+      </div>
+    );
   };
 
   const generateBotResponse = async (userMessage: string): Promise<string> => {
