@@ -22,7 +22,6 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   gsap.registerPlugin(ScrollSmoother);
 
   const pathname = usePathname();
-  const navRef = useRef<HTMLDivElement>(null);
   const [activeItem, setActiveItem] = useState<string>("home");
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState<boolean>(false);
 
@@ -39,19 +38,6 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
   ];
 
   useEffect(() => {
-    // Add floating animation - but only on desktop
-    const isMobile = window.innerWidth < 768;
-    
-    if (navRef.current && !isMobile) {
-      gsap.to(navRef.current, {
-        y: 5,
-        duration: 2,
-        repeat: -1,
-        yoyo: true,
-        ease: "sine.inOut",
-      });
-    }
-
     // Set active item based on URL hash on page load
     const handleHashChange = () => {
       const hash = window.location.hash.replace("#", "");
@@ -126,7 +112,6 @@ export const Header: React.FC<HeaderProps> = ({ className = "" }) => {
     >
       {/* Desktop Navigation - Hidden on mobile */}
       <motion.nav
-        ref={navRef}
         className="hidden md:flex gap-1 p-0.5 border border-white/15 rounded-full bg-black/10 backdrop-blur-lg shadow-lg"
         initial="hidden"
         animate="visible"

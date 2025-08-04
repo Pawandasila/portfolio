@@ -127,15 +127,11 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
                 { opacity: 0, y: 20 }
               }
             >
-              <motion.div 
+              <div 
                 className="p-3 rounded-full bg-gray-800 bg-opacity-50"
-                whileHover={{ 
-                  boxShadow: "0 0 15px rgba(96, 165, 250, 0.3)",
-                  scale: 1.1
-                }}
               >
                 {social.svg}
-              </motion.div>
+              </div>
               <span className="sr-only">{social.name}</span>
             </motion.a>
           ))}
@@ -197,19 +193,11 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
         </p>
         <p className="text-sm text-gray-400 mt-2 md:mt-0 flex items-center">
           Designed & Built with{" "}
-          <motion.span 
+          <span 
             className="text-red-500 mx-1"
-            animate={{ 
-              scale: [1, 1.2, 1],
-            }}
-            transition={{ 
-              repeat: Infinity,
-              repeatType: "reverse",
-              duration: 1.5,
-            }}
           >
             ❤️
-          </motion.span>
+          </span>
         </p>
       </motion.div>
     </div>

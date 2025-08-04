@@ -109,27 +109,21 @@ export const AboutSection = () => {
             className="space-y-6 order-2 lg:order-1"
           >
             <div className="relative mx-auto lg:mx-0 w-80 h-80 group">
-              <motion.div
+              <div
                 className="absolute -top-4 -right-4 w-12 h-12 bg-emerald-500/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-emerald-500/30"
-                animate={{ y: [0, -10, 0] }}
-                transition={{ duration: 3, repeat: Infinity }}
               >
                 <Code2 className="w-6 h-6 text-emerald-400" />
-              </motion.div>
-              <motion.div
+              </div>
+              <div
                 className="absolute -bottom-4 -left-4 w-12 h-12 bg-blue-500/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-blue-500/30"
-                animate={{ y: [0, 10, 0] }}
-                transition={{ duration: 4, repeat: Infinity, delay: 1 }}
               >
                 <Brain className="w-6 h-6 text-blue-400" />
-              </motion.div>
-              <motion.div
+              </div>
+              <div
                 className="absolute top-1/2 -right-8 w-8 h-8 bg-purple-500/20 rounded-full flex items-center justify-center backdrop-blur-sm border border-purple-500/30"
-                animate={{ x: [0, 10, 0] }}
-                transition={{ duration: 5, repeat: Infinity, delay: 2 }}
               >
                 <Zap className="w-4 h-4 text-purple-400" />
-              </motion.div>
+              </div>
 
               <div className="absolute inset-0 bg-gradient-to-r from-emerald-400/20 to-sky-400/20 rounded-3xl rotate-3 transition-transform group-hover:rotate-6 duration-500"></div>
               <div className="relative bg-gray-800/80 backdrop-blur-sm rounded-3xl p-8 transition-transform group-hover:-rotate-3 duration-500 border border-gray-700/30">
@@ -157,15 +151,11 @@ export const AboutSection = () => {
                 };
 
                 return (
-                  <motion.div
+                  <div
                     key={index}
                     className={`bg-gray-800/60 backdrop-blur-sm border rounded-xl p-4 text-center hover:scale-105 transition-all duration-300 ${
                       colorMap[stat.color as keyof typeof colorMap]
                     }`}
-                    whileHover={{ scale: 1.05 }}
-                    initial={{ scale: 0 }}
-                    animate={isInView ? { scale: 1 } : { scale: 0 }}
-                    transition={{ delay: index * 0.1, duration: 0.5 }}
                   >
                     <div className="flex items-center justify-center mb-2">
                       <Icon
@@ -186,7 +176,7 @@ export const AboutSection = () => {
                       {stat.number}
                     </div>
                     <div className="text-xs text-gray-300">{stat.label}</div>
-                  </motion.div>
+                  </div>
                 );
               })}
             </div>
