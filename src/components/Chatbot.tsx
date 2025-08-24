@@ -289,24 +289,18 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
           </div>
           
           <div className="flex space-x-2 relative z-10">
-            <motion.button
+            <button
               onClick={() => setIsMinimized(!isMinimized)}
               className="text-white hover:text-emerald-200 transition-colors p-2 rounded-full hover:bg-white/10 backdrop-blur-sm"
-              whileHover={{ scale: 1.1 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               {isMinimized ? <Maximize2 size={16} /> : <Minimize2 size={16} />}
-            </motion.button>
-            <motion.button
+            </button>
+            <button
               onClick={onClose}
               className="text-white hover:text-red-300 transition-colors p-2 rounded-full hover:bg-red-500/10 backdrop-blur-sm"
-              whileHover={{ scale: 1.1, rotate: 90 }}
-              whileTap={{ scale: 0.9 }}
-              transition={{ type: "spring", stiffness: 400, damping: 10 }}
             >
               <X size={16} />
-            </motion.button>
+            </button>
           </div>
         </div>
 
@@ -494,49 +488,32 @@ const Chatbot: React.FC<ChatbotProps> = ({ isOpen, onClose }) => {
                     />
                   </div>
                   
-                  <motion.button
+                  <button
                     onClick={handleSendMessage}
                     disabled={isLoading || !inputValue.trim()}
                     className="bg-gradient-to-r from-emerald-500 to-blue-500 text-white rounded-xl px-4 py-3 hover:from-emerald-600 hover:to-blue-600 transition-all disabled:opacity-50 disabled:cursor-not-allowed min-w-[48px] flex items-center justify-center shadow-lg disabled:shadow-none relative overflow-hidden"
-                    whileHover={{ scale: 1.05 }}
-                    whileTap={{ scale: 0.95 }}
-                    transition={{ type: "spring", stiffness: 300, damping: 20 }}
                   >
-                    {/* Button shine effect */}
-                    <motion.div
-                      className="absolute inset-0 bg-gradient-to-r from-transparent via-white/20 to-transparent"
-                      animate={{ x: [-100, 100] }}
-                      transition={{ duration: 2, repeat: Infinity, repeatDelay: 3 }}
-                    />
-                    <motion.div
-                      animate={isLoading ? { rotate: 360 } : { rotate: 0 }}
-                      transition={{ duration: 1, repeat: isLoading ? Infinity : 0, ease: "linear" }}
-                    >
+                    <div>
                       <Send size={16} />
-                    </motion.div>
-                  </motion.button>
+                    </div>
+                  </button>
                 </div>
                 
                 {/* Quick suggestion pills */}
                 {messages.length === 1 && !isLoading && (
-                  <motion.div
-                    initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ delay: 0.5, duration: 0.5 }}
+                  <div
                     className="flex flex-wrap gap-2 mt-3"
                   >
                     {["Projects", "Skills", "Experience"].map((suggestion) => (
-                      <motion.button
+                      <button
                         key={suggestion}
                         onClick={() => setInputValue(`Tell me about Pawan's ${suggestion.toLowerCase()}`)}
                         className="px-3 py-1.5 bg-slate-700/50 text-slate-300 text-xs rounded-full border border-slate-600/50 hover:border-emerald-500/50 hover:bg-emerald-500/10 transition-all"
-                        whileHover={{ scale: 1.05 }}
-                        whileTap={{ scale: 0.95 }}
                       >
                         {suggestion}
-                      </motion.button>
+                      </button>
                     ))}
-                  </motion.div>
+                  </div>
                 )}
               </div>
             </motion.div>

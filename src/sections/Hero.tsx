@@ -1,11 +1,7 @@
 import { useEffect, useRef, useState } from "react";
 import Image from "next/image";
-import gsap from "gsap";
-import { ScrollTrigger } from "gsap/dist/ScrollTrigger";
 import { FiArrowDown, FiGithub, FiLinkedin, FiTwitter } from "react-icons/fi";
 import memojiImage from "@/assets/images/memoji-computer.png";
-import { FaCode, FaRocket } from "react-icons/fa";
-import { PiStarFourFill } from "react-icons/pi";
 import grainImage from "@/assets/images/grain.jpg";
 import Link from "next/link";
 
@@ -17,86 +13,36 @@ export const HeroSection = () => {
   const memojiRef = useRef(null);
   const [isClient, setIsClient] = useState(false);
 
-  useEffect(() => {
-    if (typeof window !== "undefined") {
-      gsap.registerPlugin(ScrollTrigger);
-      setIsClient(true);
-    }
-  }, []);
 
   useEffect(() => {
     if (!isClient) return;
 
-    const tl = gsap.timeline({ defaults: { ease: "power3.out" } });
+    // Use CSS classes for simple animations instead of GSAP
+    const animateElement = (selector: string, delay: number = 0) => {
+      const element = document.querySelector(selector) as HTMLElement;
+      if (element) {
+        element.style.opacity = '0';
+        element.style.transform = 'translateY(20px)';
+        setTimeout(() => {
+          element.style.transition = 'all 0.6s ease-out';
+          element.style.opacity = '1';
+          element.style.transform = 'translateY(0)';
+        }, delay);
+      }
+    };
 
-    // Simplified animation timeline with fewer animations
-    tl.fromTo(
-      memojiRef.current,
-      { y: -20, opacity: 0 },
-      { y: 0, opacity: 1, duration: 0.8 }
-    )
-      .fromTo(
-        ".status-badge",
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5 },
-        "-=0.3"
-      )
-      .fromTo(
-        ".heading-word",
-        { y: 20, opacity: 0 },
-        { y: 0, opacity: 1, stagger: 0.1, duration: 0.5 },
-        "-=0.2"
-      )
-      .fromTo(
-        textRef.current,
-        { opacity: 0 },
-        { opacity: 1, duration: 0.5 },
-        "-=0.2"
-      )
-      .fromTo(
-        buttonsRef.current?.children || [],
-        { opacity: 0 },
-        { opacity: 1, stagger: 0.1, duration: 0.4 },
-        "-=0.2"
-      )
-      .fromTo(
-        ".social-icon",
-        { opacity: 0 },
-        { opacity: 1, stagger: 0.1, duration: 0.4 },
-        "-=0.2"
-      );
-
-    // Simplified scroll animations
-    gsap.to(".parallax-bg", {
-      y: "15%", // Reduced parallax effect
-      scrollTrigger: {
-        trigger: containerRef.current,
-        start: "top top",
-        end: "bottom top",
-        scrub: 1, // Increased scrub value for smoother effect
-      },
-    });
+    // Simple staggered animations
+    animateElement('.memoji-container', 100);
+    animateElement('.status-badge', 300);
+    animateElement('.hero-heading', 500);
+    animateElement('.hero-text', 700);
+    animateElement('.hero-buttons', 900);
+    animateElement('.hero-socials', 1100);
 
     return () => {
-      tl.kill();
-      ScrollTrigger.getAll().forEach((trigger) => trigger.kill());
+      // No cleanup needed for CSS transitions
     };
   }, [isClient]);
-
-  // Reduced number of floating shapes
-  const floatingShapes = [
-    {
-      component: (
-        <div className="h-8 w-8 rounded bg-gradient-to-br from-purple-500/20 to-pink-500/20" />
-      ),
-    },
-    {
-      component: <PiStarFourFill className="text-yellow-500/20 text-2xl" />,
-    },
-    { 
-      component: <FaCode className="text-teal-500/20 text-3xl" />, 
-    },
-  ];
 
   return (
     <section
@@ -108,66 +54,16 @@ export const HeroSection = () => {
         className="absolute inset-0 -z-30 opacity-5"
         style={{ backgroundImage: `url(${grainImage.src})` }}
       ></div>
-      <div className="hero-ring size-820"></div>
-      <div className="hero-ring size-1220"></div>
       
-      {/* Background elements */}
+      {/* Simplified background elements - removed heavy ring animations */}
       <div className="parallax-bg absolute inset-0 bg-gradient-to-b from-gray-950 via-blue-950/30 to-gray-950 z-0"></div>
 
-      {/* Glow effect */}
+      {/* Static glow effect */}
       <div className="absolute top-1/4 left-1/2 -translate-x-1/2 w-3/4 h-1/2 bg-blue-500/10 blur-[100px] rounded-full"></div>
-      
-      {/* Grid lines - reduced */}
-      {isClient && (
-        <div className="absolute inset-0 z-0 opacity-20">
-          <div className="absolute w-full h-full">
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i}
-                className="absolute h-px bg-blue-400/30"
-                style={{
-                  top: `${(i * 20) % 100}%`,
-                  left: 0,
-                  right: 0,
-                }}
-              />
-            ))}
-            {[...Array(5)].map((_, i) => (
-              <div
-                key={i + 100}
-                className="absolute w-px bg-blue-400/30"
-                style={{
-                  left: `${(i * 20) % 100}%`,
-                  top: 0,
-                  bottom: 0,
-                }}
-              />
-            ))}
-          </div>
-        </div>
-      )}
-
-      {/* Floating shapes - reduced and simplified animations */}
-      {isClient && (
-        <div className="absolute inset-0 overflow-hidden z-0">
-          {floatingShapes.map((shape, i) => (
-            <div
-              key={i}
-              className="absolute"
-              style={{
-                left: `${((i * 30) % 90) + 5}%`,
-                top: `${((i * 30) % 80) + 10}%`,
-              }}
-            >
-              {shape.component}
-            </div>
-          ))}
-        </div>
-      )}
 
       <div className="container mx-auto px-4 z-10 relative">
         <div className="flex flex-col items-center text-center mb-8 scroll-section">
-          <div ref={memojiRef} className="relative mb-6">
+          <div ref={memojiRef} className="relative mb-6 memoji-container">
             <div className="relative">
               <div className="absolute inset-0 rounded-full bg-gradient-to-r from-blue-500/30 to-purple-500/30 blur-[30px]"></div>
 
@@ -198,17 +94,17 @@ export const HeroSection = () => {
         </div>
 
         {/* Main heading with simplified effect */}
-        <div ref={headingRef} className="text-center mb-8 scroll-section">
+        <div ref={headingRef} className="text-center mb-8 scroll-section hero-heading">
           <h1 className="text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-bold leading-tight tracking-tight">
-            <span className="heading-word inline-block mx-2 my-1">
+            <span className="inline-block mx-2 my-1">
               Full-Stack
             </span>{" "}
-            <span className="heading-word inline-block mx-1 my-1">
+            <span className="inline-block mx-1 my-1">
               Developer
             </span>
-            <span className="heading-word inline-block mx-2 my-1">&</span>{" "}
+            <span className="inline-block mx-2 my-1">&</span>{" "}
             <br />
-            <span className="heading-word inline-block mx-2 my-1">
+            <span className="inline-block mx-2 my-1">
               <span className="text-transparent bg-clip-text bg-gradient-to-r from-blue-500 to-violet-500">
                 AI Innovator
               </span>
@@ -219,7 +115,7 @@ export const HeroSection = () => {
         {/* Enhanced paragraph */}
         <div
           ref={textRef}
-          className="max-w-3xl mx-auto text-center mb-12 scroll-section"
+          className="max-w-3xl mx-auto text-center mb-12 scroll-section hero-text"
         >
           <p className="text-lg sm:text-xl text-gray-300 leading-relaxed">
             Passionate software engineer with expertise in modern web technologies, AI/ML integration, and scalable application development. 
@@ -230,7 +126,7 @@ export const HeroSection = () => {
         {/* Call to action buttons with simplified styling */}
         <div
           ref={buttonsRef}
-          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-7 scroll-section"
+          className="flex flex-col sm:flex-row items-center justify-center gap-5 sm:gap-7 scroll-section hero-buttons"
         >
           <Link
             href="#projects"
@@ -252,7 +148,7 @@ export const HeroSection = () => {
         </div>
 
         {/* Social links */}
-        <div className="flex justify-center mt-12 gap-5 scroll-section">
+        <div className="flex justify-center mt-12 gap-5 scroll-section hero-socials">
           {[
             {
               icon: <FiGithub size={20} />,
@@ -287,12 +183,8 @@ export const HeroSection = () => {
 
         {/* Simplified scroll indicator */}
         <div className="flex justify-center mt-20">
-          <div
-            className="scroll-indicator w-7 h-12 border-2 border-white/40 rounded-full flex justify-center p-1"
-          >
-            <div
-              className="w-2 h-3 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full"
-            />
+          <div className="w-7 h-12 border-2 border-white/40 rounded-full flex justify-center p-1">
+            <div className="w-2 h-3 bg-gradient-to-b from-blue-400 to-purple-500 rounded-full" />
           </div>
         </div>
       </div>

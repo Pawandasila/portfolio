@@ -588,17 +588,11 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
               {project.featured && (
                 <div className="absolute top-6 left-6">
-                  <motion.div
+                  <div
                     className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-3 shadow-xl"
-                    animate={{ rotate: [0, 5, -5, 0] }}
-                    transition={{
-                      duration: 2,
-                      repeat: Infinity,
-                      repeatDelay: 3,
-                    }}
                   >
                     <Star className="w-5 h-5 text-white fill-white" />
-                  </motion.div>
+                  </div>
                 </div>
               )}
 
@@ -795,13 +789,11 @@ const EnhancedProjectCard = ({ project, index }: EnhancedProjectCardProps) => {
 
           {project.featured && (
             <div className="absolute top-4 right-4">
-              <motion.div
+              <div
                 className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-2 shadow-xl backdrop-blur-sm"
-                animate={{ rotate: [0, 5, -5, 0] }}
-                transition={{ duration: 4, repeat: Infinity }}
               >
                 <Star className="w-4 h-4 text-white fill-white" />
-              </motion.div>
+              </div>
             </div>
           )}
         </div>
@@ -918,32 +910,6 @@ export const ProjectsSection = () => {
       <div className="absolute inset-0">
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,_var(--tw-gradient-stops))] from-slate-800/20 via-transparent to-transparent" />
         <div className="absolute inset-0 bg-[radial-gradient(circle_at_bottom_right,_var(--tw-gradient-stops))] from-blue-900/10 via-transparent to-transparent" />
-        <motion.div
-          className="absolute top-1/4 left-1/4 w-96 h-96 bg-emerald-500/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, 100, 0],
-            y: [0, -100, 0],
-            scale: [1, 1.2, 1],
-          }}
-          transition={{
-            duration: 20,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        />
-        <motion.div
-          className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-blue-500/5 rounded-full blur-3xl"
-          animate={{
-            x: [0, -100, 0],
-            y: [0, 100, 0],
-            scale: [1, 1.3, 1],
-          }}
-          transition={{
-            duration: 25,
-            repeat: Infinity,
-            repeatType: "reverse",
-          }}
-        />
       </div>
 
       <div className="container px-4 mx-auto relative z-10">

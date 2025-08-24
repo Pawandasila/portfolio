@@ -77,35 +77,25 @@ const Contact: FC = () => {
 
   return (
     <div className="relative bg-gray-900 min-h-screen text-white py-16 px-4 md:py-24 md:px-8 overflow-hidden" id="contact">
-      {/* Animated background lines */}
+      {/* Static background lines */}
       <div className="absolute inset-0 opacity-20">
         {[...Array(5)].map((_, i) => (
-          <motion.div
+          <div
             key={i}
             className="absolute h-[1px] w-full bg-gradient-to-r from-indigo-500/0 via-indigo-500 to-indigo-500/0"
             style={{ 
               top: `${20 * i}%`, 
               left: 0,
-              x: useTransform(
-                scrollYProgress, 
-                [0, 1], 
-                [i % 2 === 0 ? '-100%' : '100%', i % 2 === 0 ? '100%' : '-100%']
-              )
             }}
           />
         ))}
         {[...Array(5)].map((_, i) => (
-          <motion.div
+          <div
             key={i}
             className="absolute w-[1px] h-full bg-gradient-to-b from-purple-500/0 via-purple-500 to-purple-500/0"
             style={{ 
               left: `${20 * i}%`, 
               top: 0,
-              y: useTransform(
-                scrollYProgress, 
-                [0, 1], 
-                [i % 2 === 0 ? '-100%' : '100%', i % 2 === 0 ? '100%' : '-100%']
-              )
             }}
           />
         ))}
@@ -157,30 +147,11 @@ const Contact: FC = () => {
               }}
             >
               {/* Decorative circles */}
-              <motion.div 
-                className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-indigo-600/20 blur-xl"
-                animate={{ 
-                  scale: [1, 1.2, 1],
-                  opacity: [0.4, 0.6, 0.4] 
-                }} 
-                transition={{ 
-                  duration: 8,
-                  repeat: Infinity,
-                  ease: "easeInOut" 
-                }}
+              <div 
+                className="absolute -top-20 -right-20 w-40 h-40 rounded-full bg-indigo-600/20 blur-xl opacity-40"
               />
-              <motion.div 
-                className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-purple-600/20 blur-xl"
-                animate={{ 
-                  scale: [1, 1.3, 1],
-                  opacity: [0.3, 0.5, 0.3] 
-                }} 
-                transition={{ 
-                  duration: 6,
-                  delay: 1,
-                  repeat: Infinity,
-                  ease: "easeInOut" 
-                }}
+              <div 
+                className="absolute -bottom-16 -left-16 w-32 h-32 rounded-full bg-purple-600/20 blur-xl opacity-30"
               />
 
               <motion.h2 
