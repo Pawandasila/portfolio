@@ -28,10 +28,10 @@ import ai from "@/assets/images/ai.png";
 import photobooth from "@/assets/images/photobooth.png";
 import financeDashboard from "@/assets/images/dashboard_.png";
 import ThumbnailGenerator from '@/assets/images/Thumbnail-generator.png';
-import  pixoraEditor from '@/assets/images/pixoraEditor.png';
-import  spotify from '@/assets/images/spotify.jpg';
+import pixoraEditor from '@/assets/images/pixoraEditor.png';
+import spotify from '@/assets/images/spotify.jpg';
 
-import  snypse from '@/assets/images/snypse.png';
+import snypse from '@/assets/images/snypse.png';
 
 import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
 
@@ -247,8 +247,8 @@ const portfolioProjects: Project[] = [
     ],
     link: "https://photobooth-one-tau.vercel.app/",
     github: "https://github.com/Pawandasila/photobooth",
-    image: photobooth ,
-    tags: ["React",  "Nextjs"],
+    image: photobooth,
+    tags: ["React", "Nextjs"],
     status: "Live",
     teamSize: 1,
     duration: "10 days",
@@ -259,51 +259,51 @@ const portfolioProjects: Project[] = [
     ],
   },
   {
-  company: "Full-Stack Development",
-  year: "2025", 
-  title: "TrendTide - YouTube Analytics & AI Content Creation",
-  shortDescription:
-    "AI-powered YouTube content creation and analytics platform for creators",
-  description:
-    "A comprehensive platform that empowers YouTube creators with AI-driven tools for thumbnail generation, content creation, competitor analysis, and performance insights. Features include advanced analytics, thumbnail search, outlier analysis, and automated content generation with seamless integrations.",
-  results: [
-    { title: "AI Thumbnails Generated", metric: "500K+", icon: "image" },
-    { title: "Active Creators", metric: "15K+", icon: "users" },
-    { title: "Content Pieces Created", metric: "248K+", icon: "edit" },
-    { title: "Performance Growth", metric: "98%", icon: "trending-up" },
-  ],
-  link: "",
-  github: "https://github.com/Pawandasila/youtube-analytics",
-  image:  ThumbnailGenerator, 
-  tags: [
-    "Next.js", 
-    "TypeScript", 
-    "Clerk Auth", 
-    "Neon DB", 
-    "Drizzle ORM",
-    "Inngest",
-    "Framer Motion",
-    "Tailwind CSS",
-    "AI/ML APIs",
-    "ImageKit"
-  ],
-  status: "Live",
-  teamSize: 1,
-  duration: "30 days",
-  highlights: [
-    "AI Thumbnail Generator with multiple style variations",
-    "Thumbnail Search & Competitor Analysis",
-    "AI Content Generator for titles, descriptions, and scripts", 
-    "Outlier Analysis for viral content insights",
-    "Advanced YouTube Analytics Dashboard",
-    "Multi-tier subscription plans (Free, Pro, Business)",
-    "Real-time processing with Inngest workflows",
-    "Responsive design with dark/light theme support"
-  ],
+    company: "Full-Stack Development",
+    year: "2025",
+    title: "TrendTide - YouTube Analytics & AI Content Creation",
+    shortDescription:
+      "AI-powered YouTube content creation and analytics platform for creators",
+    description:
+      "A comprehensive platform that empowers YouTube creators with AI-driven tools for thumbnail generation, content creation, competitor analysis, and performance insights. Features include advanced analytics, thumbnail search, outlier analysis, and automated content generation with seamless integrations.",
+    results: [
+      { title: "AI Thumbnails Generated", metric: "500K+", icon: "image" },
+      { title: "Active Creators", metric: "15K+", icon: "users" },
+      { title: "Content Pieces Created", metric: "248K+", icon: "edit" },
+      { title: "Performance Growth", metric: "98%", icon: "trending-up" },
+    ],
+    link: "",
+    github: "https://github.com/Pawandasila/youtube-analytics",
+    image: ThumbnailGenerator,
+    tags: [
+      "Next.js",
+      "TypeScript",
+      "Clerk Auth",
+      "Neon DB",
+      "Drizzle ORM",
+      "Inngest",
+      "Framer Motion",
+      "Tailwind CSS",
+      "AI/ML APIs",
+      "ImageKit"
+    ],
+    status: "Live",
+    teamSize: 1,
+    duration: "30 days",
+    highlights: [
+      "AI Thumbnail Generator with multiple style variations",
+      "Thumbnail Search & Competitor Analysis",
+      "AI Content Generator for titles, descriptions, and scripts",
+      "Outlier Analysis for viral content insights",
+      "Advanced YouTube Analytics Dashboard",
+      "Multi-tier subscription plans (Free, Pro, Business)",
+      "Real-time processing with Inngest workflows",
+      "Responsive design with dark/light theme support"
+    ],
   },
   {
     company: "Full-Stack Development",
-    year: "2025", 
+    year: "2025",
     title: "Finora - AI Finance Dashboard",
     shortDescription:
       "AI-powered personal finance management platform with automated transaction tracking and intelligent insights",
@@ -320,7 +320,7 @@ const portfolioProjects: Project[] = [
     image: financeDashboard,
     tags: [
       "Node.js",
-      "TypeScript", 
+      "TypeScript",
       "Express.js",
       "MongoDB",
       "React",
@@ -355,63 +355,63 @@ const portfolioProjects: Project[] = [
     ],
   },
   {
-  company: "Full-Stack Development",
-  year: "2025", 
-  title: "Pixora - AI Image Editor",
-  shortDescription:
-    "Professional web-based AI image editor with advanced neural enhancement, background removal, and real-time canvas editing capabilities",
-  description:
-    "A comprehensive AI-powered image editing platform that brings professional-grade tools to the browser. Features include intelligent background removal, AI-powered upscaling, object removal, image enhancement, and a full-featured canvas editor with layer support. Built with modern web technologies and multiple AI integrations for seamless creative workflows.",
-  results: [
-    { title: "AI Models Integrated", metric: "15+", icon: "brain" },
-    { title: "Image Processing Speed", metric: "<3s", icon: "zap" },
-    { title: "Project Organization", metric: "Folder-Based", icon: "folder" },
-    { title: "Canvas Tools", metric: "20+", icon: "palette" },
-  ],
-  link: "https://pixora-image-editor.vercel.app",
-  github: "https://github.com/Pawandasila/ai-image-editor",
-  image: pixoraEditor, // You'll need to add this image
-  tags: [
-    "Next.js 14",
-    "React",
-    "TypeScript", 
-    "Convex",
-    "TailwindCSS",
-    "Framer Motion",
-    "Fabric.js",
-    "Clerk Auth",
-    "Replicate API",
-    "Stability AI",
-    "Real-time DB",
-    "Canvas API",
-    "File Upload",
-    "Image Processing",
-    "PWA Ready",
-    "Vercel"
-  ],
-  status: "Live",
-  teamSize: 1,
-  duration: "60 days",
-  highlights: [
-    "AI-powered background removal with precision edge detection",
-    "Super-resolution upscaling up to 4x with detail preservation", 
-    "Magic object removal using intelligent content-aware fill",
-    "Real-time canvas editor with layers, filters, and professional tools",
-    "Project organization system with folder-based management",
-    "Drag-and-drop file uploads with multiple format support",
-    "Responsive design optimized for desktop and mobile editing",
-    "Real-time database with Convex for instant project syncing",
-    "Secure authentication with Clerk and user management",
-    "Multiple AI model integrations via Replicate API",
-    "Advanced image processing with client-side canvas manipulation",
-    "SEO-optimized landing page with smooth scroll navigation",
-    "Glassmorphism UI design with modern animations",
-    "Cloud storage integration for seamless file management",
-    "Professional-grade editing tools comparable to desktop software",
-    "Free tier with credit-based usage system"
-  ],
-},
- {
+    company: "Full-Stack Development",
+    year: "2025",
+    title: "Pixora - AI Image Editor",
+    shortDescription:
+      "Professional web-based AI image editor with advanced neural enhancement, background removal, and real-time canvas editing capabilities",
+    description:
+      "A comprehensive AI-powered image editing platform that brings professional-grade tools to the browser. Features include intelligent background removal, AI-powered upscaling, object removal, image enhancement, and a full-featured canvas editor with layer support. Built with modern web technologies and multiple AI integrations for seamless creative workflows.",
+    results: [
+      { title: "AI Models Integrated", metric: "15+", icon: "brain" },
+      { title: "Image Processing Speed", metric: "<3s", icon: "zap" },
+      { title: "Project Organization", metric: "Folder-Based", icon: "folder" },
+      { title: "Canvas Tools", metric: "20+", icon: "palette" },
+    ],
+    link: "https://pixora-image-editor.vercel.app",
+    github: "https://github.com/Pawandasila/ai-image-editor",
+    image: pixoraEditor, // You'll need to add this image
+    tags: [
+      "Next.js 14",
+      "React",
+      "TypeScript",
+      "Convex",
+      "TailwindCSS",
+      "Framer Motion",
+      "Fabric.js",
+      "Clerk Auth",
+      "Replicate API",
+      "Stability AI",
+      "Real-time DB",
+      "Canvas API",
+      "File Upload",
+      "Image Processing",
+      "PWA Ready",
+      "Vercel"
+    ],
+    status: "Live",
+    teamSize: 1,
+    duration: "60 days",
+    highlights: [
+      "AI-powered background removal with precision edge detection",
+      "Super-resolution upscaling up to 4x with detail preservation",
+      "Magic object removal using intelligent content-aware fill",
+      "Real-time canvas editor with layers, filters, and professional tools",
+      "Project organization system with folder-based management",
+      "Drag-and-drop file uploads with multiple format support",
+      "Responsive design optimized for desktop and mobile editing",
+      "Real-time database with Convex for instant project syncing",
+      "Secure authentication with Clerk and user management",
+      "Multiple AI model integrations via Replicate API",
+      "Advanced image processing with client-side canvas manipulation",
+      "SEO-optimized landing page with smooth scroll navigation",
+      "Glassmorphism UI design with modern animations",
+      "Cloud storage integration for seamless file management",
+      "Professional-grade editing tools comparable to desktop software",
+      "Free tier with credit-based usage system"
+    ],
+  },
+  {
     company: "Full-Stack Development",
     year: "2025",
     title: "Synapse - Enterprise Hackathon Platform",
