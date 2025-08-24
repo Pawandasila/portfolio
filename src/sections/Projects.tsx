@@ -29,6 +29,10 @@ import photobooth from "@/assets/images/photobooth.png";
 import financeDashboard from "@/assets/images/dashboard_.png";
 import ThumbnailGenerator from '@/assets/images/Thumbnail-generator.png';
 import  pixoraEditor from '@/assets/images/pixoraEditor.png';
+import  spotify from '@/assets/images/spotify.jpg';
+
+import  snypse from '@/assets/images/snypse.png';
+
 import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
 
 
@@ -406,7 +410,125 @@ const portfolioProjects: Project[] = [
     "Professional-grade editing tools comparable to desktop software",
     "Free tier with credit-based usage system"
   ],
-}
+},
+ {
+    company: "Full-Stack Development",
+    year: "2025",
+    title: "Synapse - Enterprise Hackathon Platform",
+    shortDescription:
+      "Full-stack hackathon platform with hybrid database, real-time collaboration, and automated event management",
+    description:
+      "Architected a scalable enterprise hackathon platform using Next.js, Node.js, Azure SQL, and MongoDB. Features hybrid database design, real-time team collaboration, automated certificate generation, and WebSocket-based chat. Deployed microservices on Azure App Service with horizontal scaling, serving 100+ users across 10 concurrent events and handling 1000+ API requests/minute with p95 latency under 200ms.",
+    results: [
+      {
+        title: "Concurrent Events Hosted",
+        metric: "10+",
+        icon: "award",
+      },
+      {
+        title: "Active Users",
+        metric: "100+",
+        icon: "users",
+      },
+      {
+        title: "API Requests/min",
+        metric: "1000+",
+        icon: "zap",
+      },
+      {
+        title: "Event Management Overhead Reduced",
+        metric: "70%",
+        icon: "trending-up",
+      },
+      {
+        title: "Platform Uptime",
+        metric: "99.9%",
+        icon: "check",
+      },
+    ],
+    link: "https://synapse-frontend-beryl.vercel.app/",
+    github: "https://github.com/Pawandasila/synapse-frontend-1",
+    image: snypse,
+    tags: [
+      "Next.js",
+      "Node.js",
+      "Azure SQL",
+      "MongoDB",
+      "JWT",
+      "WebSocket",
+      "Microservices",
+      "Azure App Service",
+      "TypeScript",
+      "Real-time Collaboration",
+    ],
+    status: "Live",
+    teamSize: 1,
+    duration: "2 months",
+    highlights: [
+      "Hybrid database architecture (Azure SQL + MongoDB)",
+      "Real-time team collaboration and chat",
+      "Automated certificate generation",
+      "Microservices deployed with horizontal scaling",
+      "99.9% uptime and p95 latency <200ms",
+      "Reduced event management overhead by 70%",
+    ],
+  },{
+    company: "Full-Stack Development",
+    year: "2024",
+    title: "Spotify Clone - Microservices Architecture",
+    shortDescription:
+      "Distributed Spotify-like music platform with microservices, caching, and optimized performance",
+    description:
+      "Designed and deployed a distributed Spotify clone using Node.js microservices on AWS EC2, orchestrated with PM2 for high availability. Integrated Redis caching and MongoDB query optimization to reduce database load by 60% and improve throughput by 45%. Achieved 99.9% uptime and sub-200ms API response times.",
+    results: [
+      {
+        title: "Availability",
+        metric: "99.9%",
+        icon: "check",
+      },
+      {
+        title: "API Response Time",
+        metric: "<200ms",
+        icon: "zap",
+      },
+      {
+        title: "Database Load Reduced",
+        metric: "60%",
+        icon: "trending-up",
+      },
+      {
+        title: "Throughput Improved",
+        metric: "45%",
+        icon: "award",
+      },
+    ],
+    link: "http://13.53.170.11:3000",
+    github: "https://github.com/Pawandasila/spotify",
+    image: spotify,
+    tags: [
+      "Node.js",
+      "AWS EC2",
+      "MongoDB",
+      "Redis",
+      "PM2",
+      "Microservices",
+      "TypeScript",
+      "REST API",
+    ],
+    status: "Live",
+    teamSize: 1,
+    duration: "1 month",
+    highlights: [
+      "Distributed microservices architecture on AWS EC2",
+      "PM2 orchestration for process management",
+      "Redis caching layer for fast data access",
+      "MongoDB query optimization",
+      "99.9% uptime and sub-200ms API response times",
+      "Reduced database load by 60%",
+      "Improved throughput by 45%",
+    ],
+  },
+
 ];
 
 const getResultIcon = (iconName: string) => {
