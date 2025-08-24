@@ -7,9 +7,6 @@
 [![Tailwind CSS](https://img.shields.io/badge/Tailwind%20CSS-3.0+-38B2AC?style=for-the-badge&logo=tailwind-css)](https://tailwindcss.com/)
 [![Framer Motion](https://img.shields.io/badge/Framer%20Motion-Latest-FF6B6B?style=for-the-badge&logo=framer)](https://www.framer.com/motion/)
 
-## 🌟 Live Demo
-
-**[View Portfolio →](https://your-portfolio-url.com)**
 
 ## 📋 Table of Contents
 
