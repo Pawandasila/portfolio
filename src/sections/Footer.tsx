@@ -180,26 +180,6 @@ export const Footer: FC<FooterProps> = ({ className = "" }) => {
           <span className="text-blue-400">●</span>
         </motion.div>
       </div>
-      
-      <motion.div 
-        ref={copyrightRef}
-        className="flex flex-col md:flex-row justify-between items-center py-6"
-        initial={{ opacity: 0 }}
-        animate={isCopyrightInView ? { opacity: 1 } : { opacity: 0 }}
-        transition={{ duration: 0.8 }}
-      >
-        <p className="text-sm text-gray-400">
-          &copy; {currentYear} Pawan Dasila. All rights reserved.
-        </p>
-        <p className="text-sm text-gray-400 mt-2 md:mt-0 flex items-center">
-          Designed & Built with{" "}
-          <span 
-            className="text-red-500 mx-1"
-          >
-            ❤️
-          </span>
-        </p>
-      </motion.div>
     </div>
   );
 };
