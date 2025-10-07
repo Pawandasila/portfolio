@@ -27,14 +27,19 @@ import yogaImage from "@/assets/images/Yoga.png";
 import ai from "@/assets/images/ai.png";
 import photobooth from "@/assets/images/photobooth.png";
 import financeDashboard from "@/assets/images/dashboard_.png";
-import ThumbnailGenerator from '@/assets/images/Thumbnail-generator.png';
-import pixoraEditor from '@/assets/images/pixoraEditor.png';
-import spotify from '@/assets/images/spotify.jpg';
+import ThumbnailGenerator from "@/assets/images/Thumbnail-generator.png";
+import pixoraEditor from "@/assets/images/pixoraEditor.png";
+import spotify from "@/assets/images/spotify.jpg";
+import postboy from "@/assets/images/postboy.png";
 
-import snypse from '@/assets/images/snypse.png';
+import snypse from "@/assets/images/snypse.png";
 
-import { EnhancedProjectCardProps, Project, ProjectModalProps, Result } from "./types";
-
+import {
+  EnhancedProjectCardProps,
+  Project,
+  ProjectModalProps,
+  Result,
+} from "./types";
 
 const portfolioProjects: Project[] = [
   {
@@ -285,7 +290,7 @@ const portfolioProjects: Project[] = [
       "Framer Motion",
       "Tailwind CSS",
       "AI/ML APIs",
-      "ImageKit"
+      "ImageKit",
     ],
     status: "Live",
     teamSize: 1,
@@ -298,7 +303,7 @@ const portfolioProjects: Project[] = [
       "Advanced YouTube Analytics Dashboard",
       "Multi-tier subscription plans (Free, Pro, Business)",
       "Real-time processing with Inngest workflows",
-      "Responsive design with dark/light theme support"
+      "Responsive design with dark/light theme support",
     ],
   },
   {
@@ -334,7 +339,7 @@ const portfolioProjects: Project[] = [
       "Tailwind CSS",
       "Zod Validation",
       "Node Cron",
-      "Vercel"
+      "Vercel",
     ],
     status: "Live",
     teamSize: 1,
@@ -351,7 +356,7 @@ const portfolioProjects: Project[] = [
       "Responsive design with dark/light theme support",
       "Cloud file storage for receipt management",
       "Background job processing for automated tasks",
-      "Comprehensive input validation and type safety"
+      "Comprehensive input validation and type safety",
     ],
   },
   {
@@ -387,7 +392,7 @@ const portfolioProjects: Project[] = [
       "File Upload",
       "Image Processing",
       "PWA Ready",
-      "Vercel"
+      "Vercel",
     ],
     status: "Live",
     teamSize: 1,
@@ -408,7 +413,7 @@ const portfolioProjects: Project[] = [
       "Glassmorphism UI design with modern animations",
       "Cloud storage integration for seamless file management",
       "Professional-grade editing tools comparable to desktop software",
-      "Free tier with credit-based usage system"
+      "Free tier with credit-based usage system",
     ],
   },
   {
@@ -472,7 +477,8 @@ const portfolioProjects: Project[] = [
       "99.9% uptime and p95 latency <200ms",
       "Reduced event management overhead by 70%",
     ],
-  },{
+  },
+  {
     company: "Full-Stack Development",
     year: "2024",
     title: "Spotify Clone - Microservices Architecture",
@@ -528,7 +534,68 @@ const portfolioProjects: Project[] = [
       "Improved throughput by 45%",
     ],
   },
-
+  {
+    company: "Personal Project",
+    year: "2025",
+    title: "PostBoy - AI-Powered API Testing Platform",
+    shortDescription:
+      "Modern API testing workspace with AI-assisted payloads, intelligent naming, and instant documentation.",
+    description:
+      "Built an end-to-end API testing platform using Next.js 15 and React 19 that blends traditional REST/WebSocket tooling with AI automation. Implemented Google Gemini-powered JSON generation, contextual request naming, and one-click documentation export, all backed by Prisma and PostgreSQL with secure authentication. Deployed to Vercel with analytics, environment management, and a polished shadcn/ui interface to streamline collaborative API development.",
+    results: [
+      {
+        title: "AI Payload Builder",
+        metric: "70% faster request drafting",
+        icon: "sparkles",
+      },
+      {
+        title: "Documentation Export",
+        metric: "<5s markdown generation",
+        icon: "book-open",
+      },
+      {
+        title: "Authentication Methods",
+        metric: "Email + Google + GitHub",
+        icon: "shield",
+      },
+      {
+        title: "Deployment",
+        metric: "Live on Vercel (Global CDN)",
+        icon: "cloud",
+      },
+    ],
+    link: "https://postman-pearl.vercel.app/",
+    github: "https://github.com/Pawandasila/postman",
+    image: postboy,
+    tags: [
+      "Next.js 15",
+      "React 19",
+      "TypeScript",
+      "Prisma",
+      "PostgreSQL",
+      "Better Auth",
+      "Vercel",
+      "Shadcn/ui",
+      "Tailwind CSS",
+      "TanStack Query",
+      "Zod",
+      "Google Gemini",
+      "AI Automation",
+      "REST API",
+    ],
+    status: "Live",
+    teamSize: 1,
+    duration: "3 months",
+    highlights: [
+      "AI-powered JSON payload generation and naming suggestions",
+      "Automatic API documentation export to markdown",
+      "Next.js 15 + React 19 architecture with server components",
+      "Prisma ORM with PostgreSQL and Vercel Postgres integration",
+      "Authentication via email/password, Google, and GitHub using Better Auth",
+      "Modern shadcn/ui interface with dark/light theming",
+      "Deployed on Vercel with analytics and environment management",
+    ],
+  },
 ];
 
 const getResultIcon = (iconName: string) => {
@@ -588,9 +655,7 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
 
               {project.featured && (
                 <div className="absolute top-6 left-6">
-                  <div
-                    className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-3 shadow-xl"
-                  >
+                  <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-3 shadow-xl">
                     <Star className="w-5 h-5 text-white fill-white" />
                   </div>
                 </div>
@@ -742,7 +807,11 @@ const ProjectModal = ({ project, isOpen, onClose }: ProjectModalProps) => {
                   href={project.github}
                   target="_blank"
                   rel="noopener noreferrer"
-                  className={project.link && project.link.trim() !== "" ? "flex-1" : "w-full"}
+                  className={
+                    project.link && project.link.trim() !== ""
+                      ? "flex-1"
+                      : "w-full"
+                  }
                   whileHover={{ scale: 1.02 }}
                   whileTap={{ scale: 0.98 }}
                 >
@@ -789,9 +858,7 @@ const EnhancedProjectCard = ({ project, index }: EnhancedProjectCardProps) => {
 
           {project.featured && (
             <div className="absolute top-4 right-4">
-              <div
-                className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-2 shadow-xl backdrop-blur-sm"
-              >
+              <div className="bg-gradient-to-r from-amber-500 to-orange-500 rounded-full p-2 shadow-xl backdrop-blur-sm">
                 <Star className="w-4 h-4 text-white fill-white" />
               </div>
             </div>
