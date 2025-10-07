@@ -4,6 +4,7 @@ import { twMerge } from "tailwind-merge";
 import "./globals.css";
 import ChatbotWrapper from "@/components/ChatbotWrapper";
 import { LoadingProvider } from "@/contexts/LoadingContext";
+import { Analytics } from "@vercel/analytics/next"
 
 const inter = Inter({
   subsets: ["latin"],
@@ -75,6 +76,7 @@ export default function RootLayout({
         <LoadingProvider>
           {children}
           <ChatbotWrapper />
+          <Analytics />
         </LoadingProvider>
       </body>
     </html>
