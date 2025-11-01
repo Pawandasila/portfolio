@@ -19,6 +19,10 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'th.bing.com',
       },
+      {
+        protocol: 'https',
+        hostname: 'arp.iitkgp.ac.in',
+      }
     ],
     unoptimized: false,
     formats: ['image/webp', 'image/avif'],

@@ -57,6 +57,34 @@ const Experience: FC = () => {
         "https://greenfuelenergy.in/wp-content/uploads/elementor/thumbs/GreenFuel-Energy-Logo-White-r66sqo3u67tuhgfmoakaqeg535bt9scwedxz5tct8g.png",
       color: "blue",
     },
+    {
+      id: 3,
+      company: "City Future Lab IIT Kharagpur",
+      position: "Full Stack Developer Intern",
+      location: "Remote",
+      period: "September 2025 - October 2025",
+      description: [
+        "Designed a robust, cloud-native dashboard application using Next.js, Leaflet.js, and Google Maps API; streamlined data pipelines, reducing load times by 30% and improving geospatial insights delivery",
+        "Orchestrated Firebase Authentication, Firestore, and Cloud Storage for secure access control, real-time synchronization, and scalable backend services with CI/CD automation",
+      ],
+      technologies: [
+        "React.js",
+        "Next.js",
+        "Leaflet.js",
+        "Google Maps API",
+        "Firebase Authentication",
+        "Firestore",
+        "Cloud Storage",
+        "CI/CD Automation",
+        "Team Collaboration",
+        "Agile Methodologies",
+        "Version Control (Git)",
+      ],
+      logoUrl:
+        "https://arp.iitkgp.ac.in/logo_image/76458-city_future_lab_logo.png",
+      color: "blue",
+    },
+
   ];
 
   return (
