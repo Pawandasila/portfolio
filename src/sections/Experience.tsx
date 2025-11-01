@@ -13,25 +13,31 @@ const Experience: FC = () => {
 
   const experienceData = [
     {
-      id: 1,
-      company: "BharatPe",
-      position: "Full Stack Web Developer Intern",
-      location: "Delhi",
-      period: "Dec 2023 - Jan 2024",
+      id: 3,
+      company: "City Future Lab IIT Kharagpur",
+      position: "Full Stack Developer Intern",
+      location: "Remote",
+      period: "September 2025 - October 2025",
       description: [
-        "Developed responsive web applications using MongoDB, Express.js, React.js, and Node.js",
-        "Implemented RESTful APIs for efficient data management and client-server communication",
+        "Designed a robust, cloud-native dashboard application using Next.js, Leaflet.js, and Google Maps API; streamlined data pipelines, reducing load times by 30% and improving geospatial insights delivery",
+        "Orchestrated Firebase Authentication, Firestore, and Cloud Storage for secure access control, real-time synchronization, and scalable backend services with CI/CD automation",
       ],
       technologies: [
-        "MongoDB",
-        "Express.js",
         "React.js",
-        "Node.js",
-        "REST API",
+        "Next.js",
+        "Leaflet.js",
+        "Google Maps API",
+        "Firebase Authentication",
+        "Firestore",
+        "Cloud Storage",
+        "CI/CD Automation",
+        "Team Collaboration",
+        "Agile Methodologies",
+        "Version Control (Git)",
       ],
       logoUrl:
-        "https://bp-wp-website-prod.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/09/bharatpe_logo.png",
-      color: "emerald",
+        "https://arp.iitkgp.ac.in/logo_image/76458-city_future_lab_logo.png",
+      color: "blue",
     },
     {
       id: 2,
@@ -58,31 +64,25 @@ const Experience: FC = () => {
       color: "blue",
     },
     {
-      id: 3,
-      company: "City Future Lab IIT Kharagpur",
-      position: "Full Stack Developer Intern",
-      location: "Remote",
-      period: "September 2025 - October 2025",
+      id: 1,
+      company: "BharatPe",
+      position: "Full Stack Web Developer Intern",
+      location: "Delhi",
+      period: "Dec 2023 - Jan 2024",
       description: [
-        "Designed a robust, cloud-native dashboard application using Next.js, Leaflet.js, and Google Maps API; streamlined data pipelines, reducing load times by 30% and improving geospatial insights delivery",
-        "Orchestrated Firebase Authentication, Firestore, and Cloud Storage for secure access control, real-time synchronization, and scalable backend services with CI/CD automation",
+        "Developed responsive web applications using MongoDB, Express.js, React.js, and Node.js",
+        "Implemented RESTful APIs for efficient data management and client-server communication",
       ],
       technologies: [
+        "MongoDB",
+        "Express.js",
         "React.js",
-        "Next.js",
-        "Leaflet.js",
-        "Google Maps API",
-        "Firebase Authentication",
-        "Firestore",
-        "Cloud Storage",
-        "CI/CD Automation",
-        "Team Collaboration",
-        "Agile Methodologies",
-        "Version Control (Git)",
+        "Node.js",
+        "REST API",
       ],
       logoUrl:
-        "https://arp.iitkgp.ac.in/logo_image/76458-city_future_lab_logo.png",
-      color: "blue",
+        "https://bp-wp-website-prod.s3.ap-south-1.amazonaws.com/wp-content/uploads/2023/09/bharatpe_logo.png",
+      color: "emerald",
     },
 
   ];
@@ -255,7 +255,7 @@ const Experience: FC = () => {
 
                       <div className="flex-1">
                         <motion.div
-                          className="flex flex-wrap items-center gap-2 mb-2"
+                          className="mb-3"
                           initial={{ opacity: 0 }}
                           animate={
                             isItemInView ? { opacity: 1 } : { opacity: 0 }
@@ -263,14 +263,16 @@ const Experience: FC = () => {
                           transition={{ duration: 0.6, delay: 0.2 }}
                         >
                           <h3
-                            className={`text-lg md:text-xl font-bold ${colors.text}`}
+                            className={`text-lg md:text-xl font-bold ${colors.text} mb-1`}
                           >
                             {item.position}
                           </h3>
-                          <span className="text-gray-400">@</span>
-                          <span className="font-semibold text-white">
-                            {item.company}
-                          </span>
+                          <div className="flex items-center gap-1">
+                            <span className="text-gray-400 text-sm">@</span>
+                            <span className="font-semibold text-white text-sm md:text-base">
+                              {item.company}
+                            </span>
+                          </div>
                         </motion.div>
 
                         <motion.div
