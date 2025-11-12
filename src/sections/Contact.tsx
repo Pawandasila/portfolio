@@ -275,7 +275,7 @@ const Contact: FC = () => {
                   </div>
                 </div>
                 
-                <div className="flex items-center gap-3">
+                {/* <div className="flex items-center gap-3">
                   <div className="p-2 rounded-lg bg-indigo-900/30 text-indigo-300">
                     <Phone size={20} />
                   </div>
@@ -283,7 +283,7 @@ const Contact: FC = () => {
                     <p className="text-sm text-gray-400">Phone</p>
                     <a href="tel:+917819805935" className="text-white hover:text-indigo-300 transition-colors">+91 7819805935</a>
                   </div>
-                </div>
+                </div> */}
                 
                 <div className="flex gap-2 mt-6">
                   <a href="https://github.com/Pawandasila" target="_blank" rel="noopener noreferrer" className="p-2 rounded-lg bg-gray-700 hover:bg-gray-600 text-white transition-colors">
