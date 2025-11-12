@@ -204,15 +204,18 @@ export const AboutSection = () => {
                   Currently pursuing{" "}
                   <span className="text-sky-400 font-semibold">
                     Computer Science
-                  </span>
-                  with hands-on experience at{" "}
+                  </span>{" "}
+                  with experience at{" "}
                   <span className="text-emerald-400 font-semibold">
                     BharatPe
-                  </span>{" "}
-                  and
+                  </span>
+                  ,{" "}
                   <span className="text-blue-400 font-semibold">
-                    {" "}
                     Greenfuel Energy
+                  </span>
+                  , and{" "}
+                  <span className="text-purple-400 font-semibold">
+                    City Future Lab IIT Kharagpur
                   </span>
                   .
                 </p>
@@ -285,7 +288,7 @@ export const AboutSection = () => {
 
             <div className="flex flex-col sm:flex-row gap-4 pt-4">
               <motion.a
-                href="https://drive.google.com/file/d/1b5YhDmUoYmI-dxvAZ2jkxTTAE1Q09l2j/view?usp=sharing"
+                href="https://drive.google.com/file/d/15pkPrkHndK3KNDVySrMDV6ajO7d51AzD/view?usp=drive_link"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="group relative inline-flex items-center justify-center gap-2 bg-gradient-to-r from-emerald-500 to-sky-500 text-white px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:from-emerald-600 hover:to-sky-600 hover:shadow-lg hover:shadow-emerald-500/25"
