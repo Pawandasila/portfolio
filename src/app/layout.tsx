@@ -1,21 +1,21 @@
 import type { Metadata } from "next";
-import { Inter, Calistoga } from "next/font/google";
-import { twMerge } from "tailwind-merge";
+import { Georama, Roboto } from "next/font/google";
 import "./globals.css";
-import ChatbotWrapper from "@/components/ChatbotWrapper";
-import { LoadingProvider } from "@/contexts/LoadingContext";
-import { Analytics } from "@vercel/analytics/next"
 
-const inter = Inter({
+const georama = Georama({
+  variable: "--font-georama",
   subsets: ["latin"],
-  variable: "--font-sans",
+  display: "swap",
+  preload: true,
 });
 
-const calistoga = Calistoga({
+const roboto = Roboto({
+  variable: "--font-roboto",
   subsets: ["latin"],
-  variable: "--font-serif",
-  weight: "400",
+  weight: ["400", "500", "700", "900"],
+  style: ["normal", "italic"],
   display: "swap",
+  preload: true,
 });
 
 export const metadata: Metadata = {
@@ -65,19 +65,9 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" suppressHydrationWarning>
-      <body
-        className={twMerge(
-          inter.variable,
-          calistoga.variable,
-          "bg-gray-900 text-white antialiased font-sans"
-        )}
-      >
-        <LoadingProvider>
-          {children}
-          <ChatbotWrapper />
-          <Analytics />
-        </LoadingProvider>
+    <html lang="en">
+      <body className={`${georama.variable} ${roboto.variable} antialiased`}>
+        {children}
       </body>
     </html>
   );
