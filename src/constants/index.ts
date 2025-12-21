@@ -795,7 +795,7 @@ My key contributions included:
         results: [
           {
             title: "Community Adoption",
-            metric: "250+ downloads",
+            metric: "300+ downloads",
             icon: "download",
           },
           {
