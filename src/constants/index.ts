@@ -783,6 +783,55 @@ My key contributions included:
           "Better Auth integration",
         ],
       },
+      {
+        id: 13,
+        year: "2025",
+        title: "Parity CLI – Environment Consistency Enforcement Tool",
+        name: "Parity CLI",
+        shortDescription:
+          "Zero-config CLI to eliminate environment mismatch issues across teams and CI",
+        description:
+          "Built Parity CLI, a developer experience tool that enforces environment consistency across local machines and CI pipelines. It validates runtime versions, OS constraints, package managers, environment files, and required variables using a single YAML-based lock file. Designed to prevent common issues like version mismatches, missing .env variables, and mixed package manager usage, while integrating seamlessly into existing workflows and CI systems.",
+        results: [
+          {
+            title: "Community Adoption",
+            metric: "250+ downloads",
+            icon: "download",
+          },
+          {
+            title: "Setup Time",
+            metric: "<2 min",
+            icon: "zap",
+          },
+          {
+            title: "Distribution",
+            metric: "Published on npm",
+            icon: "package",
+          },
+        ],
+        link: "https://www.npmjs.com/package/parity-ci",
+        github: "https://github.com/Pawandasila/parity-cli",
+        image: "/images/projects/parity.png",
+        tags: [
+          "Node.js",
+          "TypeScript",
+          "CLI Tools",
+          "Developer Experience",
+          "YAML",
+          "CI/CD",
+          "npm",
+        ],
+        status: "Live",
+        teamSize: 1,
+        duration: "2 months",
+        highlights: [
+          "Runtime & version enforcement (Node/Bun)",
+          "YAML-based environment lock file",
+          "Interactive env variable fixing",
+          "CI-safe checks with --ci flag",
+          "Package manager integrity enforcement",
+        ],
+      },
     ],
   },
 ];

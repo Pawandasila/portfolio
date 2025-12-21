@@ -24,14 +24,13 @@ const Navbar = () => {
   const handleNavClick = (type: string) => {
     switch (type) {
       case "finder":
-        // For Projects, we open finder and set the category to Projects
         openWindow("finder", { activeCategory: "Projects" });
         break;
       case "resume":
         openWindow("resume");
         break;
       case "contact":
-        openWindow("safari", { view: "contact" });
+        openWindow("contact");
         break;
       default:
         break;

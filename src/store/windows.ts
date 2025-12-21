@@ -33,6 +33,18 @@ const useWindowsStore = create<WindowsStore>()(
 
     openWindow: (windowKey, data = null) =>
       set((state) => {
+        // Redirection logic for contact -> safari view
+        if (windowKey === "contact") {
+          const win = state.windows["safari"];
+          if (!win) return;
+
+          win.data = { ...(win.data || {}), view: "contact" };
+          win.isOpen = true;
+          win.zIndex = state.nextZIndex;
+          state.nextZIndex++;
+          return;
+        }
+
         const win = state.windows[windowKey];
         if (!win) return;
 
