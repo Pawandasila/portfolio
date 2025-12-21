@@ -27,7 +27,7 @@ const MessageList: React.FC<MessageListProps> = ({
 
   return (
     <div
-      className={`flex-1 w-full mx-auto overflow-y-auto px-4 py-4 space-y-6 no-scrollbar ${maxWidth}`}
+      className={`flex-1 w-full mx-auto overflow-y-auto px-4 pt-20 pb-4 space-y-6 no-scrollbar ${maxWidth}`}
     >
       {messages.map((msg) => {
         const isUser = msg.role === "user";
@@ -39,7 +39,7 @@ const MessageList: React.FC<MessageListProps> = ({
             }`}
           >
             {/* Avatar */}
-            <div className="flex-shrink-0 mt-0.5">
+            <div className="shrink-0 mt-0.5">
               {isUser ? (
                 <div className="w-7 h-7 rounded-sm bg-gray-200 flex items-center justify-center text-gray-500">
                   <User size={16} />

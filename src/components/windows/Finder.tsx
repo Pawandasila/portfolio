@@ -28,6 +28,13 @@ const Finder = () => {
 
   const [activeCategory, setActiveCategory] = useState("Recents");
 
+  // Sync activeCategory from window data if provided
+  useEffect(() => {
+    if (finderData.activeCategory) {
+      setActiveCategory(finderData.activeCategory);
+    }
+  }, [finderData.activeCategory]);
+
   // Reset navigation path when changing categories
   useEffect(() => {
     if (activeCategory !== "Projects") {

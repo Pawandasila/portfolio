@@ -36,7 +36,7 @@ const InputBar: React.FC<InputBarProps> = ({ onSend, isLoading }) => {
   };
 
   return (
-    <div className="w-full mx-auto max-w-3xl px-4 pb-6">
+    <div className="w-full mx-auto max-w-3xl px-4">
       <div className="relative flex flex-col w-full p-3 bg-white border border-gray-200 shadow-sm rounded-xl focus-within:ring-1 focus-within:ring-black/10 focus-within:border-black/10 transition-all">
         <textarea
           ref={textareaRef}

@@ -1,6 +1,7 @@
 "use client";
 
 import { navIcons, navLinks } from "@/constants";
+import useWindowsStore from "@/store/windows";
 import Image from "next/image";
 import dayjs from "dayjs";
 import { useEffect, useState } from "react";
@@ -18,6 +19,25 @@ const Navbar = () => {
     return () => clearInterval(timer);
   }, []);
 
+  const { openWindow } = useWindowsStore();
+
+  const handleNavClick = (type: string) => {
+    switch (type) {
+      case "finder":
+        // For Projects, we open finder and set the category to Projects
+        openWindow("finder", { activeCategory: "Projects" });
+        break;
+      case "resume":
+        openWindow("resume");
+        break;
+      case "contact":
+        openWindow("safari", { view: "contact" });
+        break;
+      default:
+        break;
+    }
+  };
+
   return (
     <nav>
       <div>
@@ -26,7 +46,7 @@ const Navbar = () => {
 
         <ul>
           {navLinks.map((item) => (
-            <li key={item.id}>
+            <li key={item.id} onClick={() => handleNavClick(item.type)}>
               <p>{item.name}</p>
             </li>
           ))}

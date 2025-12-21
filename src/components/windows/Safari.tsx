@@ -14,9 +14,17 @@ import { Message } from "@/types";
 import { streamResponse } from "@/services/gemini";
 import InputBar from "../ui/InputBar";
 import MessageList from "../ui/MessageList";
-import { useState } from "react";
+import { useState, useEffect } from "react";
+
+import useWindowsStore from "@/store/windows";
+import Contact from "./Contact";
 
 const Safari = () => {
+  const { windows, updateWindowData } = useWindowsStore();
+  const safariData = windows["safari"]?.data || {};
+  const currentView = safariData.view || "chat";
+  const isPageLoading = safariData.isLoading || false;
+
   const [messages, setMessages] = useState<Message[]>([
     {
       id: "1",
@@ -26,6 +34,15 @@ const Safari = () => {
     },
   ]);
   const [isLoading, setIsLoading] = useState(false);
+
+  useEffect(() => {
+    if (isPageLoading) {
+      const timer = setTimeout(() => {
+        updateWindowData("safari", { isLoading: false });
+      }, 1500);
+      return () => clearTimeout(timer);
+    }
+  }, [isPageLoading, updateWindowData]);
 
   const handleSend = async (text: string) => {
     const newUserMsg: Message = {
@@ -79,8 +96,60 @@ const Safari = () => {
 
   return (
     <div className="flex-1 flex flex-col bg-white h-full relative">
-      <MessageList messages={messages} />
-      <InputBar onSend={handleSend} isLoading={isLoading} />
+      {/* Browser Loading Bar */}
+      {isPageLoading && (
+        <div className="absolute top-0 left-0 w-full h-1 bg-gray-100 z-50">
+          <div
+            className="h-full bg-blue-500 animate-[loading_1.5s_ease-in-out_infinite]"
+            style={{ width: "100%" }}
+          />
+        </div>
+      )}
+
+      {currentView === "contact" && !isPageLoading ? (
+        <Contact />
+      ) : isPageLoading ? (
+        <div className="flex-1 bg-white" /> // Blank while loading
+      ) : (
+        <>
+          <MessageList messages={messages} />
+          <InputBar onSend={handleSend} isLoading={isLoading} />
+        </>
+      )}
+    </div>
+  );
+};
+
+// Header Component to access store
+const SafariHeaderSearch = () => {
+  const { windows } = useWindowsStore();
+  const safariData = windows["safari"]?.data || {};
+  const currentView = safariData.view || "chat";
+
+  const getUrl = () => {
+    switch (currentView) {
+      case "contact":
+        return "www.pawan.com/contact";
+      default:
+        return "www.pawan.com/chat";
+    }
+  };
+
+  return (
+    <div
+      className="flex items-center gap-3 w-full justify-center"
+      onMouseDown={(e) => e.stopPropagation()}
+    >
+      <ShieldHalf className="icon p-1! text-gray-400" />
+      <div className="window-search max-w-[400px]">
+        <Search className="search-icon opacity-50" />
+        <input
+          type="text"
+          placeholder="Search or enter website name"
+          value={getUrl()}
+          readOnly
+        />
+      </div>
     </div>
   );
 };
@@ -96,23 +165,7 @@ const safariWindow = WindowsWrapper(Safari, "safari", {
       </div>
     </div>
   ),
-  headerSearch: (
-    <div
-      className="flex items-center gap-3 w-full justify-center"
-      onMouseDown={(e) => e.stopPropagation()}
-    >
-      <ShieldHalf className="icon p-1! text-gray-400" />
-      <div className="window-search max-w-[400px]">
-        <Search className="search-icon opacity-50" />
-        <input
-          type="text"
-          placeholder="Search or enter website name"
-          defaultValue="www.pawan.com"
-          readOnly
-        />
-      </div>
-    </div>
-  ),
+  headerSearch: <SafariHeaderSearch />,
   headerRight: (
     <div className="flex items-center gap-4 mr-2">
       <Share className="icon hover:text-black" />
