@@ -1,4 +1,4 @@
-import type { Metadata } from "next";
+import type { Metadata, Viewport } from "next";
 import { Georama, Roboto } from "next/font/google";
 import "./globals.css";
 
@@ -24,7 +24,7 @@ const siteConfig = {
   description:
     "Passionate software engineer specializing in modern web technologies, AI/ML integration, and scalable application development. Proven track record of delivering high-impact solutions that drive business growth.",
   url: "https://portfolio.pawandasila.in", // 🔁 Replace with your actual domain
-  ogImage: "/og-image.jpg",       // 🔁 Add a 1200×630 image to /public
+  ogImage: "/og-image.jpg", // 🔁 Add a 1200×630 image to /public
   twitterHandle: "@dasila0612",
   locale: "en_US",
   keywords: [
@@ -55,25 +55,25 @@ const siteConfig = {
 export const metadata: Metadata = {
   // metadataBase is REQUIRED for all absolute OG/Twitter image URLs to work
   metadataBase: new URL(siteConfig.url),
- 
+
   title: {
     default: siteConfig.title,
     // Used by child pages: "About | Pawan Dasila"
     template: `%s | ${siteConfig.name}`,
   },
- 
+
   description: siteConfig.description,
   keywords: siteConfig.keywords,
- 
+
   authors: [{ name: siteConfig.name, url: siteConfig.url }],
   creator: siteConfig.name,
   publisher: siteConfig.name,
- 
+
   // Canonical URL — prevents duplicate content penalties
   alternates: {
     canonical: "/",
   },
- 
+
   // ── Open Graph ──────────────────────────────────────────────────────────────
   openGraph: {
     type: "website",
@@ -92,7 +92,7 @@ export const metadata: Metadata = {
       },
     ],
   },
- 
+
   // ── Twitter / X Card ────────────────────────────────────────────────────────
   twitter: {
     card: "summary_large_image",
@@ -102,7 +102,7 @@ export const metadata: Metadata = {
     description: siteConfig.description,
     images: [siteConfig.ogImage],
   },
- 
+
   // ── Robots ──────────────────────────────────────────────────────────────────
   robots: {
     index: true,
@@ -115,21 +115,21 @@ export const metadata: Metadata = {
       "max-snippet": -1,
     },
   },
- 
+
   // ── Google Search Console verification ──────────────────────────────────────
   // Paste your token from Search Console → Settings → Ownership verification
   // verification: {
   //   google: "your-google-verification-token",
   //   yandex: "your-yandex-token", // optional
   // },
- 
+
   // ── Misc ────────────────────────────────────────────────────────────────────
   category: "technology",
   referrer: "origin-when-cross-origin",
 };
- 
+
 // ─── Viewport (separate export required in Next.js 14+) ──────────────────────
- 
+
 export const viewport: Viewport = {
   width: "device-width",
   initialScale: 1,
@@ -137,11 +137,6 @@ export const viewport: Viewport = {
     { media: "(prefers-color-scheme: light)", color: "#ffffff" },
     { media: "(prefers-color-scheme: dark)", color: "#0a0a0a" },
   ],
-};
-
-export const viewport = {
-  width: "device-width",
-  initialScale: 1,
 };
 
 const personJsonLd = {
@@ -174,9 +169,9 @@ const personJsonLd = {
   //   title: "Full-Stack / AI Developer roles",
   // },
 };
- 
+
 // ─── Website JSON-LD (enables sitelinks search box in Google) ─────────────────
- 
+
 const websiteJsonLd = {
   "@context": "https://schema.org",
   "@type": "WebSite",
@@ -188,7 +183,6 @@ const websiteJsonLd = {
   },
 };
 
-
 export default function RootLayout({
   children,
 }: Readonly<{
@@ -196,7 +190,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-       <head>
+      <head>
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(personJsonLd) }}
