@@ -24,7 +24,7 @@ const siteConfig = {
   description:
     "Passionate software engineer specializing in modern web technologies, AI/ML integration, and scalable application development. Proven track record of delivering high-impact solutions that drive business growth.",
   url: "https://portfolio.pawandasila.in", // 🔁 Replace with your actual domain
-  ogImage: "/og-image.png",       // 🔁 Add a 1200×630 image to /public
+  ogImage: "/og-image.jpg",       // 🔁 Add a 1200×630 image to /public
   twitterHandle: "@dasila0612",
   locale: "en_US",
   keywords: [
