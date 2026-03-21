@@ -4,8 +4,8 @@ import useWindowsStore, { WindowKey } from "@/store/windows";
 import React, { useRef } from "react";
 import { useGSAP } from "@gsap/react";
 import gsap from "gsap";
-// @ts-ignore
-import { Draggable } from "gsap/Draggable";
+
+import { Draggable } from "gsap/all";
 
 gsap.registerPlugin(Draggable);
 
@@ -21,7 +21,7 @@ export interface WindowOptions {
 const WindowsWrapper = (
   Component: React.ComponentType<any>,
   windowKey: WindowKey,
-  options: WindowOptions = {}
+  options: WindowOptions = {},
 ) => {
   const WrappedComponent = (props: Record<string, unknown>) => {
     const { windows, focusWindow, closeWindow } = useWindowsStore();
@@ -88,7 +88,7 @@ const WindowsWrapper = (
         gsap.fromTo(
           ref.current,
           { scale: 0.1, opacity: 0, y: 150, transformOrigin: "50% 150%" },
-          { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.2)" }
+          { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.2)" },
         );
 
         // Dragging logic
