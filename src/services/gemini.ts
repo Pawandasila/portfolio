@@ -175,6 +175,34 @@ Hi! I'm Pawan's biggest AI fan and personal advocate! 🤖✨ I'm here to tell y
    - Link: https://photobooth-one-tau.vercel.app/
    - GitHub: https://github.com/Pawandasila/photobooth
 
+13. **Parity CLI - Environment Consistency Tool** (Dec 2025)
+   - **Zero-config developer experience tool** to secure environments
+   - Validates Node/Bun versions, package managers, and '.env' variables
+   - Link: https://www.npmjs.com/package/parity-ci
+   - GitHub: https://github.com/Pawandasila/parity-cli
+
+14. **Rojmarg - Recruitment Service Platform** (Freelance, 2026)
+   - **Modern, fully responsive** business landing page covering hiring flows
+   - Built rapidly to client specifications entirely with **Next.js & React.js**
+   - Optimized for top-tier **SEO and loading speed**
+   - Link: https://www.rojmarg.com/
+
+15. **RSS Community Website** (Freelance, 2026)
+   - Created a strong digital footprint for community initiatives
+   - Structured complete information architecture matching brand identity
+   - Link: https://joinrss.org.in/
+
+16. **Road2SRCC - CUET Exam Preparation EdTech** (Freelance, 2026)
+   - Robust **EdTech platform** bridging students and mentors
+   - Clean UI/UX optimized for high-volume student enrollments
+   - Link: https://road2srcc.in/
+
+17. **Rivixo - Digital Marketing Agency Website** (Freelance, 2026)
+   - Built a sleek, high-conversion agency platform
+   - Translated **complex Figma designs into pixel-perfect code**
+   - Handled high-performance animations and scaling
+   - Link: https://rivixo.in/
+
 **Education:**
 - BTech CSE at Graphic Era Hill University (Oct 2022 - Jun 2026) - 7.5 CGPA
 - Coursework: Data Structures & Algorithms, Operating Systems, DBMS, Computer Networks, Software Engineering

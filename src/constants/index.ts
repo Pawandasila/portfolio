@@ -834,6 +834,197 @@ My key contributions included:
       },
     ],
   },
+  {
+    id: 3,
+    type: "work",
+    name: "Freelance",
+    icon: "/icons/folder.svg",
+    kind: "folder",
+    children: [
+      {
+        id: 1,
+        year: "2026",
+        title: "Rojmarg - Recruitment Service Platform",
+        name: "Rojmarg",
+        company: "Freelance",
+        shortDescription:
+          "A modern, responsive landing page for a recruitment service platform.",
+        description: `
+## About The Project
+
+I developed a modern and responsive landing page for a recruitment service platform called Rojmarg. The goal of the project was to create a professional web presence where companies can understand the client’s hiring services and easily connect for recruitment needs.
+
+The website was built using Next.js and React to ensure fast performance and SEO optimization. I focused on creating a clean UI, smooth user experience, and mobile-friendly responsive design so the page works well across all devices. The layout was designed to clearly communicate the company’s services, hiring process, and value proposition to potential business clients.
+
+This project involved converting the design into a fully functional landing page, optimizing loading speed, and ensuring the website is visually appealing and easy to navigate.
+        `,
+        link: "https://www.rojmarg.com/",
+        image: "/images/projects/rojmarg.png",
+        tags: ["Next.js", "React.js", "Figma", "SEO", "Responsive Design"],
+        techStack: [
+          {
+            name: "Next.js",
+            icon: "/icons/nextjs.svg",
+            color: "text-black",
+            bg: "bg-gray-100",
+          },
+          {
+            name: "React.js",
+            icon: "/icons/react.svg",
+            color: "text-blue-500",
+            bg: "bg-blue-500/10",
+          },
+          {
+            name: "Figma",
+            icon: "/icons/figma.svg",
+            color: "text-purple-500",
+            bg: "bg-purple-500/10",
+          },
+        ],
+        status: "Live",
+        teamSize: 1,
+        highlights: [
+          "Converted Figma designs into a fully functional Next.js landing page",
+          "Optimized page loading speed and SEO for better discoverability",
+          "Ensured full mobile responsiveness across all devices",
+        ],
+      },
+      {
+        id: 2,
+        year: "2026",
+        title: "RSS Community Website",
+        name: "RSS Community",
+        company: "Freelance",
+        shortDescription:
+          "A clean and responsive web platform that represents the community and its initiatives.",
+        description: `
+## About The Project
+
+I worked as a Frontend Developer on the RSS community website. The goal of the project was to build a clean and responsive web platform that represents the community and provides information about its initiatives and activities.
+
+I developed the user interface using Next.js and React.js, focusing on performance, responsive layouts, and a smooth user experience across devices. My responsibilities included converting design concepts into functional web components, optimizing page structure, and ensuring the website loads quickly and works well on mobile, tablet, and desktop.
+
+The project helped the organization establish a strong online presence where visitors can easily learn about the community and its work.
+        `,
+        link: "https://joinrss.org.in/",
+        image: "/images/projects/rss.png",
+        tags: ["Next.js", "React.js", "Frontend", "Community"],
+        techStack: [
+          {
+            name: "Next.js",
+            icon: "/icons/nextjs.svg",
+            color: "text-black",
+            bg: "bg-gray-100",
+          },
+          {
+            name: "React.js",
+            icon: "/icons/react.svg",
+            color: "text-blue-500",
+            bg: "bg-blue-500/10",
+          },
+        ],
+        status: "Live",
+        teamSize: 1,
+        highlights: [
+          "Developed custom interactive web components with React",
+          "Built a clean, mobile-optimized user interface",
+          "Improved community engagement through better information architecture",
+        ],
+      },
+      {
+        id: 3,
+        year: "2026",
+        title: "Road2SRCC - CUET Exam Preparation Platform",
+        name: "Road2SRCC",
+        company: "Freelance",
+        shortDescription:
+          "An online platform designed to help students prepare for competitive exams like CUET.",
+        description: `
+## About The Project
+
+Road2SRCC is an online platform designed to help students prepare for competitive exams like CUET and gain admission to top colleges. The goal of the project was to build a modern and user-friendly website where students can learn about preparation programs, courses, and mentorship opportunities.
+
+I worked as a Frontend Developer and built the user interface using Next.js and React.js. My focus was on creating a responsive, fast-loading, and visually clean website that works smoothly across mobile, tablet, and desktop devices.
+
+My responsibilities included developing reusable UI components, implementing responsive layouts, and optimizing the frontend for performance and user experience. The website clearly presents the platform’s offerings, helping students easily explore preparation resources and enroll in programs.
+        `,
+        link: "https://road2srcc.in/",
+        image: "/images/projects/road2srcc.png",
+        tags: ["Next.js", "React.js", "EdTech", "Web Performance"],
+        techStack: [
+          {
+            name: "Next.js",
+            icon: "/icons/nextjs.svg",
+            color: "text-black",
+            bg: "bg-gray-100",
+          },
+          {
+            name: "React.js",
+            icon: "/icons/react.svg",
+            color: "text-blue-500",
+            bg: "bg-blue-500/10",
+          },
+        ],
+        status: "Live",
+        teamSize: 1,
+        highlights: [
+          "Developed flexible UI components to display preparation courses",
+          "Optimized complex React forms for enrollment",
+          "Designed a fast and robust navigation system for exploring resources",
+        ],
+      },
+      {
+        id: 4,
+        year: "2026",
+        title: "Rivixo – Digital Marketing Agency Website",
+        name: "Rivixo",
+        company: "Freelance",
+        shortDescription:
+          "A modern, high-performance website for a digital marketing and growth platform.",
+        description: `
+## About The Project
+
+Rivixo is a digital marketing and growth platform that helps businesses scale their online presence through marketing, branding, automation, and technology solutions.
+
+I worked as a Frontend Developer on this project and was responsible for building a modern, responsive, and high-performance website that clearly presents the agency’s services and value proposition to potential clients.
+
+Using Next.js and React.js, I developed reusable UI components and implemented responsive layouts to ensure the website works smoothly across desktop, tablet, and mobile devices. I also focused on optimizing performance, improving loading speed, and creating a visually engaging interface that aligns with the brand’s digital identity.
+
+The website enables businesses to explore services such as digital marketing, web development, AI automation, and growth strategy, helping the agency attract and convert potential clients online.
+        `,
+        link: "https://rivixo.in/",
+        image: "/images/projects/rivixo.png",
+        tags: ["Next.js", "React.js", "Figma", "Digital Marketing"],
+        techStack: [
+          {
+            name: "Next.js",
+            icon: "/icons/nextjs.svg",
+            color: "text-black",
+            bg: "bg-gray-100",
+          },
+          {
+            name: "React.js",
+            icon: "/icons/react.svg",
+            color: "text-blue-500",
+            bg: "bg-blue-500/10",
+          },
+          {
+            name: "Figma",
+            icon: "/icons/figma.svg",
+            color: "text-purple-500",
+            bg: "bg-purple-500/10",
+          },
+        ],
+        status: "Live",
+        teamSize: 1,
+        highlights: [
+          "Engineered a dynamic and visually engaging Agency landing page",
+          "Translated complex UI/UX designs from Figma into production code",
+          "Optimized layout shifts and initial component loading performance",
+        ],
+      },
+    ],
+  },
 ];
 
 const ABOUT_LOCATION = {

@@ -29,6 +29,11 @@ const WindowsWrapper = (
     const { isOpen, zIndex } = windowState;
 
     const ref = useRef<HTMLDivElement>(null);
+    const [isRendered, setIsRendered] = React.useState(isOpen);
+
+    React.useEffect(() => {
+      if (isOpen) setIsRendered(true);
+    }, [isOpen]);
 
     const handleResizeStart = (e: React.MouseEvent, side: string) => {
       e.stopPropagation();
@@ -76,7 +81,16 @@ const WindowsWrapper = (
     };
 
     useGSAP(() => {
-      if (isOpen && ref.current) {
+      if (!ref.current) return;
+
+      if (isOpen) {
+        // Entrance animation: pop up from bottom
+        gsap.fromTo(
+          ref.current,
+          { scale: 0.1, opacity: 0, y: 150, transformOrigin: "50% 150%" },
+          { scale: 1, opacity: 1, y: 0, duration: 0.4, ease: "back.out(1.2)" }
+        );
+
         // Dragging logic
         Draggable.create(ref.current, {
           handle: "#window-header",
@@ -85,10 +99,21 @@ const WindowsWrapper = (
           type: "x,y",
           inertia: true,
         });
+      } else if (isRendered) {
+        // Exit animation: shrink into bottom
+        gsap.to(ref.current, {
+          scale: 0.1,
+          opacity: 0,
+          y: 150,
+          transformOrigin: "50% 150%",
+          duration: 0.35,
+          ease: "power3.in",
+          onComplete: () => setIsRendered(false),
+        });
       }
-    }, [isOpen]);
+    }, [isOpen, isRendered]);
 
-    if (!isOpen) return null;
+    if (!isRendered) return null;
 
     // Get capitalized name for header
     const windowTitle = windowKey.charAt(0).toUpperCase() + windowKey.slice(1);

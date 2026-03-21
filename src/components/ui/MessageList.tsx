@@ -2,6 +2,7 @@ import React, { useRef, useEffect, useState } from "react";
 import ReactMarkdown from "react-markdown";
 import { Message } from "@/types";
 import { Copy, ThumbsUp, ThumbsDown, Flag, Check, User } from "lucide-react";
+import Image from "next/image";
 
 interface MessageListProps {
   messages: Message[];
@@ -47,9 +48,11 @@ const MessageList: React.FC<MessageListProps> = ({
               ) : (
                 <div className="w-7 h-7 rounded-sm bg-[#10a37f] flex items-center justify-center text-white overflow-hidden shadow-sm">
                   {/* ChatGPT-style logo or similar */}
-                  <img
+                  <Image
                     src="https://api.dicebear.com/9.x/avataaars/svg?seed=Lyndon&backgroundColor=transparent"
                     alt="AI"
+                    width={28}
+                    height={28}
                     className="w-full h-full object-cover scale-110"
                   />
                 </div>
@@ -72,10 +75,12 @@ const MessageList: React.FC<MessageListProps> = ({
                 {msg.attachments && msg.attachments.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-2 justify-end">
                     {msg.attachments.map((att, idx) => (
-                      <img
+                      <Image
                         key={idx}
                         src={`data:${att.mimeType};base64,${att.data}`}
                         alt="attachment"
+                        width={128}
+                        height={128}
                         className="max-h-32 rounded-lg border border-gray-200"
                       />
                     ))}

@@ -1,8 +1,17 @@
 import React from "react";
 import useWindowsStore from "@/store/windows";
-import { ExternalLink, Layers, Users, Zap, Calendar } from "lucide-react";
+import {
+  ExternalLink,
+  Layers,
+  Users,
+  Zap,
+  Calendar,
+  Clock,
+} from "lucide-react";
 import ReactMarkdown from "react-markdown";
 import WindowsWrapper from "@/hoc/WindowsWrapper";
+import Image from "next/image";
+import Link from "next/link";
 
 const ProjectDetailContent = () => {
   const { windows } = useWindowsStore();
@@ -40,9 +49,11 @@ const ProjectDetailContent = () => {
       <div className="flex-1 overflow-y-auto custom-scrollbar">
         <div className="relative h-64 sm:h-80">
           {image ? (
-            <img
+            <Image
               src={image}
               alt={title}
+              width={1200}
+              height={630}
               className="absolute inset-0 w-full h-full object-cover"
             />
           ) : (
@@ -125,24 +136,24 @@ const ProjectDetailContent = () => {
               {/* CTA */}
               <div className="rounded-2xl bg-white dark:bg-white/5 border border-gray-200 dark:border-white/10 p-5 space-y-3">
                 {link && (
-                  <a
+                  <Link
                     href={link}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-black text-white dark:bg-white dark:text-black font-medium hover:scale-[1.02] transition"
                   >
                     <ExternalLink size={18} /> Live Project
-                  </a>
+                  </Link>
                 )}
                 {github && (
-                  <a
+                  <Link
                     href={github}
                     target="_blank"
                     rel="noreferrer"
                     className="w-full flex items-center justify-center gap-2 py-3 rounded-xl bg-gray-100 dark:bg-white/10 hover:bg-gray-200 dark:hover:bg-white/20 transition"
                   >
                     View Code
-                  </a>
+                  </Link>
                 )}
               </div>
 
@@ -154,7 +165,13 @@ const ProjectDetailContent = () => {
                   icon={<Users size={14} />}
                 />
                 <Meta label="Year" value={year} icon={<Calendar size={14} />} />
-                {duration && <Meta label="Duration" value={duration} />}
+                {duration && (
+                  <Meta
+                    label="Duration"
+                    value={duration}
+                    icon={<Clock size={14} />}
+                  />
+                )}
               </div>
 
               {/* TAGS */}
@@ -183,7 +200,15 @@ const ProjectDetailContent = () => {
   );
 };
 
-const Meta = ({ label, value, icon }: any) => (
+const Meta = ({
+  label,
+  value,
+  icon,
+}: {
+  label: string;
+  value: string;
+  icon: React.ReactNode;
+}) => (
   <div className="flex items-center justify-between text-sm">
     <span className="text-gray-500">{label}</span>
     <span className="flex items-center gap-2 font-medium">

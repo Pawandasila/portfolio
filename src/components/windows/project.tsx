@@ -1,5 +1,6 @@
 import React from "react";
-import { Folder, FileText } from "lucide-react";
+import { Folder } from "lucide-react";
+import Image from "next/image";
 
 interface ProjectProps {
   items: any[];
@@ -26,18 +27,22 @@ const Project = ({ items, onNavigate }: ProjectProps) => {
           ) : (
             <div className="relative">
               {item.image ? (
-                <img
+                <Image
                   src={item.image}
                   alt={item.name}
+                  width={48}
+                  height={48}
                   className="size-12 object-cover rounded-md shadow-sm group-hover:scale-105 transition-transform"
                   onError={(e) => {
                     (e.target as HTMLImageElement).src = "/icons/file (1).svg";
                   }}
                 />
               ) : (
-                <img
+                <Image
                   src="/icons/file (1).svg"
                   alt="File"
+                  width={48}
+                  height={48}
                   className="size-12 object-contain group-hover:scale-105 transition-transform"
                 />
               )}
