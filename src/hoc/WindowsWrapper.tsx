@@ -23,7 +23,7 @@ const WindowsWrapper = (
   windowKey: WindowKey,
   options: WindowOptions = {}
 ) => {
-  const WrappedComponent = (props: any) => {
+  const WrappedComponent = (props: Record<string, unknown>) => {
     const { windows, focusWindow, closeWindow } = useWindowsStore();
     const windowState = windows[windowKey];
     const { isOpen, zIndex } = windowState;
@@ -54,7 +54,7 @@ const WindowsWrapper = (
       const onMouseMove = (moveEvent: MouseEvent) => {
         const dx = moveEvent.clientX - startX;
         const dy = moveEvent.clientY - startY;
-        const updates: any = {};
+        const updates: Record<string, number> = {};
 
         if (side.includes("e")) updates.width = Math.max(300, startW + dx);
         if (side.includes("w")) {

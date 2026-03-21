@@ -272,7 +272,7 @@ export const streamResponse = async (
       })),
     });
 
-    const parts: any[] = [{ text: newMessage }];
+    const parts: { text: string }[] = [{ text: newMessage }];
     const messagePayload = parts.length === 1 ? newMessage : parts;
 
     const result = await chat.sendMessageStream({ message: messagePayload });
