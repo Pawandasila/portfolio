@@ -1,7 +1,7 @@
-import React, { useRef, useEffect, useState } from "react";
+import React, { useRef, useEffect } from "react";
 import ReactMarkdown from "react-markdown";
 import { Message } from "@/types";
-import { Copy, ThumbsUp, ThumbsDown, Flag, Check, User } from "lucide-react";
+import { User } from "lucide-react";
 import Image from "next/image";
 
 interface MessageListProps {
@@ -11,20 +11,13 @@ interface MessageListProps {
 
 const MessageList: React.FC<MessageListProps> = ({
   messages,
-  maxWidth = "max-w-3xl", // Reduced max width for better reading
+  maxWidth = "max-w-3xl",
 }) => {
   const bottomRef = useRef<HTMLDivElement>(null);
-  const [copiedId, setCopiedId] = useState<string | null>(null);
 
   useEffect(() => {
     bottomRef.current?.scrollIntoView({ behavior: "smooth" });
   }, [messages]);
-
-  const handleCopy = (text: string, id: string) => {
-    navigator.clipboard.writeText(text);
-    setCopiedId(id);
-    setTimeout(() => setCopiedId(null), 2000);
-  };
 
   return (
     <div
@@ -47,7 +40,6 @@ const MessageList: React.FC<MessageListProps> = ({
                 </div>
               ) : (
                 <div className="w-7 h-7 rounded-sm bg-[#10a37f] flex items-center justify-center text-white overflow-hidden shadow-sm">
-                  {/* ChatGPT-style logo or similar */}
                   <Image
                     src="https://api.dicebear.com/9.x/avataaars/svg?seed=Lyndon&backgroundColor=transparent"
                     alt="AI"
@@ -71,7 +63,6 @@ const MessageList: React.FC<MessageListProps> = ({
                     : "text-gray-800 w-full pl-0 bg-transparent"
                 }`}
               >
-                {/* Attachments rendering remains same... */}
                 {msg.attachments && msg.attachments.length > 0 && (
                   <div className="flex flex-wrap gap-2 mb-2 justify-end">
                     {msg.attachments.map((att, idx) => (
@@ -106,10 +97,9 @@ const MessageList: React.FC<MessageListProps> = ({
                 )}
               </div>
 
-              {/* Action Buttons for Model */}
               {msg.role === "model" && !msg.isStreaming && msg.text && (
                 <div className="flex items-center gap-1 mt-1 text-gray-400 opacity-0 group-hover:opacity-100 transition-opacity">
-                  {/* Buttons... */}
+                  {/* Clean */}
                 </div>
               )}
             </div>

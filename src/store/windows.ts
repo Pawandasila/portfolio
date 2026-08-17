@@ -1,4 +1,5 @@
 import { INITIAL_Z_INDEX, WINDOW_CONFIG } from "@/constants";
+import { WindowDataRecord } from "@/types";
 import { create } from "zustand";
 import { immer } from "zustand/middleware/immer";
 
@@ -6,7 +7,7 @@ import { immer } from "zustand/middleware/immer";
 
 export type WindowKey = keyof typeof WINDOW_CONFIG;
 
-export type WindowData = Record<string, any> | null;
+export type WindowData = WindowDataRecord | null;
 
 export interface WindowItem {
   isOpen: boolean;
@@ -21,7 +22,7 @@ export interface WindowsStore {
   openWindow: (windowKey: WindowKey, data?: WindowData) => void;
   closeWindow: (windowKey: WindowKey) => void;
   focusWindow: (windowKey: WindowKey, data?: WindowData) => void;
-  updateWindowData: (windowKey: WindowKey, data: Record<string, any>) => void;
+  updateWindowData: (windowKey: WindowKey, data: WindowDataRecord) => void;
 }
 
 /* ---------------- STORE ---------------- */

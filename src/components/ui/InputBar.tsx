@@ -1,5 +1,5 @@
 import React, { useState, useRef, useEffect } from "react";
-import { Plus, Paperclip, Mic, ArrowUp, X } from "lucide-react";
+import { ArrowUp } from "lucide-react";
 
 interface InputBarProps {
   onSend: (text: string) => void;
@@ -50,14 +50,14 @@ const InputBar: React.FC<InputBarProps> = ({ onSend, isLoading }) => {
         />
         <div className="flex justify-between items-center mt-2">
           <div className="flex gap-2 text-gray-400">
-            {/* Add icons here if needed, keeping it clean for now */}
+            {/* Clean space */}
           </div>
           <button
             onClick={handleSend}
             disabled={isLoading || !text.trim()}
             className={`p-1.5 rounded-md transition-all ${
               text.trim() && !isLoading
-                ? "bg-black text-white hover:bg-gray-800"
+                ? "bg-black text-white hover:bg-gray-800 cursor-pointer"
                 : "bg-transparent text-gray-200 cursor-not-allowed"
             }`}
           >

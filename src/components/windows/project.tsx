@@ -1,10 +1,11 @@
 import React from "react";
 import { Folder } from "lucide-react";
 import Image from "next/image";
+import { ProjectItem } from "@/types";
 
 interface ProjectProps {
-  items: any[];
-  onNavigate: (item: any) => void;
+  items: ProjectItem[];
+  onNavigate: (item: ProjectItem) => void;
 }
 
 const Project = ({ items, onNavigate }: ProjectProps) => {
